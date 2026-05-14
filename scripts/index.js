@@ -1,31 +1,29 @@
-/* ===============================
-   HEADER
-================================ */
-
 const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
-const mobilePanel = document.querySelector("[data-mobile-panel]");
+const burgerMenu = document.querySelector("[data-burger-menu]");
 
 window.addEventListener("scroll", () => {
   header?.classList.toggle("is-scrolled", window.scrollY > 20);
 });
 
 menuToggle?.addEventListener("click", () => {
-  const isOpen = mobilePanel.classList.toggle("is-open");
+  const isOpen = burgerMenu?.classList.toggle("is-open");
+
+  menuToggle.classList.toggle("is-active", isOpen);
+  header?.classList.toggle("is-open", isOpen);
+  document.body.classList.toggle("menu-open", isOpen);
   menuToggle.setAttribute("aria-expanded", String(isOpen));
 });
 
-mobilePanel?.querySelectorAll("a").forEach((link) => {
+burgerMenu?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => {
-    mobilePanel.classList.remove("is-open");
-    menuToggle.setAttribute("aria-expanded", "false");
+    burgerMenu.classList.remove("is-open");
+    menuToggle?.classList.remove("is-active");
+    header?.classList.remove("is-open");
+    document.body.classList.remove("menu-open");
+    menuToggle?.setAttribute("aria-expanded", "false");
   });
 });
-
-
-/* ===============================
-   CREATIVE THEME SWITCHER
-================================ */
 
 const themeLink = document.getElementById("theme-link");
 const themeOverlay = document.getElementById("theme-overlay");
@@ -86,7 +84,7 @@ function createThemeParticles(color) {
 }
 
 function changeTheme(themeName) {
-  if (isThemeChanging || !themes[themeName]) return;
+  if (isThemeChanging || !themes[themeName] || !themeLink || !themeOverlay || !page) return;
 
   isThemeChanging = true;
 
@@ -103,7 +101,6 @@ function changeTheme(themeName) {
   `;
 
   themeOverlay.classList.add("is-animating");
-
   createThemeParticles(theme.color);
 
   setTimeout(() => {
@@ -124,11 +121,6 @@ themeButtons.forEach((btn) => {
   });
 });
 
-
-/* ===============================
-   PROJECT SLIDER
-================================ */
-
 const projectStrip = document.querySelector("[data-project-strip]");
 const prevBtn = document.querySelector("[data-slider-prev]");
 const nextBtn = document.querySelector("[data-slider-next]");
@@ -147,12 +139,6 @@ function slideProjects(direction) {
 
 prevBtn?.addEventListener("click", () => slideProjects(-1));
 nextBtn?.addEventListener("click", () => slideProjects(1));
-
-
-/* ===============================
-   SOFT HERO CANVAS
-   no code lines, no bubbles
-================================ */
 
 const heroCanvas = document.getElementById("heroCanvas");
 const heroCtx = heroCanvas?.getContext("2d");
@@ -174,10 +160,10 @@ function resizeHeroCanvas() {
   heroCtx.setTransform(heroDpr, 0, 0, heroDpr, 0, 0);
 }
 
-const heroStars = Array.from({ length: 58 }, () => ({
+const heroStars = Array.from({ length: 48 }, () => ({
   x: Math.random(),
   y: Math.random(),
-  r: Math.random() * 1.1 + 0.25,
+  r: Math.random() * 1.05 + 0.25,
   phase: Math.random() * Math.PI * 2,
   speed: Math.random() * 0.45 + 0.16
 }));
@@ -202,8 +188,8 @@ function animateHero(time) {
 
   heroStars.forEach((star) => {
     const twinkle =
-      0.2 +
-      0.45 *
+      0.18 +
+      0.42 *
         Math.pow(
           (Math.sin(time * 0.001 * star.speed + star.phase) + 1) / 2,
           2
@@ -213,41 +199,21 @@ function animateHero(time) {
       heroCtx,
       star.x * heroW,
       star.y * heroH,
-      star.r * 4.2,
+      star.r * 4,
       "255,230,255",
-      twinkle * 0.24
+      twinkle * 0.22
     );
   });
 
-  const portalX = heroW * 0.57;
-  const portalY = heroH * 0.5;
+  const portalX = heroW * 0.558;
+  const portalY = heroH * 0.495;
   const pulse = 0.5 + 0.5 * Math.sin(time * 0.001);
 
-  glowPoint(
-    heroCtx,
-    portalX,
-    portalY,
-    76 + pulse * 30,
-    "155,230,255",
-    0.09 + pulse * 0.07
-  );
-
-  glowPoint(
-    heroCtx,
-    portalX,
-    portalY,
-    48 + pulse * 20,
-    "232,140,255",
-    0.07 + pulse * 0.06
-  );
+  glowPoint(heroCtx, portalX, portalY, 78 + pulse * 32, "155,230,255", 0.08 + pulse * 0.07);
+  glowPoint(heroCtx, portalX, portalY, 50 + pulse * 22, "232,140,255", 0.06 + pulse * 0.06);
 
   requestAnimationFrame(animateHero);
 }
-
-
-/* ===============================
-   FOOTER CANVAS
-================================ */
 
 const footerCanvas = document.getElementById("footerCanvas");
 const footerCtx = footerCanvas?.getContext("2d");
@@ -269,12 +235,13 @@ function resizeFooterCanvas() {
   footerCtx.setTransform(footerDpr, 0, 0, footerDpr, 0, 0);
 }
 
-const footerParticles = Array.from({ length: 55 }, () => ({
+const footerParticles = Array.from({ length: 75 }, () => ({
   x: Math.random(),
   y: Math.random(),
-  r: Math.random() * 1.6 + 0.4,
+  r: Math.random() * 1.8 + 0.45,
   phase: Math.random() * Math.PI * 2,
-  speed: Math.random() * 0.35 + 0.08
+  speed: Math.random() * 0.35 + 0.08,
+  drift: Math.random() * 22 + 8
 }));
 
 function animateFooter(time) {
@@ -283,12 +250,12 @@ function animateFooter(time) {
   footerCtx.clearRect(0, 0, footerW, footerH);
 
   footerParticles.forEach((p) => {
-    const x = p.x * footerW + Math.sin(time * 0.00018 + p.phase) * 14;
-    const y = p.y * footerH + Math.cos(time * 0.00016 + p.phase) * 10;
+    const x = p.x * footerW + Math.sin(time * 0.00018 + p.phase) * p.drift;
+    const y = p.y * footerH + Math.cos(time * 0.00016 + p.phase) * (p.drift * 0.7);
 
     const alpha =
-      0.14 +
-      0.34 *
+      0.12 +
+      0.36 *
         ((Math.sin(time * 0.001 * p.speed + p.phase) + 1) / 2);
 
     glowPoint(footerCtx, x, y, p.r * 7, "190,220,255", alpha);
@@ -296,11 +263,6 @@ function animateFooter(time) {
 
   requestAnimationFrame(animateFooter);
 }
-
-
-/* ===============================
-   INIT
-================================ */
 
 window.addEventListener("resize", () => {
   resizeHeroCanvas();
