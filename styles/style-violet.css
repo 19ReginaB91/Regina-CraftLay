@@ -1,0 +1,87 @@
+/* --- VIOLET THEME: CONFIGURATION --- */
+:root {
+    --ink: #251936;
+    --muted: #645a78;
+    --violet: #6f4fa4;
+    --rose: #bb78a7;
+    --blue: #5faad7;
+    --paper: #eee4ec;
+    --soft: #dfd3e6;
+    --line: rgba(67, 47, 103, 0.2);
+    --white: #fff9ff;
+    
+    /* Theme specific glow */
+    --glow: rgba(173, 224, 255, 0.45);
+}
+
+/* Background for the entire page in this vibe */
+.page {
+    background: 
+        radial-gradient(circle at 8% 6%, rgba(255, 217, 227, 0.82), transparent 24rem),
+        radial-gradient(circle at 70% 48%, rgba(99, 193, 219, 0.22), transparent 32rem),
+        linear-gradient(180deg, #eadfe8 0%, #dee3ef 42%, #efe5eb 70%, #b2c7e2 100%);
+}
+
+/* --- HERO SPECIFICS --- */
+.hero-nebula {
+    mix-blend-mode: multiply; /* Blends space background with the page gradient */
+    filter: brightness(1.1) contrast(1.05);
+}
+
+.hero-portal {
+    /* Adding that magical violet/blue glow to the hand portal */
+    filter: saturate(1.1) drop-shadow(0 0 2rem var(--glow));
+}
+
+.hero__title span, 
+h1 em.rose {
+    color: var(--rose);
+    text-shadow: 0 0 15px rgba(187, 120, 167, 0.3);
+}
+
+/* --- WORK SECTION --- */
+.work {
+    /* Gradient transition between sections */
+    background: linear-gradient(90deg, #8d83c4 0%, #a7c7da 100%);
+}
+
+.project-card {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- ABOUT & DECOR --- */
+.about-panel {
+    background: 
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.32)),
+        #efe6ed;
+}
+
+/* Crystal decorations specific to this theme */
+.crystal-overlay {
+    filter: drop-shadow(0 10px 20px rgba(111, 79, 164, 0.2));
+}
+
+/* --- FOOTER SPECIFICS --- */
+.site-footer {
+    /* Base background for footer */
+    background: 
+        linear-gradient(90deg, rgba(15, 25, 68, 0.8), rgba(65, 61, 145, 0.54)),
+        url("../assets/media/footer-blue.png") center / cover no-repeat;
+}
+
+.footer-decoration {
+    /* Your second layer with crystals and flowers */
+    background: url("../assets/media/crystal-sprig-cut.png") no-repeat center bottom;
+    background-size: contain;
+    filter: drop-shadow(0 0 1.5rem rgba(180, 210, 255, 0.4));
+}
+
+.footer-cta h2 em {
+    color: var(--rose);
+}
+
+/* Skill bars glow effect */
+.skill-row i::before {
+    background: linear-gradient(90deg, var(--violet), var(--rose), var(--blue));
+    box-shadow: 0 0 10px var(--violet);
+}

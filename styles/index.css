@@ -1,0 +1,260 @@
+/* --- GLOBAL CONFIGURATION --- */
+:root {
+  --ink: #251936;
+  --muted: #645a78;
+  --violet: #6f4fa4;
+  --rose: #bb78a7;
+  --blue: #5faad7;
+  --paper: #eee4ec;
+  --soft: #dfd3e6;
+  --line: rgba(67, 47, 103, 0.2);
+  --white: #fff9ff;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* --- TRANSPARENT HEADER --- */
+.site-header {
+  position: fixed;
+  z-index: 1000; /* Always on top */
+  top: 0; left: 0; right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 5%;
+  background: transparent; /* Fully transparent as requested */
+  transition: all 0.3s ease;
+}
+
+.main-nav {
+  display: flex;
+  gap: 40px;
+}
+
+.main-nav a {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.main-nav a:hover { opacity: 1; color: var(--violet); }
+
+/* --- THE OVAL VIBE SWITCHER --- */
+.vibe-switcher {
+  display: flex;
+  gap: 12px;
+  margin-right: 20px;
+}
+
+.vibe-btn {
+  width: 50px;
+  height: 26px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.4);
+  background: transparent;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.vibe-btn.active {
+  background: var(--violet);
+  border-color: var(--violet);
+  box-shadow: 0 0 15px var(--violet);
+}
+
+/* --- HERO SECTION LAYERING --- */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none; /* Clicks pass through to content */
+}
+
+/* Layer 1: Galaxy Background */
+.hero-nebula {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+/* Layer 2: The Hand and Portal */
+.hero-portal {
+  position: absolute;
+  right: -5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 65%;
+  object-fit: contain;
+  z-index: 3;
+  filter: drop-shadow(0 0 40px rgba(173, 224, 255, 0.4));
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 10; /* Content on top of everything */
+  max-width: 650px;
+  padding-left: 10%;
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 0.9;
+  margin: 20px 0;
+}
+
+h1 em { font-style: italic; color: var(--violet); }
+h1 em.rose { color: var(--rose); }
+
+/* --- PROJECT SLIDER (Selected Work) --- */
+.work {
+  padding: 100px 5%;
+  background: linear-gradient(90deg, #8d83c4 0%, #a7c7da 100%);
+}
+
+.project-strip {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 40px 0;
+  scrollbar-width: none; /* Hide for Firefox */
+}
+
+.project-strip::-webkit-scrollbar { display: none; } /* Hide for Chrome */
+
+.project-card {
+  flex: 0 0 400px;
+  background: var(--ink);
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.project-card:hover { transform: translateY(-10px); }
+
+.project-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+.project-card__info {
+  padding: 20px;
+  color: white;
+}
+
+/* --- ABOUT & PORTRAIT DECO --- */
+.about-panel {
+  display: grid;
+  grid-template-columns: 1fr 400px 1fr;
+  gap: 50px;
+  padding: 100px 10%;
+  background: var(--paper);
+}
+
+.portrait-card {
+  position: relative;
+  margin: 0;
+}
+
+.portrait-card img:first-child {
+  width: 100%;
+  border-radius: 20px;
+}
+
+/* Crystal Overlay on the portrait */
+.crystal-overlay {
+  position: absolute;
+  bottom: -30px;
+  right: -40px;
+  width: 180px !important;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* --- SKILL BARS --- */
+.skill-row {
+  margin-bottom: 25px;
+}
+
+.skill-row i {
+  display: block;
+  height: 2px;
+  background: rgba(0,0,0,0.1);
+  position: relative;
+  margin: 10px 0;
+}
+
+.skill-row i::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; height: 100%;
+  width: var(--level);
+  background: var(--violet);
+  box-shadow: 0 0 10px var(--violet);
+}
+
+/* --- DOUBLE LAYER FOOTER --- */
+.site-footer {
+  position: relative;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url('../assets/media/footer-background.png') no-repeat center bottom;
+  background-size: cover;
+  color: white;
+  text-align: center;
+}
+
+/* The second layer: Crystal Sprig on top of texture */
+
+
+.footer-cta {
+  position: relative;
+  z-index: 10;
+}
+
+/* --- TRANSITION BURST --- */
+.theme-overlay {
+  position: fixed;
+  top: 50%; left: 50%;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  z-index: 9999;
+}
+
+.theme-overlay.is-animating {
+  animation: burst-anim 1.2s forwards ease-in-out;
+}
+
+@keyframes burst-anim {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1000); opacity: 0; }
+}

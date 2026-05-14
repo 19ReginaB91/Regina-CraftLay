@@ -1,12 +1,297 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regina CraftLay | Creative Frontend Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/index.css" />
+    <link id="theme-link" rel="stylesheet" href="styles/style-violet.css" />
+  </head>
+  <body>
+    <div id="theme-overlay" class="theme-overlay"></div>
 
-</head>
-<body>
-    
-</body>
+    <div class="page">
+      <header class="site-header" data-header>
+        <a class="brand" href="#top" aria-label="Regina CraftLay home">REGINA</a>
+
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="#about"> About</a>
+          <a href="#work"> Work</a>
+          <a href="#skills"> Skills</a>
+          <a href="#journal"> Journal</a>
+          <a href="#contact"> Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="pill-link" href="#contact">
+            <span class="star">&#10022;</span>
+            Let's work together
+          </a>
+
+          <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </header>
+<!-- 
+      <div class="mobile-panel" data-mobile-panel>
+        <nav aria-label="Mobile navigation">
+          <a href="#about"><span>01.</span> About</a>
+          <a href="#work"><span>02.</span> Work</a>
+          <a href="#skills"><span>03.</span> Skills</a>
+          <a href="#journal"><span>04.</span> Journal</a>
+          <a href="#contact"><span>05.</span> Contact</a>
+        </nav>
+      </div> -->
+
+      <main id="top">
+        <section class="hero section-grid" aria-labelledby="hero-title">
+          <aside class="section-rail" aria-hidden="true">
+            <span>01</span>
+            <i></i>
+            <b></b>
+          </aside>
+
+          <div class="hero-copy">
+            <p class="eyebrow">Frontend developer</p>
+            <h1 id="hero-title">
+              I create
+              <em>digital</em>
+              experiences
+              that feel
+              <em class="rose">alive</em>
+            </h1>
+            <p class="hero-text">
+              I combine design, code and creative direction to build meaningful digital products.
+            </p>
+            <a class="hero-button" href="#work">
+              <span class="star">&#10022;</span>
+              View my work
+            </a>
+          </div>
+
+          <div class="hero-scene" aria-hidden="true">
+            <img class="hero-nebula" src="assets/media/hero-bg.jpeg" alt="" />
+           
+
+            <div class="portal-field">
+              <span class="portal-ring portal-ring-one"></span>
+              <span class="portal-ring portal-ring-two"></span>
+              <span class="portal-ring portal-ring-three"></span>
+            </div>
+
+            <span class="portal-touch"></span>
+
+            <div class="code-streams">
+              <span style="--delay: 0s; --y: -7rem">const</span>
+              <span style="--delay: 0.42s; --y: -4rem">create()</span>
+              <span style="--delay: 0.86s; --y: -1.4rem">return alive;</span>
+              <span style="--delay: 1.18s; --y: 1.6rem">function</span>
+              <span style="--delay: 1.55s; --y: 4.6rem">design()</span>
+              <span style="--delay: 1.92s; --y: 7.2rem">&lt;/&gt;</span>
+            </div>
+
+            <span class="orb orb-one"></span>
+            <span class="orb orb-two"></span>
+
+            <p class="code-note">
+              const<br />
+              ideas = create();<br />
+              function<br />
+              design(heart, logic) {<br />
+              &nbsp;&nbsp;return alive;<br />
+              }
+            </p>
+
+            <p class="connected">We are all<br />connected</p>
+          </div>
+        </section>
+
+        <section class="work section-grid" id="work" aria-labelledby="work-title">
+          <div class="section-label">
+            
+            <i></i>
+            <h2 id="work-title">Selected<br />Work</h2>
+            <a href="#work">View all projects <b>+</b></a>
+          </div>
+
+          <div class="project-strip">
+            <article class="project-card">
+              <img src="assets/media/calculator.png" alt="Calculator project preview" />
+              <div>
+                
+                <h3>Calculator</h3>
+                <p>Web design / development</p>
+              </div>
+              <a href="#contact" aria-label="Open Lumiere project">&#8594;</a>
+            </article>
+
+            <article class="project-card">
+              <img src="assets/media/kristall-reinigung.png" alt="Tree Service project preview" />
+              <div>
+               
+                <h3>Parallele</h3>
+                <p>Interaction / creative code</p>
+              </div>
+              <a href="#contact" aria-label="Open Parallele project">&#8594;</a>
+            </article><article class="project-card">
+              <img src="assets/media/amarte.png" alt="Tree Service project preview" />
+              <div>
+               
+                <h3>Parallele</h3>
+                <p>Interaction / creative code</p>
+              </div>
+              <a href="#contact" aria-label="Open Parallele project">&#8594;</a>
+            </article>
+            
+
+            <article class="project-card">
+              <img src="assets/media/hanna-sport.png" alt="Hanna Sport project preview" />
+              <div>
+            
+                <h3>Nocturne</h3>
+                <p>Development / animation</p>
+              </div>
+              <a href="#contact" aria-label="Open Nocturne project">&#8594;</a>
+            </article>
+          </div>
+
+          <article class="project-card">
+              <img src="assets/media/tree-service.png" alt="Tree Service project preview" />
+              <div>
+               
+                <h3>Parallele</h3>
+                <p>Interaction / creative code</p>
+              </div>
+              <a href="#contact" aria-label="Open Parallele project">&#8594;</a>
+            </article>
+
+          <div class="slider-controls" aria-label="Project controls">
+            <button type="button" aria-label="Previous project">&#8592;</button>
+            <button type="button" aria-label="Next project">&#8594;</button>
+          </div>
+        </section>
+
+        <section class="about-panel" id="about" aria-label="About, skills and journal">
+          <article class="about-copy">
+            <p class="panel-index"></p>
+            <p class="panel-kicker">About Me</About></p>
+            <h2>
+              I'm a developer
+              with a <em>creative</em> mind
+              and an eye
+              for <em>details.</em>
+            </h2>
+            <p>
+              I enjoy the process where design and code come together to create something meaningful.
+            </p>
+            <a class="line-link" href="#contact">More about me <span>&#8594;</span></a>
+          </article>
+
+          <figure class="portrait-card">
+            <img src="assets/media/regina3.png" alt="Regina portrait in violet watercolor style" />
+          </figure>
+
+          <article class="skills" id="skills">
+            <p class="panel-index"></p>
+            <p class="panel-kicker">Skills</p>
+
+            <div class="skill-row">
+              <span>HTML / CSS</span>
+              <i style="--level: 95%"></i>
+              <b>95%</b>
+            </div>
+
+            <div class="skill-row">
+              <span>JavaScript</span>
+              <i style="--level: 90%"></i>
+              <b>90%</b>
+            </div>
+
+            <div class="skill-row">
+              <span>React</span>
+              <i style="--level: 85%"></i>
+              <b>85%</b>
+            </div>
+
+            <div class="skill-row">
+              <span>GSAP / Animation</span>
+              <i style="--level: 80%"></i>
+              <b>80%</b>
+            </div>
+
+            <div class="skill-row">
+              <span>UI / UX Design</span>
+              <i style="--level: 88%"></i>
+              <b>88%</b>
+            </div>
+
+            <div class="skill-row">
+              <span>Figma</span>
+              <i style="--level: 90%"></i>
+              <b>90%</b>
+            </div>
+
+            <a class="download-link" href="#contact">Download resume <span>&#8595;</span></a>
+          </article>
+
+          <article class="journal" id="journal">
+            <p class="panel-index"></p>
+            <p class="panel-kicker">Journal</p>
+            <h2>
+              Thoughts,
+              inspiration and
+              creative <em>process.</em>
+            </h2>
+            <a class="line-link" href="#contact">Read journal <span>+</span></a>
+          </article>
+        </section>
+      </main>
+
+      <footer class="site-footer" id="contact">
+        <div class="footer-code">
+          <p>
+            let passion = true;<br />
+            while(coffee) {<br />
+            &nbsp;&nbsp;code();<br />
+            &nbsp;&nbsp;create();<br />
+            &nbsp;&nbsp;inspire();<br />
+            }
+          </p>
+        </div>
+
+        <div class="footer-cta">
+          <h2>
+            Let's create
+            something amazing
+            <em>together.</em>
+          </h2>
+          <a href="mailto:hello@example.com">Let's talk <span>+</span></a>
+        </div>
+
+        <ul class="social-links" aria-label="Social links">
+          <li><a href="#contact">Instagram</a></li>
+          <li><a href="#contact">LinkedIn</a></li>
+          <li><a href="#contact">GitHub</a></li>
+          <li><a href="mailto:hello@example.com">Email me</a></li>
+        </ul>
+
+        <div class="footer-bottom">
+          <span>&copy; 2026 Regina</span>
+          <span>Based in Germany</span>
+          <a href="#top">Back to top <b>&#8593;</b></a>
+        </div>
+      </footer>
+    </div>
+
+    <script src="scripts/index.js"></script>
+  </body>
 </html>
