@@ -1,20 +1,31 @@
+/**
+ * REGINA CRAFTLAY - GLOBAL SCRIPT 2026
+ * Handles Navigation, Theme Switching (with Redirection), 
+ * Project Slider, and Interactive Canvas Effects.
+ */
+
 const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const burgerMenu = document.querySelector("[data-burger-menu]");
 
+// --- 1. NAVIGATION & SCROLL LOGIC ---
+
+// Toggle header style on scroll
 window.addEventListener("scroll", () => {
   header?.classList.toggle("is-scrolled", window.scrollY > 20);
 });
 
+// Mobile menu toggle logic
 menuToggle?.addEventListener("click", () => {
   const isOpen = burgerMenu?.classList.toggle("is-open");
-
+  
   menuToggle.classList.toggle("is-active", isOpen);
   header?.classList.toggle("is-open", isOpen);
   document.body.classList.toggle("menu-open", isOpen);
   menuToggle.setAttribute("aria-expanded", String(isOpen));
 });
 
+// Close mobile menu when a navigation link is clicked
 burgerMenu?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => {
     burgerMenu.classList.remove("is-open");
@@ -25,111 +36,107 @@ burgerMenu?.querySelectorAll("a").forEach((link) => {
   });
 });
 
+// --- 2. MULTI-VIBE THEME SYSTEM ---
+
 const themeLink = document.getElementById("theme-link");
 const themeOverlay = document.getElementById("theme-overlay");
 const page = document.querySelector(".page");
-const themeButtons = document.querySelectorAll("[data-theme-btn]");
+const themeButtons = document.querySelectorAll("[data-theme-btn], [data-vibe]");
 
+// Configuration for different visual themes
 const themes = {
   violet: {
     file: "styles/style-violet.css",
     color: "#b9a2ff",
-    glow: "rgba(185,162,255,0.65)"
+    glow: "rgba(185,162,255,0.65)",
+    page: "index.html" // Target layout for this theme
   },
   bold: {
     file: "styles/style-bold.css",
-    color: "#061a12",
-    glow: "rgba(20,255,185,0.55)"
+    color: "#00ffa3", // Emerald Green
+    glow: "rgba(0,255,163,0.55)",
+    page: "bold.html" // Requires a Sidebar layout
+  },
+  emerald: { // Alias for the Bold/Emerald theme
+    file: "styles/style-bold.css",
+    color: "#00ffa3",
+    glow: "rgba(0,255,163,0.55)",
+    page: "bold.html"
   },
   nude: {
     file: "styles/style-nude.css",
     color: "#f1dfd3",
-    glow: "rgba(255,220,190,0.75)"
+    glow: "rgba(255,220,190,0.75)",
+    page: "index.html"
   }
 };
 
 let isThemeChanging = false;
 
-function createThemeParticles(color) {
-  const container = document.createElement("div");
-  container.className = "theme-particles";
-  document.body.appendChild(container);
+/**
+ * Handles the theme transition, including potential page redirection
+ * if the selected theme requires a different HTML structure.
+ */
+function changeTheme(themeName) {
+  if (isThemeChanging || !themes[themeName]) return;
+  
+  const currentPath = window.location.pathname;
+  const targetPage = themes[themeName].page;
 
-  for (let i = 0; i < 42; i++) {
-    const particle = document.createElement("span");
-
-    const size = Math.random() * 8 + 4;
-    const x = Math.random() * window.innerWidth;
-    const y = Math.random() * window.innerHeight;
-    const moveX = (Math.random() - 0.5) * 320;
-    const moveY = (Math.random() - 0.5) * 320;
-    const delay = Math.random() * 0.35;
-
-    particle.style.width = `${size}px`;
-    particle.style.height = `${size}px`;
-    particle.style.left = `${x}px`;
-    particle.style.top = `${y}px`;
-    particle.style.background = color;
-    particle.style.boxShadow = `0 0 24px ${color}`;
-    particle.style.setProperty("--move-x", `${moveX}px`);
-    particle.style.setProperty("--move-y", `${moveY}px`);
-    particle.style.animationDelay = `${delay}s`;
-
-    container.appendChild(particle);
+  // REDIRECTION CHECK: If the target theme uses a different HTML file
+  if (!currentPath.includes(targetPage) && !(currentPath === "/" && targetPage === "index.html")) {
+    window.location.href = targetPage;
+    return;
   }
 
-  setTimeout(() => {
-    container.remove();
-  }, 1800);
-}
-
-function changeTheme(themeName) {
-  if (isThemeChanging || !themes[themeName] || !themeLink || !themeOverlay || !page) return;
-
+  // If on the correct page, proceed with the visual transition
   isThemeChanging = true;
-
   const theme = themes[themeName];
 
-  themeButtons.forEach((btn) => {
-    btn.classList.toggle("active", btn.dataset.themeBtn === themeName);
-  });
+  page?.classList.add("is-changing-theme");
+  
+  if (themeOverlay) {
+    themeOverlay.style.background = `radial-gradient(circle, ${theme.glow} 0%, ${theme.color} 42%, transparent 72%)`;
+    themeOverlay.classList.add("is-animating");
+  }
 
-  page.classList.add("is-changing-theme");
-
-  themeOverlay.style.background = `
-    radial-gradient(circle, ${theme.glow} 0%, ${theme.color} 42%, transparent 72%)
-  `;
-
-  themeOverlay.classList.add("is-animating");
-  createThemeParticles(theme.color);
-
+  // Update CSS link and data attributes after a short delay
   setTimeout(() => {
-    themeLink.href = theme.file;
-    page.dataset.theme = themeName;
-  }, 620);
+    if (themeLink) themeLink.href = theme.file;
+    if (page) page.dataset.theme = themeName;
+  }, 600);
 
+  // Clean up transition classes
   setTimeout(() => {
-    page.classList.remove("is-changing-theme");
-    themeOverlay.classList.remove("is-animating");
+    page?.classList.remove("is-changing-theme");
+    themeOverlay?.classList.remove("is-animating");
     isThemeChanging = false;
-  }, 1550);
+  }, 1500);
 }
 
+// Attach event listeners to all theme switching elements
 themeButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
-    changeTheme(btn.dataset.themeBtn);
+    // Supports both original and new attribute names
+    const name = btn.dataset.themeBtn || btn.dataset.vibe;
+    changeTheme(name);
   });
 });
+
+// --- 3. PROJECT SLIDER (Main Page) ---
 
 const projectStrip = document.querySelector("[data-project-strip]");
 const prevBtn = document.querySelector("[data-slider-prev]");
 const nextBtn = document.querySelector("[data-slider-next]");
 
+/**
+ * Smoothly scrolls the project strip in the specified direction
+ */
 function slideProjects(direction) {
   if (!projectStrip) return;
-
   const card = projectStrip.querySelector(".project-card");
-  const amount = card ? card.offsetWidth + 28 : 360;
+  const gap = 28;
+  const amount = card ? card.offsetWidth + gap : 360;
 
   projectStrip.scrollBy({
     left: amount * direction,
@@ -140,137 +147,73 @@ function slideProjects(direction) {
 prevBtn?.addEventListener("click", () => slideProjects(-1));
 nextBtn?.addEventListener("click", () => slideProjects(1));
 
-const heroCanvas = document.getElementById("heroCanvas");
-const heroCtx = heroCanvas?.getContext("2d");
+// --- 4. CANVAS VISUAL EFFECTS ---
 
-let heroW = 0;
-let heroH = 0;
-let heroDpr = 1;
-
-function resizeHeroCanvas() {
-  if (!heroCanvas || !heroCtx) return;
-
-  heroDpr = Math.min(window.devicePixelRatio || 1, 2);
-  heroW = heroCanvas.clientWidth;
-  heroH = heroCanvas.clientHeight;
-
-  heroCanvas.width = heroW * heroDpr;
-  heroCanvas.height = heroH * heroDpr;
-
-  heroCtx.setTransform(heroDpr, 0, 0, heroDpr, 0, 0);
-}
-
-const heroStars = Array.from({ length: 48 }, () => ({
-  x: Math.random(),
-  y: Math.random(),
-  r: Math.random() * 1.05 + 0.25,
-  phase: Math.random() * Math.PI * 2,
-  speed: Math.random() * 0.45 + 0.16
-}));
-
+/**
+ * Helper to draw a glowing radial point on canvas
+ */
 function glowPoint(ctx, x, y, radius, color, alpha) {
   const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
-
   gradient.addColorStop(0, `rgba(${color}, ${alpha})`);
   gradient.addColorStop(0.35, `rgba(${color}, ${alpha * 0.35})`);
   gradient.addColorStop(1, `rgba(${color}, 0)`);
-
+  
   ctx.fillStyle = gradient;
   ctx.beginPath();
   ctx.arc(x, y, radius, 0, Math.PI * 2);
   ctx.fill();
 }
 
+// HERO CANVAS INITIALIZATION
+const heroCanvas = document.getElementById("heroCanvas");
+const heroCtx = heroCanvas?.getContext("2d");
+let heroW, heroH, heroDpr;
+
+function resizeHero() {
+  if (!heroCanvas) return;
+  heroDpr = Math.min(window.devicePixelRatio || 1, 2);
+  heroW = heroCanvas.clientWidth;
+  heroH = heroCanvas.clientHeight;
+  
+  heroCanvas.width = heroW * heroDpr;
+  heroCanvas.height = heroH * heroDpr;
+  
+  heroCtx?.setTransform(heroDpr, 0, 0, heroDpr, 0, 0);
+}
+
+// Generate star coordinates for background
+const stars = Array.from({ length: 48 }, () => ({
+  x: Math.random(), 
+  y: Math.random(), 
+  r: Math.random() * 1.1, 
+  phase: Math.random() * Math.PI * 2, 
+  speed: Math.random() * 0.4
+}));
+
+/**
+ * Animation loop for the Hero background (Stars and Portal pulse)
+ */
 function animateHero(time) {
-  if (!heroCanvas || !heroCtx) return;
-
+  if (!heroCtx) return;
   heroCtx.clearRect(0, 0, heroW, heroH);
-
-  heroStars.forEach((star) => {
-    const twinkle =
-      0.18 +
-      0.42 *
-        Math.pow(
-          (Math.sin(time * 0.001 * star.speed + star.phase) + 1) / 2,
-          2
-        );
-
-    glowPoint(
-      heroCtx,
-      star.x * heroW,
-      star.y * heroH,
-      star.r * 4,
-      "255,230,255",
-      twinkle * 0.22
-    );
+  
+  // Draw twinkling stars
+  stars.forEach(s => {
+    const twinkle = 0.2 + 0.5 * Math.pow((Math.sin(time * 0.001 * s.speed + s.phase) + 1) / 2, 2);
+    glowPoint(heroCtx, s.x * heroW, s.y * heroH, s.r * 4, "255,230,255", twinkle * 0.25);
   });
 
-  const portalX = heroW * 0.558;
-  const portalY = heroH * 0.495;
-  const pulse = 0.5 + 0.5 * Math.sin(time * 0.001);
-
-  glowPoint(heroCtx, portalX, portalY, 78 + pulse * 32, "155,230,255", 0.08 + pulse * 0.07);
-  glowPoint(heroCtx, portalX, portalY, 50 + pulse * 22, "232,140,255", 0.06 + pulse * 0.06);
+  // Portal pulse effect (centered)
+  const pulse = Math.sin(time * 0.001);
+  glowPoint(heroCtx, heroW * 0.55, heroH * 0.5, 80 + pulse * 20, "155,230,255", 0.1);
 
   requestAnimationFrame(animateHero);
 }
 
-const footerCanvas = document.getElementById("footerCanvas");
-const footerCtx = footerCanvas?.getContext("2d");
+// Initialize Resize & Animation
+window.addEventListener("resize", resizeHero);
+resizeHero();
 
-let footerW = 0;
-let footerH = 0;
-let footerDpr = 1;
-
-function resizeFooterCanvas() {
-  if (!footerCanvas || !footerCtx) return;
-
-  footerDpr = Math.min(window.devicePixelRatio || 1, 2);
-  footerW = footerCanvas.clientWidth;
-  footerH = footerCanvas.clientHeight;
-
-  footerCanvas.width = footerW * footerDpr;
-  footerCanvas.height = footerH * footerDpr;
-
-  footerCtx.setTransform(footerDpr, 0, 0, footerDpr, 0, 0);
+if (heroCtx) {
+    requestAnimationFrame(animateHero);
 }
-
-const footerParticles = Array.from({ length: 75 }, () => ({
-  x: Math.random(),
-  y: Math.random(),
-  r: Math.random() * 1.8 + 0.45,
-  phase: Math.random() * Math.PI * 2,
-  speed: Math.random() * 0.35 + 0.08,
-  drift: Math.random() * 22 + 8
-}));
-
-function animateFooter(time) {
-  if (!footerCanvas || !footerCtx) return;
-
-  footerCtx.clearRect(0, 0, footerW, footerH);
-
-  footerParticles.forEach((p) => {
-    const x = p.x * footerW + Math.sin(time * 0.00018 + p.phase) * p.drift;
-    const y = p.y * footerH + Math.cos(time * 0.00016 + p.phase) * (p.drift * 0.7);
-
-    const alpha =
-      0.12 +
-      0.36 *
-        ((Math.sin(time * 0.001 * p.speed + p.phase) + 1) / 2);
-
-    glowPoint(footerCtx, x, y, p.r * 7, "190,220,255", alpha);
-  });
-
-  requestAnimationFrame(animateFooter);
-}
-
-window.addEventListener("resize", () => {
-  resizeHeroCanvas();
-  resizeFooterCanvas();
-});
-
-resizeHeroCanvas();
-resizeFooterCanvas();
-
-requestAnimationFrame(animateHero);
-requestAnimationFrame(animateFooter);
