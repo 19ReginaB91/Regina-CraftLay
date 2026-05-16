@@ -1,61 +1,195 @@
-<div class="demos-grid">
-    <article class="demo-card">
-        <div class="demo-image">
-            <img src="assets/media/calculator.png" alt="Calculator">
-            <div class="demo-overlay"><a href="#" class="view-btn">Launch</a></div>
-        </div>
-        <div class="demo-content">
-            <span class="demo-category">Logic / UI</span>
-            <h3>Interactive Calculator</h3>
-            <div class="demo-tags"><span>JavaScript</span><span>CSS</span></div>
-        </div>
-    </article>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <article class="demo-card">
-        <div class="demo-image">
-            <img src="assets/media/kristall.png" alt="Kristall">
-            <div class="demo-overlay"><a href="#" class="view-btn">Launch</a></div>
-        </div>
-        <div class="demo-content">
-            <span class="demo-category">Landing Page</span>
-            <h3>Kristall Cleaning</h3>
-            <div class="demo-tags"><span>HTML</span><span>GSAP</span></div>
-        </div>
-    </article>
+    <title>Demos | Regina CraftLay</title>
 
-    <article class="demo-card">
-        <div class="demo-image">
-            <img src="assets/media/amarte.png" alt="Amarte">
-            <div class="demo-overlay"><a href="#" class="view-btn">Launch</a></div>
-        </div>
-        <div class="demo-content">
-            <span class="demo-category">Portfolio</span>
-            <h3>Amarte Studio</h3>
-            <div class="demo-tags"><span>React</span><span>Framer Motion</span></div>
-        </div>
-    </article>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <article class="demo-card">
-        <div class="demo-image">
-            <img src="assets/media/hanna.png" alt="Hanna Sport">
-            <div class="demo-overlay"><a href="#" class="view-btn">Launch</a></div>
-        </div>
-        <div class="demo-content">
-            <span class="demo-category">Campaign</span>
-            <h3>Hanna Sport</h3>
-            <div class="demo-tags"><span>Animation</span><span>UI</span></div>
-        </div>
-    </article>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-    <article class="demo-card">
-        <div class="demo-image">
-            <img src="assets/media/tree.png" alt="Tree Service">
-            <div class="demo-overlay"><a href="#" class="view-btn">Launch</a></div>
+    <link rel="stylesheet" href="styles/demos.css" />
+  </head>
+
+  <body>
+    <div class="page" id="top">
+      <header class="demos-header" data-header>
+        <a href="index.html" class="brand">
+          REGINA
+          <span>CRAFTLAY</span>
+        </a>
+
+        <nav class="main-nav">
+          <a href="index.html">About</a>
+          <a href="demos.html">Demos</a
+          <a href="journal.html">Journal</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <a href="#contact" class="header-button">
+          <span>+</span>
+          Let’s work together
+        </a>
+      </header>
+
+      <main>
+        <section class="demos-hero">
+          <div class="hero-rail">
+            <span>03</span>
+            <i></i>
+            <b>Demos</b>
+          </div>
+
+          <div class="hero-copy">
+            <p class="eyebrow">Selected demos</p>
+
+            <h1>
+              Creative<br />
+              interfaces,<br />
+              crafted with <em>feeling.</em>
+            </h1>
+
+            <p>
+              A collection of frontend experiments, landing pages and digital
+              interfaces where design, code and atmosphere come together.
+            </p>
+          </div>
+
+          <div class="hero-orb"></div>
+        </section>
+
+        <section class="filter-bar">
+          <button class="active" type="button" data-filter="all">All</button>
+          <button type="button" data-filter="landing">Landing pages</button>
+          <button type="button" data-filter="ui">UI concepts</button>
+          <button type="button" data-filter="animation">Animation</button>
+          <button type="button" data-filter="business">Business</button>
+        </section>
+
+        <section class="projects-grid" aria-label="Demo projects">
+          <article class="demo-card large" data-category="ui">
+            <img src="assets/media/calculator.png" alt="Calculator project preview" />
+
+            <div class="demo-info">
+              <span>UI concept</span>
+              <h2>Calculator</h2>
+              <p>
+                A clean interactive calculator concept focused on layout,
+                clarity and smooth frontend logic.
+              </p>
+
+              <a href="#">
+                View demo
+                <b>→</b>
+              </a>
+            </div>
+          </article>
+
+          <article class="demo-card" data-category="business landing">
+            <img src="assets/media/kristall-reinigung.png" alt="Kristall Reinigung website preview" />
+
+            <div class="demo-info">
+              <span>Business landing</span>
+              <h2>Kristall</h2>
+              <p>
+                A service-based landing page with a clear structure, calm
+                presentation and trust-focused visual language.
+              </p>
+
+              <a href="#">
+                View demo
+                <b>→</b>
+              </a>
+            </div>
+          </article>
+
+          <article class="demo-card tall" data-category="ui landing">
+            <img src="assets/media/amarte.png" alt="Amarte Design Studio preview" />
+
+            <div class="demo-info">
+              <span>Creative portfolio</span>
+              <h2>Amarte</h2>
+              <p>
+                A visual identity concept for a creative studio with atmosphere,
+                elegance and editorial rhythm.
+              </p>
+
+              <a href="#">
+                View demo
+                <b>→</b>
+              </a>
+            </div>
+          </article>
+
+          <article class="demo-card" data-category="animation landing">
+            <img src="assets/media/hanna-sport.png" alt="Hanna Sport project preview" />
+
+            <div class="demo-info">
+              <span>Campaign page</span>
+              <h2>Hanna Sport</h2>
+              <p>
+                A campaign landing page with animated sections, visual rhythm
+                and energetic presentation.
+              </p>
+
+              <a href="#">
+                View demo
+                <b>→</b>
+              </a>
+            </div>
+          </article>
+
+          <article class="demo-card wide" data-category="business landing">
+            <img src="assets/media/tree-service.png" alt="Tree Service landing page preview" />
+
+            <div class="demo-info">
+              <span>Service landing</span>
+              <h2>Tree Service</h2>
+              <p>
+                A grounded business website concept with simple navigation,
+                natural colors and a strong local service feeling.
+              </p>
+
+              <a href="#">
+                View demo
+                <b>→</b>
+              </a>
+            </div>
+          </article>
+        </section>
+      </main>
+
+      <footer class="demos-footer" id="contact">
+        <div>
+          <p class="eyebrow">Let’s build</p>
+
+          <h2>
+            Have an idea?<br />
+            Let’s turn it into<br />
+            a living <em>interface.</em>
+          </h2>
         </div>
-        <div class="demo-content">
-            <span class="demo-category">Business UI</span>
-            <h3>Tree Service Landing</h3>
-            <div class="demo-tags"><span>SASS</span><span>Responsive</span></div>
+
+        <nav class="footer-links">
+          <a href="index.html#about">About</a>
+          <a href="demos.html">Demos</a>
+          <a href="journal.html">Journal</a>
+          <a href="mailto:hello@example.com">Email me</a>
+        </nav>
+
+        <div class="footer-bottom">
+          <span>© 2026 Regina CraftLay</span>
+          <a href="#top">Back to top ↑</a>
         </div>
-    </article>
-</div>
+      </footer>
+    </div>
+
+    <script src="scripts/demos.js"></script>
+  </body>
+</html>

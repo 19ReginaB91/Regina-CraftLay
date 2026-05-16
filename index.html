@@ -28,10 +28,10 @@
 
         <nav class="main-nav" aria-label="Primary navigation">
           <a href="#about">About</a>
-          <a href="#demos">Demos</a>
-          <a href="#skills">Skills</a>
-          <a href="#journal">Journal</a>
-          <a href="#contact">Contact</a>
+          <a href="demos.html">Demos</a>
+          
+          <a href="journal.html">Journal</a>
+          <a href="conatct.html">Contact</a>
         </nav>
 
         <div class="header-actions">
@@ -55,7 +55,7 @@
         <nav class="burger-menu" aria-label="Creative menu" data-burger-menu>
           <a href="#about">About</a>
           <a href="#demos">Demos</a>
-          <a href="#skills">Skills</a>
+      
           <a href="#journal">Journal</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -90,22 +90,29 @@
           </div>
 
           <div class="hero-scene" aria-hidden="true">
-            <img class="hero-space" src="assets/media/hero-background.png " alt="" />
-            <!-- <img class="hero-code" src="assets/media/hero-code.png" alt="" /> -->
+            <img class="hero-space" src="assets/media/hero-background.png" alt="" />
             <div class="code-charge-glow"></div>
             <img class="hero-hand" src="assets/media/hero-hand2.png" alt="" />
-            <!-- <img class="hero-portal" src="assets/media/hero-portal.png" alt="" /> -->
             <canvas id="heroCanvas" class="hero-canvas"></canvas>
             <span class="portal-touch"></span>
             <p class="connected">We are all<br />connected</p>
           </div>
         </section>
 
-        <section class="work section-grid" id="demos" aria-labelledby="demos-title">
+        <section class="work" id="demos" aria-labelledby="demos-title">
           <div class="section-label">
             <i></i>
-            <h2 id="demos-title">Creative<br />Demos</h2>
-            <a href="#demos">View all demos <b>+</b></a>
+            <p class="section-kicker">Portfolio pieces</p>
+
+            <h2 id="demos-title">
+              Creative<br />
+              Demos
+            </h2>
+
+            <a href="#demos">
+              Explore all demos
+              <b>+</b>
+            </a>
           </div>
 
           <div class="work-stage">
@@ -120,7 +127,7 @@
               </article>
 
               <article class="project-card">
-                <img src="assets/media/kristall-reinigung.png" alt="Cleaning website project preview" />
+                <img src="assets/media/kristall-reinigung.png" alt="Kristall Reinigung project preview" />
                 <div class="project-card__info">
                   <h3>Kristall</h3>
                   <p>Business landing page</p>
@@ -156,9 +163,12 @@
               </article>
             </div>
 
-            <div class="slider-controls" aria-label="Project controls">
-              <button type="button" data-slider-prev aria-label="Previous project">&#8592;</button>
-              <button type="button" data-slider-next aria-label="Next project">&#8594;</button>
+            <div class="slider-dots" aria-label="Project navigation">
+              <button class="active" type="button" data-dot="0" aria-label="Go to project 1"></button>
+              <button type="button" data-dot="1" aria-label="Go to project 2"></button>
+              <button type="button" data-dot="2" aria-label="Go to project 3"></button>
+              <button type="button" data-dot="3" aria-label="Go to project 4"></button>
+              <button type="button" data-dot="4" aria-label="Go to project 5"></button>
             </div>
           </div>
         </section>
@@ -187,7 +197,7 @@
             <img class="portrait-nebula" src="assets/media/nebula.png" alt="" />
             <div class="portrait-frame"></div>
             <img class="portrait-person" src="assets/media/regina-cut.png" alt="Regina portrait" />
-            <img class="portrait-crystals" src="assets/media/crystals.png" alt="" />
+            <img class="portrait-crystals" src="assets/media/portrait-crystals2.png" alt="" />
           </figure>
 
           <article class="skills" id="skills">
