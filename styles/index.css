@@ -699,15 +699,16 @@ img {
   position: relative;
   display: grid;
   grid-template-columns:
-    minmax(240px, 0.9fr)
-    minmax(420px, 560px)
-    minmax(260px, 340px)
-    minmax(260px, 0.95fr);
+    minmax(250px, 0.9fr)
+    minmax(500px, 640px)
+    minmax(280px, 360px)
+    minmax(320px, 440px);
   align-items: center;
   gap: 54px;
-  padding: 120px 6vw 140px;
+  padding: 120px 5vw 150px;
   overflow: hidden;
   background:
+    radial-gradient(circle at 48% 92%, rgba(170, 220, 255, 0.22), transparent 22rem),
     radial-gradient(circle at 90% 92%, rgba(120, 200, 255, 0.2), transparent 21rem),
     linear-gradient(90deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.32)),
     #efe6ed;
@@ -740,7 +741,7 @@ img {
 /* ABOUT COPY */
 
 .about-copy {
-  max-width: 320px;
+  max-width: 340px;
 }
 
 .code-tag {
@@ -776,7 +777,7 @@ img {
   color: var(--muted);
   font-size: 15px;
   line-height: 1.9;
-  max-width: 280px;
+  max-width: 300px;
   margin-bottom: 26px;
 }
 
@@ -785,7 +786,7 @@ img {
 .portrait-card {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   min-height: 760px;
   overflow: visible;
@@ -799,82 +800,79 @@ img {
 
 .portrait-nebula {
   position: absolute;
-  width: 132%;
+  width: 118%;
   left: 50%;
-  top: 50%;
+  top: 48%;
   transform: translate(-50%, -50%);
-  opacity: 0.92;
+  opacity: 0.95;
   z-index: 1;
   filter: saturate(1.08);
   animation: nebulaFloat 18s ease-in-out infinite;
 }
 
 .portrait-frame {
-  position: absolute;
-  width: 78%;
-  height: 600px;
-  border-radius: 42px;
-  z-index: 2;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.16),
-      rgba(255, 255, 255, 0.04)
-    );
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(30px);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.18),
-    0 30px 80px rgba(50, 30, 80, 0.14),
-    0 0 50px rgba(180, 220, 255, 0.12);
-}
-
-.portrait-frame::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(170, 220, 255, 0.16),
-      rgba(255, 180, 240, 0.07),
-      transparent 60%
-    );
-  pointer-events: none;
+  display: none;
 }
 
 .portrait-person {
   position: relative;
-  width: 84%;
+
+  width: 88%;
+
   z-index: 4;
+
+  object-fit: contain;
+
   filter:
     drop-shadow(
-      0 30px 50px rgba(40, 20, 70, 0.18)
+      0 28px 48px rgba(40, 20, 70, 0.16)
     );
+
+  -webkit-mask-image:
+    radial-gradient(circle at center,
+      rgba(0,0,0,1) 58%,
+      rgba(0,0,0,0.82) 72%,
+      rgba(0,0,0,0.38) 86%,
+      transparent 100%);
+
+  mask-image:
+    radial-gradient(circle at center,
+      rgba(0,0,0,1) 58%,
+      rgba(0,0,0,0.82) 72%,
+      rgba(0,0,0,0.38) 86%,
+      transparent 100%);
 }
 
 .portrait-crystals {
   position: absolute;
-  width: 340px;
-  left: 44%;
-  bottom: 56px;
+
+  width: clamp(340px, 28vw, 500px);
+
+  left: 29%;
+
+  bottom: -38px;
+
   transform: translateX(-50%);
+
   z-index: 6;
+
   pointer-events: none;
-  opacity: 0.92;
+
+  opacity: 0.97;
+
   filter:
     drop-shadow(
-      0 20px 40px rgba(120, 160, 255, 0.16)
+      0 24px 42px rgba(120, 160, 255, 0.22)
     );
-  animation: crystalFloat 12s ease-in-out infinite;
-}
 
+  animation:
+    crystalFloat 12s ease-in-out infinite;
+}
 /* SKILLS / EXPERTISE */
 
 .skills {
   position: relative;
-  max-width: 320px;
+  max-width: 330px;
 }
 
 .skill-group {
@@ -930,27 +928,29 @@ img {
 
 .journal {
   position: relative;
-  align-self: stretch;
+  align-self: center;
+  width: 100%;
 }
 
 .journal-inner {
   position: relative;
-  min-height: 420px;
-  padding: 42px 38px 54px;
-  border-radius: 34px;
+  min-height: 460px;
+  width: min(100%, 420px);
+  padding: 48px 42px 58px;
+  border-radius: 38px;
   overflow: hidden;
   background:
-    radial-gradient(circle at 90% 90%, rgba(170, 220, 255, 0.12), transparent 12rem),
+    radial-gradient(circle at 90% 90%, rgba(170, 220, 255, 0.14), transparent 12rem),
     linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.42),
-      rgba(255, 255, 255, 0.14)
+      rgba(255, 255, 255, 0.46),
+      rgba(255, 255, 255, 0.16)
     );
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.24);
   backdrop-filter: blur(18px);
   box-shadow:
-    0 20px 50px rgba(80, 55, 125, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.24);
+    0 24px 60px rgba(80, 55, 125, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.26);
 }
 
 .journal-inner::before {
@@ -969,7 +969,7 @@ img {
 .journal h2 {
   margin: 0 0 24px;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(38px, 3vw, 58px);
+  font-size: clamp(42px, 3vw, 62px);
   line-height: 1.02;
   font-weight: 400;
   letter-spacing: -0.04em;
@@ -989,9 +989,9 @@ img {
 
 .journal-crystals {
   position: absolute;
-  right: -8px;
-  bottom: -18px;
-  width: min(260px, 24vw);
+  right: -10px;
+  bottom: -20px;
+  width: min(280px, 25vw);
   max-width: none;
   pointer-events: none;
   z-index: 1;
@@ -1476,15 +1476,22 @@ img {
   }
 
   .portrait-card {
-    min-height: 620px;
+    min-height: 680px;
   }
 
   .portrait-frame {
-    height: 480px;
+    height: 520px;
   }
 
   .portrait-crystals {
     left: 50%;
+    width: clamp(240px, 42vw, 360px);
+    bottom: 32px;
+  }
+
+  .journal-inner {
+    width: 100%;
+    max-width: 560px;
   }
 }
 
@@ -1552,29 +1559,41 @@ img {
       clamp(42px, 12vw, 62px);
   }
 
+  .portrait-card {
+    min-height: 620px;
+  }
+
   .portrait-nebula {
-    width: 160%;
+    width: 168%;
   }
 
   .portrait-frame {
-    width: 86%;
-    height: 420px;
+    width: 88%;
+    height: 440px;
   }
 
   .portrait-person {
-    width: 92%;
+    width: 96%;
   }
 
   .portrait-crystals {
-    width: 220px;
-    bottom: 34px;
+    width: 240px;
+    left: 50%;
+    bottom: 28px;
+    z-index: 5;
   }
 
   .journal-inner {
+    min-height: 420px;
+    width: 100%;
     padding:
-      32px
-      28px
-      42px;
+      36px
+      30px
+      48px;
+  }
+
+  .journal-crystals {
+    width: 230px;
   }
 
   .site-footer {
@@ -1587,4 +1606,42 @@ img {
     right: 24px;
     flex-direction: column;
   }
+}
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+.reveal {
+  opacity: 0;
+
+  transition:
+    opacity 1s ease,
+    transform 1s ease,
+    filter 1s ease;
+}
+
+.reveal-up {
+  transform: translateY(70px);
+}
+
+.reveal-left {
+  transform: translateX(-70px);
+}
+
+.reveal-right {
+  transform: translateX(70px);
+}
+
+.reveal-scale {
+  transform: scale(0.9);
+
+  filter: blur(12px);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+
+  transform: none;
+
+  filter: blur(0);
 }

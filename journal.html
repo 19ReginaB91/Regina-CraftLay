@@ -26,13 +26,13 @@
         </a>
 
         <nav class="main-nav" aria-label="Primary navigation">
-          <a href="index.html">About</a>
+          <a href="index.html#about">About</a>
           <a href="demos.html">Demos</a>
           <a href="journal.html">Journal</a>
           <a href="contact.html">Contact</a>
         </nav>
 
-        <a href="#contact" class="header-button">
+        <a href="contact.html" class="header-button">
           <span>+</span>
           Let’s work together
         </a>
@@ -41,7 +41,6 @@
       <main>
         <section class="journal-hero">
           <div class="hero-rail">
-            <span>04</span>
             <i></i>
             <b>Journal</b>
           </div>
@@ -165,71 +164,64 @@
               cannot be just one page. It has to become three different worlds —
               each one a portal into one of my creative states.
             </p>
-
-            <div class="share">
-              <span>Share:</span>
-              <a href="#">f</a>
-              <a href="#">in</a>
-              <a href="#">↗</a>
-            </div>
           </article>
 
           <aside class="meaning-panel">
             <h3>The Architecture of Feeling</h3>
 
-            <a href="#" class="meaning-card">
-              <img src="assets/media/journal-thumb-1.png" alt="" />
+            <button class="meaning-card" type="button" data-story="symbolism">
+              <img src="assets/media/crytals.png" alt="" />
               <div>
                 <span>Symbolism</span>
                 <p>Crystals as a metaphor for clean code and inner structure.</p>
               </div>
               <b>→</b>
-            </a>
+            </button>
 
-            <a href="#" class="meaning-card">
-              <img src="assets/media/journal-thumb-2.png" alt="" />
+            <button class="meaning-card" type="button" data-story="metaphor">
+              <img src="assets/media/hand.png" alt="" />
               <div>
                 <span>Metaphor</span>
                 <p>The hand as a bridge between imagination and digital matter.</p>
               </div>
               <b>→</b>
-            </a>
+            </button>
 
-            <a href="#" class="meaning-card">
-              <img src="assets/media/journal-thumb-3.png" alt="" />
+            <button class="meaning-card" type="button" data-story="atmosphere">
+              <img src="assets/media/cosmos.png" alt="" />
               <div>
                 <span>Atmosphere</span>
                 <p>Cosmos as the space where fantasy has no ceiling.</p>
               </div>
               <b>→</b>
-            </a>
+            </button>
 
-            <a href="#" class="meaning-card">
-              <img src="assets/media/journal-thumb-4.png" alt="" />
+            <button class="meaning-card" type="button" data-story="aesthetic">
+              <img src="assets/media/glass.png" alt="" />
               <div>
                 <span>Aesthetic</span>
                 <p>Glass UI as transparency, depth and emotional softness.</p>
               </div>
               <b>→</b>
-            </a>
+            </button>
 
-            <a href="#" class="meaning-card">
-              <img src="assets/media/journal-thumb-5.png" alt="" />
+            <button class="meaning-card" type="button" data-story="philosophy">
+              <img src="assets/media/flowers.png" alt="" />
               <div>
                 <span>Philosophy</span>
                 <p>Glowing flowers as a symbol of the living web.</p>
               </div>
               <b>→</b>
-            </a>
+            </button>
 
-            <a href="#" class="meaning-card">
-              <img src="assets/media/journal-thumb-6.png" alt="" />
+            <button class="meaning-card" type="button" data-story="craftlay">
+              <img src="assets/media/craft-lay.png" alt="" />
               <div>
                 <span>Why CraftLay?</span>
                 <p>Crafted layouts, handmade emotion and digital structure.</p>
               </div>
               <b>→</b>
-            </a>
+            </button>
           </aside>
         </section>
 
@@ -282,43 +274,81 @@
 
           <div class="world-grid">
             <article class="world-card">
-              <img src="assets/media/emerald.png" alt="" />
+              <img src="assets/media/wild.png" alt="" />
+
               <div class="world-info">
-                <h3>Emerald</h3>
+                <h3>Wild / Emerald Noir</h3>
+
                 <p>
-                  Structure, depth and balance. A calm world of clarity, order
-                  and quiet confidence.
+                  A bold, cinematic world of emerald light, leopard textures,
+                  violet energy and golden confidence.
                 </p>
-                <a href="#">Explore Emerald <span>→</span></a>
+
+                <a href="index.html" target="_blank">
+                  Explore Wild
+                  <span>→</span>
+                </a>
               </div>
             </article>
 
             <article class="world-card">
-              <img src="assets/media/violet.png" alt="" />
+              <img src="assets/media/craft-lay.png" alt="" />
+
               <div class="world-info">
-                <h3>Violet</h3>
+                <h3>Violet / Dreamy Cosmic</h3>
+
                 <p>
-                  Emotion, fantasy and digital magic. A glowing world of crystals,
-                  portals, glass and atmosphere.
+                  A glowing world of crystals, portals, glass, flowers and
+                  atmosphere — where digital emotion becomes alive.
                 </p>
-                <a href="#">Explore Violet <span>→</span></a>
+
+                <a href="index.html" target="_blank">
+                  Explore Violet
+                  <span>→</span>
+                </a>
               </div>
             </article>
 
             <article class="world-card">
-              <img src="assets/media/lumea.png" alt="" />
+              <img src="assets/media/nude.png" alt="" />
+
               <div class="world-info">
-                <h3>Lumea</h3>
+                <h3>Nude / Soft Editorial</h3>
+
                 <p>
-                  Soft luminous aesthetics. Warm light, pearl tones and elegant
-                  digital calm.
+                  A warm and elegant world of glass layers, peach light,
+                  clean structure and soft futuristic calm.
                 </p>
-                <a href="#">Explore Lumea <span>→</span></a>
+
+                <a href="index.html" target="_blank">
+                  Explore Nude
+                  <span>→</span>
+                </a>
               </div>
             </article>
           </div>
         </section>
       </main>
+
+      <div class="story-modal" data-story-modal aria-hidden="true">
+        <div class="story-backdrop" data-story-close></div>
+
+        <article class="story-dialog">
+          <button class="story-close" type="button" data-story-close>
+            ×
+          </button>
+
+          <img class="story-image" data-story-image src="" alt="" />
+
+          <div class="story-content">
+            <p class="story-kicker" data-story-kicker></p>
+
+            <h2 data-story-title></h2>
+
+            <div class="story-text" data-story-text></div>
+          </div>
+        </article>
+      </div>
 
       <footer class="journal-footer" id="contact">
         <div class="footer-left">
@@ -331,17 +361,17 @@
 
         <nav class="footer-nav">
           <a href="index.html#about">About</a>
-          <a href="index.html#demos">Work</a>
+          <a href="demos.html">Demos</a>
           <a href="index.html#skills">Skills</a>
           <a href="journal.html">Journal</a>
-          <a href="#contact">Contact</a>
+          <a href="contact.html">Contact</a>
         </nav>
 
         <ul class="footer-socials">
           <li><a href="#">Instagram</a></li>
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">GitHub</a></li>
-          <li><a href="#">Email me</a></li>
+          <li><a href="https://www.linkedin.com/in/regina-bolotnikova" target="_blank">LinkedIn</a></li>
+          <li><a href="https://github.com/19ReginaB91" target="_blank">GitHub</a></li>
+          <li><a href="mailto:regina.craftlay@gmail.com">Email me</a></li>
         </ul>
 
         <img

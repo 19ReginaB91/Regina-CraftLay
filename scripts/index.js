@@ -322,3 +322,50 @@ resizeFooterCanvas();
 
 requestAnimationFrame(animateHero);
 requestAnimationFrame(animateFooter);
+
+/* SCROLL REVEAL */
+
+const revealItems = document.querySelectorAll(`
+  .hero-copy,
+  .hero-scene,
+  .project-card,
+  .about-copy,
+  .portrait-card,
+  .skills,
+  .journal,
+  .footer-code,
+  .footer-cta,
+  .social-links
+`);
+
+const scrollRevealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+      }
+    });
+  },
+  {
+    threshold: 0.12
+  }
+);
+
+revealItems.forEach((item) => {
+  item.classList.add("reveal");
+
+  if (item.classList.contains("hero-copy")) {
+    item.classList.add("reveal-left");
+  } else if (
+    item.classList.contains("hero-scene") ||
+    item.classList.contains("journal")
+  ) {
+    item.classList.add("reveal-right");
+  } else if (item.classList.contains("portrait-card")) {
+    item.classList.add("reveal-scale");
+  } else {
+    item.classList.add("reveal-up");
+  }
+
+  scrollRevealObserver.observe(item);
+});
