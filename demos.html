@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Demos | Regina CraftLay</title>
+    <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/brand/regina-craftlay-logo.svg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,33 +17,52 @@
     />
 
     <link rel="stylesheet" href="styles/demos.css" />
+    <link id="theme-link" rel="stylesheet" href="styles/style-violet.css" />
   </head>
 
   <body>
-    <div class="page" id="top">
+    <div id="theme-overlay" class="theme-overlay"></div>
+
+    <div class="page" id="top" data-theme="violet">
       <header class="demos-header" data-header>
         <a href="index.html" class="brand">
           REGINA
           <span>CRAFTLAY</span>
         </a>
 
-        <nav class="main-nav">
-          <a href="index.html#about">About</a>
-          <a href="demos.html">Demos</a>
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="demos.html" class="active">Demos</a>
           <a href="journal.html">Journal</a>
           <a href="contact.html">Contact</a>
         </nav>
 
-        <a href="contact.html" class="header-button">
-          <span>+</span>
-          Let’s work together
-        </a>
+        <div class="header-actions">
+          <div class="vibe-switcher" aria-label="Choose another visual world" data-vibe-switcher></div>
+
+          <a href="contact.html" class="header-button">
+            <span>+</span>
+            Let's work together
+          </a>
+
+          <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+        <nav class="burger-menu" aria-label="Mobile navigation" data-burger-menu>
+          <a href="index.html">Home</a>
+          <a href="demos.html" class="active">Demos</a>
+          <a href="journal.html">Journal</a>
+          <a href="contact.html">Contact</a>
+        </nav>
       </header>
 
       <main>
         <section class="demos-hero">
           <div class="hero-rail">
-            <span>03</span>
+            <span>02</span>
             <i></i>
             <b>Demos</b>
           </div>
@@ -65,35 +86,17 @@
           <div class="hero-orb"></div>
         </section>
 
-        <section class="filter-bar">
+        <section class="filter-bar" aria-label="Project filters">
           <button class="active" type="button" data-filter="all">All</button>
-
-          <button type="button" data-filter="landing">
-            Landing pages
-          </button>
-
-          <button type="button" data-filter="business">
-            Business websites
-          </button>
-
-          <button type="button" data-filter="creative">
-            Creative studio
-          </button>
-
-          <button type="button" data-filter="ui">
-            UI concepts
-          </button>
+          <button type="button" data-filter="landing">Landing pages</button>
+          <button type="button" data-filter="business">Business websites</button>
+          <button type="button" data-filter="creative">Creative studio</button>
+          <button type="button" data-filter="ui">UI concepts</button>
         </section>
 
         <section class="projects-grid" aria-label="Demo projects">
-
-          <!-- CALCULATOR -->
-
           <article class="demo-card" data-category="ui landing">
-            <img
-              src="assets/media/calculator.png"
-              alt="Calculator project preview"
-            />
+            <img src="assets/media/calculator.png" alt="Calculator project preview" />
 
             <div class="demo-info">
               <span>Interactive UI / Landing</span>
@@ -105,23 +108,15 @@
                 responsive layout and interactive frontend logic.
               </p>
 
-              <a
-                href="https://19reginab91.github.io/Calculator/"
-                target="_blank"
-              >
+              <a href="https://19reginab91.github.io/Calculator/" target="_blank">
                 Visit demo website
-                <b>→</b>
+                <b>&rarr;</b>
               </a>
             </div>
           </article>
 
-          <!-- KRISTALL -->
-
           <article class="demo-card" data-category="business">
-            <img
-              src="assets/media/kristall-reinigung.png"
-              alt="Kristall Reinigung website preview"
-            />
+            <img src="assets/media/kristall-reinigung.png" alt="Kristall Reinigung website preview" />
 
             <div class="demo-info">
               <span>Business Website</span>
@@ -134,23 +129,15 @@
                 presentation.
               </p>
 
-              <a
-                href="https://19reginab91.github.io/Kristall-Reinigung/"
-                target="_blank"
-              >
+              <a href="https://19reginab91.github.io/Kristall-Reinigung/" target="_blank">
                 Visit demo website
-                <b>→</b>
+                <b>&rarr;</b>
               </a>
             </div>
           </article>
 
-          <!-- AMARTE -->
-
           <article class="demo-card" data-category="creative business">
-            <img
-              src="assets/media/amarte.png"
-              alt="Amarte Design Studio preview"
-            />
+            <img src="assets/media/amarte.png" alt="Amarte Design Studio preview" />
 
             <div class="demo-info">
               <span>Creative Studio Website</span>
@@ -163,23 +150,15 @@
                 soft visual storytelling.
               </p>
 
-              <a
-                href="https://19reginab91.github.io/Amarte_Design_Studio/"
-                target="_blank"
-              >
+              <a href="https://19reginab91.github.io/Amarte_Design_Studio/" target="_blank">
                 Visit demo website
-                <b>→</b>
+                <b>&rarr;</b>
               </a>
             </div>
           </article>
 
-          <!-- HANNA SPORT -->
-
           <article class="demo-card" data-category="landing">
-            <img
-              src="assets/media/hanna-sport.png"
-              alt="Hanna Sport project preview"
-            />
+            <img src="assets/media/hanna-sport.png" alt="Hanna Sport project preview" />
 
             <div class="demo-info">
               <span>Campaign Landing Page</span>
@@ -192,23 +171,15 @@
                 structure.
               </p>
 
-              <a
-                href="https://19reginab91.github.io/Hannah-sport-campaign-landing/"
-                target="_blank"
-              >
+              <a href="https://19reginab91.github.io/Hannah-sport-campaign-landing/" target="_blank">
                 Visit demo website
-                <b>→</b>
+                <b>&rarr;</b>
               </a>
             </div>
           </article>
 
-          <!-- TREE SERVICE -->
-
           <article class="demo-card" data-category="business">
-            <img
-              src="assets/media/tree-service.png"
-              alt="Tree Service website preview"
-            />
+            <img src="assets/media/tree-service.png" alt="Tree Service website preview" />
 
             <div class="demo-info">
               <span>Business Website</span>
@@ -223,37 +194,36 @@
 
               <a href="#" target="_blank">
                 Coming soon
-                <b>→</b>
+                <b>&rarr;</b>
               </a>
             </div>
           </article>
-
         </section>
       </main>
 
       <footer class="demos-footer" id="contact">
         <div>
-          <p class="eyebrow">Let’s build</p>
+          <p class="eyebrow">Let's build</p>
 
           <h2>
             Have an idea?<br />
-            Let’s turn it into<br />
+            Let's turn it into<br />
             a living <em>interface.</em>
           </h2>
         </div>
 
-        <nav class="footer-links">
-          <a href="index.html#about">About</a>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="index.html">Home</a>
           <a href="demos.html">Demos</a>
           <a href="journal.html">Journal</a>
-          <a href="mailto:hello@example.com">Email me</a>
+          <a href="mailto:regina.craftlay@gmail.com">Email me</a>
         </nav>
 
         <div class="footer-bottom">
-          <span>© 2026 Regina CraftLay</span>
+          <span>&copy; 2026 Regina CraftLay</span>
 
           <a href="#top">
-            Back to top ↑
+            Back to top &uarr;
           </a>
         </div>
       </footer>

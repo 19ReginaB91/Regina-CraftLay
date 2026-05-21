@@ -1,130 +1,197 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Contact | Regina CraftLay</title>
+    <title>Contact | Regina CraftLay</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/brand/regina-craftlay-logo.svg" />
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <link rel="stylesheet" href="styles/contact.css" />
-</head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-<body>
-  <div class="page" id="top">
-    <div class="ambient ambient-one"></div>
-    <div class="ambient ambient-two"></div>
-    <div class="ambient ambient-three"></div>
+    <link id="theme-link" rel="stylesheet" href="styles/style-violet.css" />
+    <link rel="stylesheet" href="styles/contact.css" />
+  </head>
 
-    <header class="contact-header" data-header>
-      <a href="index.html" class="brand">
-        REGINA
-        <span>CRAFTLAY</span>
-      </a>
+  <body>
+    <div id="theme-overlay" class="theme-overlay"></div>
 
-      <nav class="main-nav">
-        <a href="index.html#about">About</a>
-        <a href="demos.html">Demos</a>
-        <a href="journal.html">Journal</a>
-        <a href="contact.html" class="active">Contact</a>
-      </nav>
+    <div class="page" id="top" data-theme="violet">
+      <div class="ambient ambient-one"></div>
+      <div class="ambient ambient-two"></div>
+      <div class="ambient ambient-three"></div>
 
-      <a href="mailto:regina.craftlay@gmail.com" class="header-button">
-        <span>+</span>
-        Let’s create
-      </a>
-    </header>
+      <header class="contact-header" data-header>
+        <a href="index.html" class="brand">
+          REGINA
+          <span>CRAFTLAY</span>
+        </a>
 
-    <main class="contact-page">
-      <section class="contact-hero reveal">
-        <p class="eyebrow">Contact</p>
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="demos.html">Demos</a>
+          <a href="journal.html">Journal</a>
+          <a href="contact.html" class="active">Contact</a>
+        </nav>
 
-        <h1>
-          Let’s turn your
-          <em>idea</em>
-          into a living
-          interface.
-        </h1>
+        <div class="header-actions">
+          <div
+            class="vibe-switcher"
+            aria-label="Choose another visual world"
+            data-vibe-switcher
+          ></div>
 
-        <p class="contact-intro">
-          I create emotional, visual and carefully crafted frontend experiences.
-          If you have a project, collaboration idea or creative vision, I would love to hear from you.
-        </p>
-      </section>
+          <a href="mailto:regina.craftlay@gmail.com" class="header-button">
+            <span>+</span>
+            Let's create
+          </a>
 
-      <section class="contact-layout">
-        <article class="contact-panel reveal">
-          <p class="panel-label">Start a conversation</p>
+          <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            data-menu-toggle
+          >
+            <span></span>
+            <span></span>
+          </button>
+        </div>
 
-          <h2>
-            Tell me what you want to build.
-          </h2>
+        <nav class="burger-menu" aria-label="Mobile navigation" data-burger-menu>
+          <a href="index.html">Home</a>
+          <a href="demos.html">Demos</a>
+          <a href="journal.html">Journal</a>
+          <a href="contact.html" class="active">Contact</a>
+        </nav>
+      </header>
 
-          <p>
-            Whether it is a landing page, portfolio, business website or visual concept,
-            I can help shape the idea into a clear and beautiful digital experience.
+      <main class="contact-page">
+        <section class="contact-hero reveal">
+          <p class="eyebrow">Contact</p>
+
+          <h1>
+            Let's turn your
+            <em>idea</em>
+            into a living
+            interface.
+          </h1>
+
+          <p class="contact-intro">
+            I create emotional, visual and carefully crafted frontend
+            experiences. If you have a project, collaboration idea or creative
+            vision, I would love to hear from you.
           </p>
-
-          <div class="contact-tags">
-            <span>Frontend</span>
-            <span>UI Design</span>
-            <span>Creative Direction</span>
-            <span>AI-assisted workflow</span>
-          </div>
-        </article>
-
-        <section class="contact-cards reveal">
-          <a href="mailto:regina.craftlay@gmail.com" class="contact-card">
-            <span class="card-number">01</span>
-
-            <div>
-              <p>Email</p>
-              <h3>regina.craftlay@gmail.com</h3>
-              <span>Project requests and collaboration ideas</span>
-            </div>
-
-            <b>→</b>
-          </a>
-
-          <a href="https://github.com/19ReginaB91" target="_blank" class="contact-card">
-            <span class="card-number">02</span>
-
-            <div>
-              <p>GitHub</p>
-              <h3>19ReginaB91</h3>
-              <span>Frontend projects, demos and code</span>
-            </div>
-
-            <b>→</b>
-          </a>
-
-         <a
-  href="https://www.linkedin.com/in/regina-bolotnikova"
-  target="_blank"
-  class="contact-card"
->
-  <span class="card-number">03</span>
-
-  <div>
-    <p>LinkedIn</p>
-    <h3>Regina B.</h3>
-    <span>Professional contact and creative networking</span>
-  </div>
-
-  <b>→</b>
-</a>
         </section>
-      </section>
-    </main>
-  </div>
 
-  <script src="scripts/contact.js"></script>
-</body>
+        <section class="contact-layout">
+          <article class="contact-panel reveal">
+            <p class="panel-label">Start a conversation</p>
+
+            <h2>Tell me what you want to build.</h2>
+
+            <p>
+              Whether it is a landing page, portfolio, business website or
+              visual concept, I can help shape the idea into a clear and
+              beautiful digital experience.
+            </p>
+
+            <div class="contact-tags">
+              <span>Frontend</span>
+              <span>UI Design</span>
+              <span>Creative Direction</span>
+              <span>AI-assisted workflow</span>
+            </div>
+          </article>
+
+          <section class="contact-cards reveal">
+            <a href="mailto:regina.craftlay@gmail.com" class="contact-card">
+              <span class="card-number">01</span>
+
+              <div>
+                <p>Email</p>
+                <h3>regina.craftlay@gmail.com</h3>
+                <span>Project requests and collaboration ideas</span>
+              </div>
+
+              <b>&rarr;</b>
+            </a>
+
+            <a
+              href="https://github.com/19ReginaB91"
+              target="_blank"
+              class="contact-card"
+            >
+              <span class="card-number">02</span>
+
+              <div>
+                <p>GitHub</p>
+                <h3>19ReginaB91</h3>
+                <span>Frontend projects, demos and code</span>
+              </div>
+
+              <b>&rarr;</b>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/regina-bolotnikova"
+              target="_blank"
+              class="contact-card"
+            >
+              <span class="card-number">03</span>
+
+              <div>
+                <p>LinkedIn</p>
+                <h3>Regina B.</h3>
+                <span>Professional contact and creative networking</span>
+              </div>
+
+              <b>&rarr;</b>
+            </a>
+          </section>
+        </section>
+      </main>
+
+      <footer class="contact-footer">
+        <img class="footer-bg" src="assets/media/contact-bg.png" alt="" />
+
+        <div class="footer-overlay"></div>
+
+        <div class="footer-content">
+          <a class="footer-talk" href="mailto:regina.craftlay@gmail.com">
+            Let's talk
+            <span>+</span>
+          </a>
+
+          <nav class="footer-socials" aria-label="Social links">
+            <a href="#">Instagram</a>
+            <a
+              href="https://www.linkedin.com/in/regina-bolotnikova"
+              target="_blank"
+            >
+              LinkedIn
+            </a>
+            <a href="https://github.com/19ReginaB91" target="_blank">GitHub</a>
+            <a href="mailto:regina.craftlay@gmail.com">Email me</a>
+          </nav>
+
+          <div class="footer-bottom">
+            <span>&copy; 2026 Regina CraftLay</span>
+            <span>Based in Germany</span>
+            <a href="#top">Back to top <b>&uarr;</b></a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="scripts/contact.js"></script>
+  </body>
 </html>

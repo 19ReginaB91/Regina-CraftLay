@@ -30,20 +30,23 @@ burgerMenu?.querySelectorAll("a").forEach((link) => {
 const themeLink = document.getElementById("theme-link");
 const themeOverlay = document.getElementById("theme-overlay");
 const page = document.querySelector(".page");
-const themeButtons = document.querySelectorAll("[data-theme-btn]");
+const vibeSwitcher = document.querySelector("[data-vibe-switcher]");
 
 const themes = {
   violet: {
+    label: "Violet",
     file: "styles/style-violet.css",
     color: "#b9a2ff",
     glow: "rgba(185,162,255,0.65)"
   },
   bold: {
+    label: "Wild",
     file: "styles/style-bold.css",
     color: "#061a12",
     glow: "rgba(20,255,185,0.55)"
   },
   nude: {
+    label: "Nude",
     file: "styles/style-nude.css",
     color: "#f1dfd3",
     glow: "rgba(255,220,190,0.75)"
@@ -51,6 +54,29 @@ const themes = {
 };
 
 let isThemeChanging = false;
+
+function renderThemeButtons(activeTheme) {
+  if (!vibeSwitcher) return;
+
+  vibeSwitcher.innerHTML = "";
+
+  Object.entries(themes).forEach(([themeName, theme]) => {
+    if (themeName === activeTheme) return;
+
+    const button = document.createElement("button");
+    button.className = `vibe-btn vibe-${themeName}`;
+    button.type = "button";
+    button.dataset.themeBtn = themeName;
+    button.setAttribute("aria-label", `${theme.label} world`);
+    button.innerHTML = `<span>${theme.label}</span>`;
+
+    button.addEventListener("click", () => {
+      changeTheme(themeName);
+    });
+
+    vibeSwitcher.appendChild(button);
+  });
+}
 
 function createThemeParticles(color) {
   const container = document.createElement("div");
@@ -92,9 +118,7 @@ function changeTheme(themeName) {
 
   const theme = themes[themeName];
 
-  themeButtons.forEach((btn) => {
-    btn.classList.toggle("active", btn.dataset.themeBtn === themeName);
-  });
+  renderThemeButtons(themeName);
 
   page.classList.add("is-changing-theme");
 
@@ -117,11 +141,7 @@ function changeTheme(themeName) {
   }, 1550);
 }
 
-themeButtons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    changeTheme(btn.dataset.themeBtn);
-  });
-});
+renderThemeButtons(page?.dataset.theme || "violet");
 
 /* DEMOS DOT SLIDER */
 

@@ -48,89 +48,23 @@ document.addEventListener("keydown", (event) => {
 
 /* THEME SWITCHER */
 
-const page = document.querySelector(".page");
 const vibeSwitcher = document.querySelector("[data-vibe-switcher]");
+const page = document.querySelector(".page");
 
 const themes = {
   violet: {
-    label: "Violet"
+    label: "Violet",
+    url: "index.html"
   },
   bold: {
-    label: "Wild"
+    label: "Wild",
+    url: "wild-index.html"
   },
   nude: {
-    label: "Nude"
+    label: "Nude",
+    url: "nude-index.html"
   }
 };
-
-function getThemeUrl(themeName) {
-  const pageName = window.location.pathname.split("/").pop() || "contact.html";
-
-  const pageMap = {
-    "index.html": {
-      violet: "index.html",
-      bold: "wild-index.html",
-      nude: "nude-index.html"
-    },
-    "demos.html": {
-      violet: "demos.html",
-      bold: "wild-demos.html",
-      nude: "nude-demos.html"
-    },
-    "journal.html": {
-      violet: "journal.html",
-      bold: "wild-journal.html",
-      nude: "nude-journal.html"
-    },
-    "contact.html": {
-      violet: "contact.html",
-      bold: "wild-contact.html",
-      nude: "nude-contact.html"
-    },
-    "wild-index.html": {
-      violet: "index.html",
-      bold: "wild-index.html",
-      nude: "nude-index.html"
-    },
-    "wild-demos.html": {
-      violet: "demos.html",
-      bold: "wild-demos.html",
-      nude: "nude-demos.html"
-    },
-    "wild-journal.html": {
-      violet: "journal.html",
-      bold: "wild-journal.html",
-      nude: "nude-journal.html"
-    },
-    "wild-contact.html": {
-      violet: "contact.html",
-      bold: "wild-contact.html",
-      nude: "nude-contact.html"
-    },
-    "nude-index.html": {
-      violet: "index.html",
-      bold: "wild-index.html",
-      nude: "nude-index.html"
-    },
-    "nude-demos.html": {
-      violet: "demos.html",
-      bold: "wild-demos.html",
-      nude: "nude-demos.html"
-    },
-    "nude-journal.html": {
-      violet: "journal.html",
-      bold: "wild-journal.html",
-      nude: "nude-journal.html"
-    },
-    "nude-contact.html": {
-      violet: "contact.html",
-      bold: "wild-contact.html",
-      nude: "nude-contact.html"
-    }
-  };
-
-  return pageMap[pageName]?.[themeName] || pageMap["contact.html"][themeName];
-}
 
 function renderThemeButtons(activeTheme) {
   if (!vibeSwitcher) return;
@@ -148,7 +82,7 @@ function renderThemeButtons(activeTheme) {
     button.innerHTML = `<span>${theme.label}</span>`;
 
     button.addEventListener("click", () => {
-      window.location.href = getThemeUrl(themeName);
+      window.location.href = theme.url;
     });
 
     vibeSwitcher.appendChild(button);
