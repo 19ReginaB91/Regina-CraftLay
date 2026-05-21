@@ -53,20 +53,28 @@ const vibeSwitcher = document.querySelector("[data-vibe-switcher]");
 
 const themes = {
   violet: {
-    label: "Violet"
+    label: "Violet",
+    title: "Violet world",
+    text: "Rebuilding the dreamy interface"
   },
   bold: {
-    label: "Wild"
+    label: "Wild",
+    title: "Wild world",
+    text: "Building emerald noir atmosphere"
   },
   nude: {
-    label: "Nude"
+    label: "Nude",
+    title: "Nude world",
+    text: "Soft editorial world is opening"
   }
 };
 
-function getThemeUrl(themeName) {
-  const pageName = window.location.pathname.split("/").pop() || "contact.html";
+let isThemeChanging = false;
 
-  const pageMap = {
+function getThemeUrl(themeName) {
+  const currentPage = window.location.pathname.split("/").pop() || "contact.html";
+
+  const routes = {
     "index.html": {
       violet: "index.html",
       bold: "wild-index.html",
@@ -129,7 +137,7 @@ function getThemeUrl(themeName) {
     }
   };
 
-  return pageMap[pageName]?.[themeName] || pageMap["contact.html"][themeName];
+  return routes[currentPage]?.[themeName] || "contact.html";
 }
 
 function renderThemeButtons(activeTheme) {
@@ -148,11 +156,90 @@ function renderThemeButtons(activeTheme) {
     button.innerHTML = `<span>${theme.label}</span>`;
 
     button.addEventListener("click", () => {
-      window.location.href = getThemeUrl(themeName);
+      startWorldRebuild(themeName);
     });
 
     vibeSwitcher.appendChild(button);
   });
+}
+
+function createWorldRebuild() {
+  let transition = document.querySelector("[data-world-rebuild]");
+
+  if (transition) return transition;
+
+  transition = document.createElement("div");
+  transition.className = "world-rebuild";
+  transition.dataset.worldRebuild = "";
+
+  transition.innerHTML = `
+    <div class="world-rebuild__pieces" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="world-rebuild__panel" role="status" aria-live="polite">
+      <p class="world-rebuild__kicker">World rebuild</p>
+      <h2 class="world-rebuild__title" data-world-rebuild-title>
+        Building <em>world</em>
+      </h2>
+      <div class="world-rebuild__line">
+        <span></span>
+      </div>
+      <p class="world-rebuild__text" data-world-rebuild-text>
+        Reconstructing interface
+      </p>
+    </div>
+  `;
+
+  document.body.appendChild(transition);
+
+  return transition;
+}
+
+function startWorldRebuild(themeName) {
+  if (isThemeChanging || !themes[themeName] || !page) return;
+
+  const targetUrl = getThemeUrl(themeName);
+  const currentPage = window.location.pathname.split("/").pop() || "contact.html";
+
+  if (targetUrl === currentPage) return;
+
+  isThemeChanging = true;
+  closeMenu();
+
+  const theme = themes[themeName];
+  const transition = createWorldRebuild();
+  const title = transition.querySelector("[data-world-rebuild-title]");
+  const text = transition.querySelector("[data-world-rebuild-text]");
+
+  transition.classList.remove("to-violet", "to-bold", "to-nude", "is-active");
+  transition.classList.add(`to-${themeName}`);
+
+  if (title) {
+    const words = theme.title.split(" ");
+    title.innerHTML = `${words[0]} <em>${words.slice(1).join(" ")}</em>`;
+  }
+
+  if (text) {
+    text.textContent = theme.text;
+  }
+
+  document.body.classList.add("world-rebuild-active");
+
+  requestAnimationFrame(() => {
+    transition.classList.add("is-active");
+  });
+
+  setTimeout(() => {
+    window.location.href = targetUrl;
+  }, 3400);
 }
 
 renderThemeButtons(page?.dataset.theme || "violet");

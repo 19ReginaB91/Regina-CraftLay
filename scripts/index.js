@@ -6,54 +6,215 @@ window.addEventListener("scroll", () => {
   header?.classList.toggle("is-scrolled", window.scrollY > 20);
 });
 
-menuToggle?.addEventListener("click", () => {
-  const isOpen = burgerMenu?.classList.toggle("is-open");
+/* MENU */
 
-  menuToggle.classList.toggle("is-active", isOpen);
-  header?.classList.toggle("is-open", isOpen);
-  document.body.classList.toggle("menu-open", isOpen);
-  menuToggle.setAttribute("aria-expanded", String(isOpen));
+function closeMenu() {
+  burgerMenu?.classList.remove("is-open");
+  menuToggle?.classList.remove("is-active");
+  header?.classList.remove("is-open");
+  document.body.classList.remove("menu-open");
+  menuToggle?.setAttribute("aria-expanded", "false");
+}
+
+function openMenu() {
+  burgerMenu?.classList.add("is-open");
+  menuToggle?.classList.add("is-active");
+  header?.classList.add("is-open");
+  document.body.classList.add("menu-open");
+  menuToggle?.setAttribute("aria-expanded", "true");
+}
+
+menuToggle?.addEventListener("click", () => {
+  const isOpen = burgerMenu?.classList.contains("is-open");
+
+  if (isOpen) {
+    closeMenu();
+  } else {
+    openMenu();
+  }
 });
 
 burgerMenu?.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    burgerMenu.classList.remove("is-open");
-    menuToggle?.classList.remove("is-active");
-    header?.classList.remove("is-open");
-    document.body.classList.remove("menu-open");
-    menuToggle?.setAttribute("aria-expanded", "false");
-  });
+  link.addEventListener("click", closeMenu);
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeMenu();
+  }
 });
 
 /* THEME SWITCHER */
 
-const themeLink = document.getElementById("theme-link");
-const themeOverlay = document.getElementById("theme-overlay");
 const page = document.querySelector(".page");
 const vibeSwitcher = document.querySelector("[data-vibe-switcher]");
 
 const themes = {
   violet: {
     label: "Violet",
-    file: "styles/style-violet.css",
-    color: "#b9a2ff",
-    glow: "rgba(185,162,255,0.65)"
+    title: "Violet world",
+    text: "Rebuilding the dreamy interface"
   },
   bold: {
     label: "Wild",
-    file: "styles/style-bold.css",
-    color: "#061a12",
-    glow: "rgba(20,255,185,0.55)"
+    title: "Wild world",
+    text: "Building emerald noir atmosphere"
   },
   nude: {
     label: "Nude",
-    file: "styles/style-nude.css",
-    color: "#f1dfd3",
-    glow: "rgba(255,220,190,0.75)"
+    title: "Nude world",
+    text: "Soft editorial world is opening"
   }
 };
 
-let isThemeChanging = false;
+function getThemeUrl(themeName) {
+  const pageName = window.location.pathname.split("/").pop() || "index.html";
+
+  const pageMap = {
+    "index.html": {
+      violet: "index.html",
+      bold: "wild-index.html",
+      nude: "nude-index.html"
+    },
+    "demos.html": {
+      violet: "demos.html",
+      bold: "wild-demos.html",
+      nude: "nude-demos.html"
+    },
+    "journal.html": {
+      violet: "journal.html",
+      bold: "wild-journal.html",
+      nude: "nude-journal.html"
+    },
+    "contact.html": {
+      violet: "contact.html",
+      bold: "wild-contact.html",
+      nude: "nude-contact.html"
+    },
+    "wild-index.html": {
+      violet: "index.html",
+      bold: "wild-index.html",
+      nude: "nude-index.html"
+    },
+    "wild-demos.html": {
+      violet: "demos.html",
+      bold: "wild-demos.html",
+      nude: "nude-demos.html"
+    },
+    "wild-journal.html": {
+      violet: "journal.html",
+      bold: "wild-journal.html",
+      nude: "nude-journal.html"
+    },
+    "wild-contact.html": {
+      violet: "contact.html",
+      bold: "wild-contact.html",
+      nude: "nude-contact.html"
+    },
+    "nude-index.html": {
+      violet: "index.html",
+      bold: "wild-index.html",
+      nude: "nude-index.html"
+    },
+    "nude-demos.html": {
+      violet: "demos.html",
+      bold: "wild-demos.html",
+      nude: "nude-demos.html"
+    },
+    "nude-journal.html": {
+      violet: "journal.html",
+      bold: "wild-journal.html",
+      nude: "nude-journal.html"
+    },
+    "nude-contact.html": {
+      violet: "contact.html",
+      bold: "wild-contact.html",
+      nude: "nude-contact.html"
+    }
+  };
+
+  return pageMap[pageName]?.[themeName] || pageMap["index.html"][themeName];
+}
+
+function createWorldRebuild() {
+  let rebuild = document.querySelector("[data-world-rebuild]");
+
+  if (rebuild) return rebuild;
+
+  rebuild = document.createElement("div");
+  rebuild.className = "world-rebuild";
+  rebuild.dataset.worldRebuild = "";
+
+  const pieces = Array.from({ length: 22 }, () => {
+    const left = Math.random() * 100;
+    const delay = Math.random() * 0.9;
+    const height = Math.random() * 120 + 70;
+
+    return `<span style="left:${left}%;height:${height}px;animation-delay:${delay}s"></span>`;
+  }).join("");
+
+  rebuild.innerHTML = `
+    <div class="world-rebuild__pieces" aria-hidden="true">
+      ${pieces}
+    </div>
+
+    <div class="world-rebuild__panel" role="status" aria-live="polite">
+      <p class="world-rebuild__kicker">World rebuild</p>
+      <h2 class="world-rebuild__title" data-world-rebuild-title>
+        Building <em>world</em>
+      </h2>
+      <div class="world-rebuild__line">
+        <span></span>
+      </div>
+      <p class="world-rebuild__text" data-world-rebuild-text>
+        Reconstructing interface
+      </p>
+    </div>
+  `;
+
+  document.body.appendChild(rebuild);
+
+  return rebuild;
+}
+
+function startWorldRebuild(themeName) {
+  const theme = themes[themeName];
+  const targetUrl = getThemeUrl(themeName);
+
+  if (!theme || !targetUrl) return;
+
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+  if (targetUrl === currentPage) return;
+
+  closeMenu();
+
+  const rebuild = createWorldRebuild();
+  const title = rebuild.querySelector("[data-world-rebuild-title]");
+  const text = rebuild.querySelector("[data-world-rebuild-text]");
+
+  rebuild.classList.remove("to-violet", "to-bold", "to-nude", "is-active");
+  rebuild.classList.add(`to-${themeName}`);
+
+  if (title) {
+    const words = theme.title.split(" ");
+    title.innerHTML = `${words[0]} <em>${words.slice(1).join(" ")}</em>`;
+  }
+
+  if (text) {
+    text.textContent = theme.text;
+  }
+
+  document.body.classList.add("world-rebuild-active");
+
+  requestAnimationFrame(() => {
+    rebuild.classList.add("is-active");
+  });
+
+  setTimeout(() => {
+    window.location.href = targetUrl;
+  }, 3400);
+}
 
 function renderThemeButtons(activeTheme) {
   if (!vibeSwitcher) return;
@@ -71,74 +232,11 @@ function renderThemeButtons(activeTheme) {
     button.innerHTML = `<span>${theme.label}</span>`;
 
     button.addEventListener("click", () => {
-      changeTheme(themeName);
+      startWorldRebuild(themeName);
     });
 
     vibeSwitcher.appendChild(button);
   });
-}
-
-function createThemeParticles(color) {
-  const container = document.createElement("div");
-  container.className = "theme-particles";
-  document.body.appendChild(container);
-
-  for (let i = 0; i < 42; i++) {
-    const particle = document.createElement("span");
-
-    const size = Math.random() * 8 + 4;
-    const x = Math.random() * window.innerWidth;
-    const y = Math.random() * window.innerHeight;
-    const moveX = (Math.random() - 0.5) * 320;
-    const moveY = (Math.random() - 0.5) * 320;
-    const delay = Math.random() * 0.35;
-
-    particle.style.width = `${size}px`;
-    particle.style.height = `${size}px`;
-    particle.style.left = `${x}px`;
-    particle.style.top = `${y}px`;
-    particle.style.background = color;
-    particle.style.boxShadow = `0 0 24px ${color}`;
-    particle.style.setProperty("--move-x", `${moveX}px`);
-    particle.style.setProperty("--move-y", `${moveY}px`);
-    particle.style.animationDelay = `${delay}s`;
-
-    container.appendChild(particle);
-  }
-
-  setTimeout(() => {
-    container.remove();
-  }, 1800);
-}
-
-function changeTheme(themeName) {
-  if (isThemeChanging || !themes[themeName] || !themeLink || !themeOverlay || !page) return;
-
-  isThemeChanging = true;
-
-  const theme = themes[themeName];
-
-  renderThemeButtons(themeName);
-
-  page.classList.add("is-changing-theme");
-
-  themeOverlay.style.background = `
-    radial-gradient(circle, ${theme.glow} 0%, ${theme.color} 42%, transparent 72%)
-  `;
-
-  themeOverlay.classList.add("is-animating");
-  createThemeParticles(theme.color);
-
-  setTimeout(() => {
-    themeLink.href = theme.file;
-    page.dataset.theme = themeName;
-  }, 620);
-
-  setTimeout(() => {
-    page.classList.remove("is-changing-theme");
-    themeOverlay.classList.remove("is-animating");
-    isThemeChanging = false;
-  }, 1550);
 }
 
 renderThemeButtons(page?.dataset.theme || "violet");

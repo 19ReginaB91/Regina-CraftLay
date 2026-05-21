@@ -1,33 +1,23 @@
-const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
-const burgerMenu = document.querySelector("[data-burger-menu]");
-const revealItems = document.querySelectorAll(".reveal");
-const ambientLights = document.querySelectorAll(".ambient");
-
-window.addEventListener("scroll", () => {
-  header?.classList.toggle("is-scrolled", window.scrollY > 20);
-});
-
-/* MENU */
+const mobileMenu = document.querySelector("[data-mobile-menu]");
+const themeLinks = document.querySelectorAll("[data-theme-target]");
 
 function closeMenu() {
-  burgerMenu?.classList.remove("is-open");
+  mobileMenu?.classList.remove("is-open");
   menuToggle?.classList.remove("is-active");
-  header?.classList.remove("is-open");
   document.body.classList.remove("menu-open");
   menuToggle?.setAttribute("aria-expanded", "false");
 }
 
 function openMenu() {
-  burgerMenu?.classList.add("is-open");
+  mobileMenu?.classList.add("is-open");
   menuToggle?.classList.add("is-active");
-  header?.classList.add("is-open");
   document.body.classList.add("menu-open");
   menuToggle?.setAttribute("aria-expanded", "true");
 }
 
 menuToggle?.addEventListener("click", () => {
-  const isOpen = burgerMenu?.classList.contains("is-open");
+  const isOpen = mobileMenu?.classList.contains("is-open");
 
   if (isOpen) {
     closeMenu();
@@ -36,7 +26,7 @@ menuToggle?.addEventListener("click", () => {
   }
 });
 
-burgerMenu?.querySelectorAll("a").forEach((link) => {
+mobileMenu?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", closeMenu);
 });
 
@@ -48,71 +38,152 @@ document.addEventListener("keydown", (event) => {
 
 /* THEME SWITCHER */
 
-const vibeSwitcher = document.querySelector("[data-vibe-switcher]");
-const page = document.querySelector(".page");
-
 const themes = {
   violet: {
-    label: "Violet",
+    title: "Violet world",
+    text: "Rebuilding the dreamy interface",
     url: "index.html"
   },
   bold: {
-    label: "Wild",
+    title: "Wild world",
+    text: "Building emerald noir atmosphere",
     url: "wild-index.html"
   },
   nude: {
-    label: "Nude",
+    title: "Nude world",
+    text: "Soft editorial world is opening",
     url: "nude-index.html"
   }
 };
 
-function renderThemeButtons(activeTheme) {
-  if (!vibeSwitcher) return;
+let isThemeChanging = false;
 
-  vibeSwitcher.innerHTML = "";
+function createWorldRebuild() {
+  let rebuild = document.querySelector("[data-world-rebuild]");
 
-  Object.entries(themes).forEach(([themeName, theme]) => {
-    if (themeName === activeTheme) return;
+  if (rebuild) return rebuild;
 
-    const button = document.createElement("button");
-    button.className = `vibe-btn vibe-${themeName}`;
-    button.type = "button";
-    button.dataset.themeBtn = themeName;
-    button.setAttribute("aria-label", `${theme.label} world`);
-    button.innerHTML = `<span>${theme.label}</span>`;
+  rebuild = document.createElement("div");
+  rebuild.className = "world-rebuild";
+  rebuild.dataset.worldRebuild = "";
 
-    button.addEventListener("click", () => {
-      window.location.href = theme.url;
-    });
+  rebuild.innerHTML = `
+    <div class="world-rebuild__pieces" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
 
-    vibeSwitcher.appendChild(button);
-  });
+    <div class="world-rebuild__panel" role="status" aria-live="polite">
+      <p class="world-rebuild__kicker">World rebuild</p>
+      <h2 class="world-rebuild__title" data-world-rebuild-title>
+        Building <em>world</em>
+      </h2>
+      <div class="world-rebuild__line">
+        <span></span>
+      </div>
+      <p class="world-rebuild__text" data-world-rebuild-text>
+        Reconstructing interface
+      </p>
+    </div>
+  `;
+
+  document.body.appendChild(rebuild);
+
+  return rebuild;
 }
 
-renderThemeButtons(page?.dataset.theme || "violet");
+function startWorldRebuild(themeName, targetUrl) {
+  if (isThemeChanging || !themes[themeName]) return;
 
-/* FLOATING AMBIENT LIGHT */
+  const currentPage = window.location.pathname.split("/").pop() || "wild-index.html";
 
-document.addEventListener("mousemove", (event) => {
-  const x = event.clientX / window.innerWidth;
-  const y = event.clientY / window.innerHeight;
+  if (targetUrl === currentPage) return;
 
-  ambientLights.forEach((light, index) => {
-    const speed = (index + 1) * 18;
+  isThemeChanging = true;
+  closeMenu();
 
-    light.style.transform = `
-      translate(
-        ${x * speed}px,
-        ${y * speed}px
-      )
-    `;
+  const theme = themes[themeName];
+  const rebuild = createWorldRebuild();
+  const title = rebuild.querySelector("[data-world-rebuild-title]");
+  const text = rebuild.querySelector("[data-world-rebuild-text]");
+
+  rebuild.classList.remove("to-violet", "to-bold", "to-nude", "is-active");
+  rebuild.classList.add(`to-${themeName}`);
+
+  if (title) {
+    const words = theme.title.split(" ");
+    title.innerHTML = `${words[0]} <em>${words.slice(1).join(" ")}</em>`;
+  }
+
+  if (text) {
+    text.textContent = theme.text;
+  }
+
+  document.body.classList.add("world-rebuild-active");
+
+  requestAnimationFrame(() => {
+    rebuild.classList.add("is-active");
+  });
+
+  setTimeout(() => {
+    window.location.href = targetUrl;
+  }, 3400);
+}
+
+themeLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const themeName = link.dataset.themeTarget;
+    const targetUrl = themes[themeName]?.url || link.getAttribute("href");
+
+    if (!themeName || !targetUrl) return;
+
+    event.preventDefault();
+    startWorldRebuild(themeName, targetUrl);
   });
 });
 
-/* PAGE REVEAL */
+/* HERO DEPTH */
+
+const hero = document.querySelector(".wild-hero");
+const heroImage = document.querySelector(".wild-hero-image");
+
+hero?.addEventListener("mousemove", (event) => {
+  const rect = hero.getBoundingClientRect();
+  const x = (event.clientX - rect.left) / rect.width - 0.5;
+  const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+  if (heroImage) {
+    heroImage.style.transform = `scale(1.035) translate(${x * 10}px, ${y * 8}px)`;
+  }
+});
+
+hero?.addEventListener("mouseleave", () => {
+  if (heroImage) {
+    heroImage.style.transform = "";
+  }
+});
+
+/* SCROLL REVEAL */
+
+const revealItems = document.querySelectorAll(`
+  .hero-copy,
+  .theme-switcher,
+  .hero-note,
+  .wild-hex-world,
+  .hex-card,
+  .featured-work,
+  .work-card,
+  .wild-about
+`);
 
 if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(
+  const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -126,10 +197,11 @@ if ("IntersectionObserver" in window) {
   );
 
   revealItems.forEach((item) => {
-    observer.observe(item);
+    item.classList.add("reveal");
+    revealObserver.observe(item);
   });
 } else {
   revealItems.forEach((item) => {
-    item.classList.add("is-visible");
+    item.classList.add("reveal", "is-visible");
   });
 }

@@ -21,7 +21,7 @@
   </head>
 
   <body>
-    <div class="wild-page" id="top">
+    <div class="wild-page" id="top" data-theme="bold">
       <aside class="wild-sidebar">
         <a class="wild-brand" href="wild-index.html" aria-label="Regina CraftLay Wild home">
           <span class="brand-star">✦</span>
@@ -34,7 +34,7 @@
             <span>01</span>
             Home
           </a>
-          <a href="demos.html">
+          <a href="wild-demos.html">
             <span>02</span>
             Work
           </a>
@@ -42,17 +42,17 @@
             <span>03</span>
             About
           </a>
-          <a href="journal.html">
+          <a href="wild-journal.html">
             <span>04</span>
             Journal
           </a>
-          <a href="contact.html">
+          <a href="wild-contact.html">
             <span>05</span>
             Contact
           </a>
         </nav>
 
-        <a class="side-cta" href="contact.html">
+        <a class="side-cta" href="wild-contact.html">
           <span>✦</span>
           Let's work together
         </a>
@@ -90,16 +90,20 @@
 
         <nav class="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
           <a href="wild-index.html" class="active">Home</a>
-          <a href="demos.html">Work</a>
+          <a href="wild-demos.html">Work</a>
           <a href="#about">About</a>
-          <a href="journal.html">Journal</a>
-          <a href="contact.html">Contact</a>
+          <a href="wild-journal.html">Journal</a>
+          <a href="wild-contact.html">Contact</a>
         </nav>
       </header>
 
       <main class="wild-main">
         <section class="wild-hero" aria-labelledby="wild-title">
-          <img class="wild-hero-image" src="assets/media/wild-hero.png" alt="Regina in emerald wild atmosphere" />
+          <img
+            class="wild-hero-image"
+            src="assets/media/wild-hero-bg.png"
+            alt="Regina in emerald wild atmosphere"
+          />
 
           <div class="hero-shade"></div>
           <div class="hero-grid"></div>
@@ -107,17 +111,17 @@
           <div class="theme-switcher" aria-label="Choose visual world">
             <p>Choose theme</p>
 
-            <a href="index.html">
+            <a href="index.html" data-theme-target="violet">
               Violet
               <span></span>
             </a>
 
-            <a href="wild-index.html" class="active">
+            <a href="wild-index.html" class="active" data-theme-target="bold">
               Wild
               <span></span>
             </a>
 
-            <a href="nude-index.html">
+            <a href="nude-index.html" data-theme-target="nude">
               Nude
               <span></span>
             </a>
@@ -139,7 +143,7 @@
             </p>
 
             <div class="hero-actions">
-              <a class="primary-btn" href="demos.html">
+              <a class="primary-btn" href="wild-demos.html">
                 View my work
                 <span>→</span>
               </a>
@@ -157,6 +161,50 @@
           </div>
         </section>
 
+        <section class="wild-hex-world" aria-labelledby="hex-title">
+          <div class="section-heading">
+            <p class="eyebrow">Wild system</p>
+            <h2 id="hex-title">Built from instinct, structure and atmosphere.</h2>
+          </div>
+
+          <div class="hex-grid">
+            <a class="hex-card" href="wild-demos.html">
+              <img src="assets/media/calculator.png" alt="" />
+              <span>01</span>
+              <h3>Interactive UI</h3>
+              <p>Logic, rhythm and movement.</p>
+            </a>
+
+            <a class="hex-card" href="wild-demos.html">
+              <img src="assets/media/kristall-reinigung.png" alt="" />
+              <span>02</span>
+              <h3>Business Web</h3>
+              <p>Clear structure with atmosphere.</p>
+            </a>
+
+            <a class="hex-card" href="wild-demos.html">
+              <img src="assets/media/amarte.png" alt="" />
+              <span>03</span>
+              <h3>Creative Studio</h3>
+              <p>Emotional visual storytelling.</p>
+            </a>
+
+            <a class="hex-card" href="wild-demos.html">
+              <img src="assets/media/hanna-sport.png" alt="" />
+              <span>04</span>
+              <h3>Campaigns</h3>
+              <p>Energy, focus and impact.</p>
+            </a>
+
+            <a class="hex-card" href="wild-journal.html">
+              <img src="assets/media/wild.png" alt="" />
+              <span>05</span>
+              <h3>Visual Philosophy</h3>
+              <p>The meaning behind the world.</p>
+            </a>
+          </div>
+        </section>
+
         <section class="featured-work" aria-labelledby="featured-title">
           <div class="section-heading">
             <p class="eyebrow">Featured work</p>
@@ -170,7 +218,7 @@
                 <span>UI concept</span>
                 <h3>Calculator</h3>
               </div>
-              <a href="demos.html" aria-label="Open Calculator demo">→</a>
+              <a href="wild-demos.html" aria-label="Open Calculator demo">→</a>
             </article>
 
             <article class="work-card">
@@ -179,7 +227,7 @@
                 <span>Business website</span>
                 <h3>Kristall</h3>
               </div>
-              <a href="demos.html" aria-label="Open Kristall demo">→</a>
+              <a href="wild-demos.html" aria-label="Open Kristall demo">→</a>
             </article>
 
             <article class="work-card">
@@ -188,7 +236,7 @@
                 <span>Creative studio</span>
                 <h3>Amarte</h3>
               </div>
-              <a href="demos.html" aria-label="Open Amarte demo">→</a>
+              <a href="wild-demos.html" aria-label="Open Amarte demo">→</a>
             </article>
 
             <article class="work-card">
@@ -197,7 +245,7 @@
                 <span>Landing page</span>
                 <h3>Hanna Sport</h3>
               </div>
-              <a href="demos.html" aria-label="Open Hanna Sport demo">→</a>
+              <a href="wild-demos.html" aria-label="Open Hanna Sport demo">→</a>
             </article>
           </div>
         </section>

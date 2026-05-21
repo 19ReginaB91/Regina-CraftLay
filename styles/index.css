@@ -31,6 +31,10 @@ body.menu-open {
   overflow: hidden;
 }
 
+body.world-rebuild-active {
+  overflow: hidden;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -1280,6 +1284,213 @@ img {
   animation: pageVibeShift 1.4s ease-in-out;
 }
 
+/* WORLD REBUILD TRANSITION */
+
+.world-rebuild {
+  position: fixed;
+  inset: 0;
+  z-index: 12000;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  background: #05020f;
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease;
+}
+
+.world-rebuild.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.world-rebuild::before,
+.world-rebuild::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.world-rebuild::before {
+  background:
+    linear-gradient(90deg, transparent 0 48%, rgba(255, 255, 255, 0.16) 49%, transparent 50%),
+    linear-gradient(0deg, transparent 0 48%, rgba(255, 255, 255, 0.12) 49%, transparent 50%);
+  background-size: 80px 80px;
+  transform: scale(1.2) rotate(0deg);
+}
+
+.world-rebuild::after {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.72), transparent 8rem),
+    radial-gradient(circle at 50% 50%, var(--glow), transparent 20rem);
+  transform: scale(0.2);
+}
+
+.world-rebuild.is-active::before {
+  animation: rebuildGrid 3.4s ease forwards;
+}
+
+.world-rebuild.is-active::after {
+  animation: rebuildCore 3.4s ease forwards;
+}
+
+.world-rebuild__panel {
+  position: relative;
+  z-index: 3;
+  width: min(560px, calc(100vw - 48px));
+  padding: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.14), transparent 12rem),
+    rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  box-shadow: 0 34px 120px rgba(20, 10, 40, 0.36);
+  text-align: center;
+  transform: translateY(28px) scale(0.94);
+  opacity: 0;
+}
+
+.world-rebuild.is-active .world-rebuild__panel {
+  animation: rebuildPanel 3.4s ease forwards;
+}
+
+.world-rebuild__kicker {
+  margin: 0 0 14px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.world-rebuild__title {
+  margin: 0;
+  color: #fff9ff;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(42px, 8vw, 76px);
+  font-weight: 400;
+  line-height: 0.92;
+}
+
+.world-rebuild__title em {
+  color: var(--glow);
+  font-style: italic;
+}
+
+.world-rebuild__line {
+  width: 100%;
+  height: 1px;
+  margin: 28px 0 18px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.world-rebuild__line span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #fff9ff;
+  transform: translateX(-100%);
+}
+
+.world-rebuild.is-active .world-rebuild__line span {
+  animation: rebuildLine 2.6s ease forwards;
+}
+
+.world-rebuild__text {
+  margin: 0;
+  color: rgba(255, 249, 255, 0.72);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.world-rebuild__pieces {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.world-rebuild__pieces span {
+  position: absolute;
+  width: 2px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.34);
+  opacity: 0;
+  transform: translateY(-100vh) rotate(18deg);
+}
+
+.world-rebuild.is-active .world-rebuild__pieces span {
+  animation: rebuildPiece 2.7s ease forwards;
+}
+
+.world-rebuild.to-bold {
+  background:
+    radial-gradient(circle at 70% 20%, rgba(9, 197, 140, 0.22), transparent 24rem),
+    radial-gradient(circle at 38% 78%, rgba(201, 150, 58, 0.16), transparent 24rem),
+    #050706;
+}
+
+.world-rebuild.to-bold .world-rebuild__panel {
+  border-color: rgba(201, 150, 58, 0.28);
+  background:
+    radial-gradient(circle at 80% 8%, rgba(9, 197, 140, 0.14), transparent 13rem),
+    rgba(5, 8, 7, 0.68);
+  box-shadow: 0 34px 120px rgba(0, 0, 0, 0.52);
+}
+
+.world-rebuild.to-bold .world-rebuild__title em,
+.world-rebuild.to-bold .world-rebuild__kicker {
+  color: #c9963a;
+}
+
+.world-rebuild.to-bold .world-rebuild__line span {
+  background: linear-gradient(90deg, #09c58c, #c9963a);
+}
+
+.world-rebuild.to-nude {
+  background:
+    radial-gradient(circle at 22% 18%, rgba(255, 255, 255, 0.72), transparent 18rem),
+    radial-gradient(circle at 80% 75%, rgba(199, 142, 130, 0.28), transparent 24rem),
+    linear-gradient(135deg, #fffaf5, #e4cec1);
+}
+
+.world-rebuild.to-nude .world-rebuild__panel {
+  border-color: rgba(255, 255, 255, 0.62);
+  background:
+    radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.5), transparent 12rem),
+    rgba(255, 255, 255, 0.36);
+  box-shadow: 0 34px 100px rgba(95, 62, 44, 0.16);
+}
+
+.world-rebuild.to-nude .world-rebuild__title,
+.world-rebuild.to-nude .world-rebuild__text {
+  color: #2f241f;
+}
+
+.world-rebuild.to-nude .world-rebuild__title em,
+.world-rebuild.to-nude .world-rebuild__kicker {
+  color: #c78e82;
+}
+
+.world-rebuild.to-nude .world-rebuild__line {
+  background: rgba(80, 55, 45, 0.14);
+}
+
+.world-rebuild.to-nude .world-rebuild__line span {
+  background: linear-gradient(90deg, #c78e82, #d9bcae);
+}
+
 /* ANIMATIONS */
 
 @keyframes burstAnim {
@@ -1321,6 +1532,108 @@ img {
 
   100% {
     filter: saturate(1) brightness(1);
+  }
+}
+
+@keyframes rebuildGrid {
+  0% {
+    opacity: 0;
+    transform: scale(1.35) rotate(0deg);
+  }
+
+  18% {
+    opacity: 0.42;
+  }
+
+  72% {
+    opacity: 0.28;
+    transform: scale(1) rotate(1.5deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.92) rotate(-1deg);
+  }
+}
+
+@keyframes rebuildCore {
+  0% {
+    opacity: 0;
+    transform: scale(0.18);
+    filter: blur(20px);
+  }
+
+  28% {
+    opacity: 0.8;
+    transform: scale(1);
+    filter: blur(6px);
+  }
+
+  70% {
+    opacity: 0.42;
+    transform: scale(1.7);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(2.6);
+    filter: blur(24px);
+  }
+}
+
+@keyframes rebuildPanel {
+  0% {
+    opacity: 0;
+    transform: translateY(34px) scale(0.92);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  72% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.98);
+  }
+}
+
+@keyframes rebuildLine {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  58% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes rebuildPiece {
+  0% {
+    opacity: 0;
+    transform: translateY(-100vh) rotate(18deg);
+  }
+
+  24% {
+    opacity: 0.8;
+  }
+
+  84% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(120vh) rotate(-8deg);
   }
 }
 

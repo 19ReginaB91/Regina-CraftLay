@@ -40,33 +40,97 @@ burgerMenu?.querySelectorAll("a").forEach((link) => {
 
 /* THEME SWITCHER */
 
-const themeLink = document.getElementById("theme-link");
-const themeOverlay = document.getElementById("theme-overlay");
 const page = document.querySelector(".page");
 const vibeSwitcher = document.querySelector("[data-vibe-switcher]");
 
 const themes = {
   violet: {
     label: "Violet",
-    file: "styles/style-violet.css",
-    color: "#b9a2ff",
-    glow: "rgba(185,162,255,0.65)"
+    title: "Violet world",
+    text: "Rebuilding the dreamy interface"
   },
   bold: {
     label: "Wild",
-    file: "styles/style-bold.css",
-    color: "#061a12",
-    glow: "rgba(20,255,185,0.55)"
+    title: "Wild world",
+    text: "Building emerald noir atmosphere"
   },
   nude: {
     label: "Nude",
-    file: "styles/style-nude.css",
-    color: "#f1dfd3",
-    glow: "rgba(255,220,190,0.75)"
+    title: "Nude world",
+    text: "Soft editorial world is opening"
   }
 };
 
 let isThemeChanging = false;
+
+function getThemeUrl(themeName) {
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+  const routes = {
+    "index.html": {
+      violet: "index.html",
+      bold: "wild-index.html",
+      nude: "nude-index.html"
+    },
+    "demos.html": {
+      violet: "demos.html",
+      bold: "wild-demos.html",
+      nude: "nude-demos.html"
+    },
+    "journal.html": {
+      violet: "journal.html",
+      bold: "wild-journal.html",
+      nude: "nude-journal.html"
+    },
+    "contact.html": {
+      violet: "contact.html",
+      bold: "wild-contact.html",
+      nude: "nude-contact.html"
+    },
+    "wild-index.html": {
+      violet: "index.html",
+      bold: "wild-index.html",
+      nude: "nude-index.html"
+    },
+    "wild-demos.html": {
+      violet: "demos.html",
+      bold: "wild-demos.html",
+      nude: "nude-demos.html"
+    },
+    "wild-journal.html": {
+      violet: "journal.html",
+      bold: "wild-journal.html",
+      nude: "nude-journal.html"
+    },
+    "wild-contact.html": {
+      violet: "contact.html",
+      bold: "wild-contact.html",
+      nude: "nude-contact.html"
+    },
+    "nude-index.html": {
+      violet: "index.html",
+      bold: "wild-index.html",
+      nude: "nude-index.html"
+    },
+    "nude-demos.html": {
+      violet: "demos.html",
+      bold: "wild-demos.html",
+      nude: "nude-demos.html"
+    },
+    "nude-journal.html": {
+      violet: "journal.html",
+      bold: "wild-journal.html",
+      nude: "nude-journal.html"
+    },
+    "nude-contact.html": {
+      violet: "contact.html",
+      bold: "wild-contact.html",
+      nude: "nude-contact.html"
+    }
+  };
+
+  return routes[currentPage]?.[themeName] || "index.html";
+}
 
 function renderThemeButtons(activeTheme) {
   if (!vibeSwitcher) return;
@@ -84,80 +148,90 @@ function renderThemeButtons(activeTheme) {
     button.innerHTML = `<span>${theme.label}</span>`;
 
     button.addEventListener("click", () => {
-      changeTheme(themeName);
+      startWorldRebuild(themeName);
     });
 
     vibeSwitcher.appendChild(button);
   });
 }
 
-function createThemeParticles(color) {
-  const container = document.createElement("div");
-  container.className = "theme-particles";
-  document.body.appendChild(container);
+function createWorldRebuild() {
+  let transition = document.querySelector("[data-world-rebuild]");
 
-  for (let i = 0; i < 30; i++) {
-    const particle = document.createElement("span");
+  if (transition) return transition;
 
-    const size = Math.random() * 8 + 4;
-    const x = Math.random() * window.innerWidth;
-    const y = Math.random() * window.innerHeight;
-    const moveX = (Math.random() - 0.5) * 260;
-    const moveY = (Math.random() - 0.5) * 260;
+  transition = document.createElement("div");
+  transition.className = "world-rebuild";
+  transition.dataset.worldRebuild = "";
 
-    particle.style.width = `${size}px`;
-    particle.style.height = `${size}px`;
-    particle.style.left = `${x}px`;
-    particle.style.top = `${y}px`;
-    particle.style.background = color;
-    particle.style.boxShadow = `0 0 24px ${color}`;
-    particle.style.setProperty("--move-x", `${moveX}px`);
-    particle.style.setProperty("--move-y", `${moveY}px`);
+  transition.innerHTML = `
+    <div class="world-rebuild__pieces" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
 
-    container.appendChild(particle);
-  }
-
-  setTimeout(() => {
-    container.remove();
-  }, 1600);
-}
-
-function changeTheme(themeName) {
-  if (
-    isThemeChanging ||
-    !themes[themeName] ||
-    !themeLink ||
-    !themeOverlay ||
-    !page
-  ) {
-    return;
-  }
-
-  isThemeChanging = true;
-
-  const theme = themes[themeName];
-
-  renderThemeButtons(themeName);
-
-  page.classList.add("is-changing-theme");
-
-  themeOverlay.style.background = `
-    radial-gradient(circle, ${theme.glow} 0%, ${theme.color} 42%, transparent 72%)
+    <div class="world-rebuild__panel" role="status" aria-live="polite">
+      <p class="world-rebuild__kicker">World rebuild</p>
+      <h2 class="world-rebuild__title" data-world-rebuild-title>
+        Building <em>world</em>
+      </h2>
+      <div class="world-rebuild__line">
+        <span></span>
+      </div>
+      <p class="world-rebuild__text" data-world-rebuild-text>
+        Reconstructing interface
+      </p>
+    </div>
   `;
 
-  themeOverlay.classList.add("is-animating");
-  createThemeParticles(theme.color);
+  document.body.appendChild(transition);
+
+  return transition;
+}
+
+function startWorldRebuild(themeName) {
+  if (isThemeChanging || !themes[themeName] || !page) return;
+
+  const targetUrl = getThemeUrl(themeName);
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+  if (targetUrl === currentPage) return;
+
+  isThemeChanging = true;
+  closeMenu();
+
+  const theme = themes[themeName];
+  const transition = createWorldRebuild();
+  const title = transition.querySelector("[data-world-rebuild-title]");
+  const text = transition.querySelector("[data-world-rebuild-text]");
+
+  transition.classList.remove("to-violet", "to-bold", "to-nude", "is-active");
+  transition.classList.add(`to-${themeName}`);
+
+  if (title) {
+    const words = theme.title.split(" ");
+    title.innerHTML = `${words[0]} <em>${words.slice(1).join(" ")}</em>`;
+  }
+
+  if (text) {
+    text.textContent = theme.text;
+  }
+
+  document.body.classList.add("world-rebuild-active");
+
+  requestAnimationFrame(() => {
+    transition.classList.add("is-active");
+  });
 
   setTimeout(() => {
-    themeLink.href = theme.file;
-    page.dataset.theme = themeName;
-  }, 620);
-
-  setTimeout(() => {
-    page.classList.remove("is-changing-theme");
-    themeOverlay.classList.remove("is-animating");
-    isThemeChanging = false;
-  }, 1550);
+    window.location.href = targetUrl;
+  }, 3400);
 }
 
 renderThemeButtons(page?.dataset.theme || "violet");
