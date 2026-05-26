@@ -49,7 +49,7 @@ document.addEventListener("keydown", (event) => {
 /* THEME SWITCHER */
 
 const page = document.querySelector(".page");
-const vibeSwitcher = document.querySelector("[data-vibe-switcher]");
+const vibeSwitchers = document.querySelectorAll("[data-vibe-switcher]");
 
 const themes = {
   violet: {
@@ -77,89 +77,61 @@ function getThemeUrl(themeName) {
   const routes = {
     "index.html": {
       violet: "index.html",
-      bold: "wild-index.html",
-      nude: "nude-index.html"
+      bold: "wild-coming-soon.html",
+      nude: "nude-coming-soon.html"
     },
     "demos.html": {
       violet: "demos.html",
-      bold: "wild-demos.html",
-      nude: "nude-demos.html"
+      bold: "wild-coming-soon.html",
+      nude: "nude-coming-soon.html"
     },
     "journal.html": {
       violet: "journal.html",
-      bold: "wild-journal.html",
-      nude: "nude-journal.html"
+      bold: "wild-coming-soon.html",
+      nude: "nude-coming-soon.html"
     },
     "contact.html": {
       violet: "contact.html",
-      bold: "wild-contact.html",
-      nude: "nude-contact.html"
+      bold: "wild-coming-soon.html",
+      nude: "nude-coming-soon.html"
     },
-    "wild-index.html": {
+    "wild-coming-soon.html": {
       violet: "index.html",
-      bold: "wild-index.html",
-      nude: "nude-index.html"
+      bold: "wild-coming-soon.html",
+      nude: "nude-coming-soon.html"
     },
-    "wild-demos.html": {
-      violet: "demos.html",
-      bold: "wild-demos.html",
-      nude: "nude-demos.html"
-    },
-    "wild-journal.html": {
-      violet: "journal.html",
-      bold: "wild-journal.html",
-      nude: "nude-journal.html"
-    },
-    "wild-contact.html": {
-      violet: "contact.html",
-      bold: "wild-contact.html",
-      nude: "nude-contact.html"
-    },
-    "nude-index.html": {
+    "nude-coming-soon.html": {
       violet: "index.html",
-      bold: "wild-index.html",
-      nude: "nude-index.html"
-    },
-    "nude-demos.html": {
-      violet: "demos.html",
-      bold: "wild-demos.html",
-      nude: "nude-demos.html"
-    },
-    "nude-journal.html": {
-      violet: "journal.html",
-      bold: "wild-journal.html",
-      nude: "nude-journal.html"
-    },
-    "nude-contact.html": {
-      violet: "contact.html",
-      bold: "wild-contact.html",
-      nude: "nude-contact.html"
+      bold: "wild-coming-soon.html",
+      nude: "nude-coming-soon.html"
     }
   };
 
-  return routes[currentPage]?.[themeName] || "index.html";
+  return routes[currentPage]?.[themeName] || routes["index.html"][themeName];
 }
 
 function renderThemeButtons(activeTheme) {
-  if (!vibeSwitcher) return;
+  if (!vibeSwitchers.length) return;
 
-  vibeSwitcher.innerHTML = "";
+  vibeSwitchers.forEach((vibeSwitcher) => {
+    vibeSwitcher.innerHTML = "";
 
-  Object.entries(themes).forEach(([themeName, theme]) => {
-    if (themeName === activeTheme) return;
+    Object.entries(themes).forEach(([themeName, theme]) => {
+      if (themeName === activeTheme) return;
 
-    const button = document.createElement("button");
-    button.className = `vibe-btn vibe-${themeName}`;
-    button.type = "button";
-    button.dataset.themeBtn = themeName;
-    button.setAttribute("aria-label", `${theme.label} world`);
-    button.innerHTML = `<span>${theme.label}</span>`;
+      const button = document.createElement("button");
+      button.className = `vibe-btn vibe-${themeName}`;
+      button.type = "button";
+      button.dataset.themeBtn = themeName;
+      button.setAttribute("aria-label", `${theme.label} world`);
+      button.innerHTML = `<span>${theme.label}</span>`;
 
-    button.addEventListener("click", () => {
-      startWorldRebuild(themeName);
+      button.addEventListener("click", () => {
+        startWorldRebuild(themeName);
+      });
+
+      vibeSwitcher.appendChild(button);
     });
-
-    vibeSwitcher.appendChild(button);
   });
 }
 
