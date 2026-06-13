@@ -6,7 +6,7 @@
 
     <title>Wild | Regina CraftLay</title>
 
-    <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/brand/favicon-wild.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="assets/brand/regina-craftlay-logo.svg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,36 +24,21 @@
     <div class="wild-page" id="top" data-theme="bold">
       <aside class="wild-sidebar">
         <a class="wild-brand" href="wild-index.html" aria-label="Regina CraftLay Wild home">
-          <span class="brand-star">✦</span>
+          <span class="brand-star">&#10022;</span>
           REGINA
           <small>CRAFTLAY</small>
         </a>
 
         <nav class="side-nav" aria-label="Wild navigation">
-          <a href="wild-index.html" class="active">
-            <span>01</span>
-            Home
-          </a>
-          <a href="wild-demos.html">
-            <span>02</span>
-            Work
-          </a>
-          <a href="#about">
-            <span>03</span>
-            About
-          </a>
-          <a href="wild-journal.html">
-            <span>04</span>
-            Journal
-          </a>
-          <a href="wild-contact.html">
-            <span>05</span>
-            Contact
-          </a>
+          <a href="wild-index.html" class="active">Home</a>
+          <a href="wild-demos.html">Work</a>
+          <a href="#about">About</a>
+          <a href="wild-journal.html">Journal</a>
+          <a href="wild-contact.html">Contact</a>
         </nav>
 
         <a class="side-cta" href="wild-contact.html">
-          <span>✦</span>
+          <span>&#10022;</span>
           Let's work together
         </a>
 
@@ -102,22 +87,19 @@
           <img
             class="wild-hero-image"
             src="assets/media/wild-hero-bg.png"
-            alt="Regina in emerald wild atmosphere"
+            alt="Regina CraftLay wild emerald noir visual world"
           />
 
           <div class="hero-shade"></div>
-          <div class="hero-grid"></div>
+          <div class="hero-neon hero-neon-violet" aria-hidden="true"></div>
+          <div class="hero-neon hero-neon-emerald" aria-hidden="true"></div>
+          <div class="hero-light-sweep" aria-hidden="true"></div>
 
           <div class="theme-switcher" aria-label="Choose visual world">
             <p>Choose theme</p>
 
             <a href="index.html" data-theme-target="violet">
               Violet
-              <span></span>
-            </a>
-
-            <a href="wild-index.html" class="active" data-theme-target="bold">
-              Wild
               <span></span>
             </a>
 
@@ -145,7 +127,7 @@
             <div class="hero-actions">
               <a class="primary-btn" href="wild-demos.html">
                 View my work
-                <span>→</span>
+                <span>&rarr;</span>
               </a>
 
               <a class="ghost-btn" href="#about">
@@ -161,47 +143,111 @@
           </div>
         </section>
 
-        <section class="wild-hex-world" aria-labelledby="hex-title">
-          <div class="section-heading">
-            <p class="eyebrow">Wild system</p>
-            <h2 id="hex-title">Built from instinct, structure and atmosphere.</h2>
+        <section class="wild-hex-world" id="about" aria-labelledby="hex-title">
+          <div class="wild-system-copy">
+            <p class="eyebrow">Frontend system</p>
+
+            <h2 id="hex-title">
+              From visual concept to interactive UI.
+            </h2>
+
+            <p>
+              This project is built as a system of states and interactions using
+              HTML, CSS/SASS and JavaScript. It focuses on responsive layout,
+              dynamic theme switching, animated transitions and interactive UI
+              components.
+            </p>
+
+            <p>
+              Each section represents a different interaction model - not static
+              pages, but a structured frontend experience.
+            </p>
+
+            <div class="system-block">
+              <h3>What I work with</h3>
+
+              <ul class="wild-system-list">
+                <li>Semantic HTML structure</li>
+                <li>CSS/SASS layout system</li>
+                <li>JavaScript interactions and UI logic</li>
+                <li>Responsive design and breakpoints</li>
+                <li>Theme switching system</li>
+                <li>Interactive hover, click and scroll states</li>
+              </ul>
+            </div>
+
+            <p class="wild-system-statement">
+              Built as a visual
+              <span>and technical UI system.</span>
+            </p>
+
+            <button class="engineering-open" type="button" data-engineering-open>
+              Read the engineering layer
+              <span>+</span>
+            </button>
           </div>
 
-          <div class="hex-grid">
-            <a class="hex-card" href="wild-demos.html">
-              <img src="assets/media/calculator.png" alt="" />
+          <div class="wild-system-divider" aria-hidden="true">
+            <span></span>
+            <i></i>
+            <b></b>
+          </div>
+
+          <div class="wild-fragments" aria-label="Wild creative signature">
+            <p class="fragments-label">Creative signature</p>
+
+            <article class="hex-card fragment-one" data-drift-card>
+              <img src="assets/media/leo1.png" alt="" />
               <span>01</span>
-              <h3>Interactive UI</h3>
-              <p>Logic, rhythm and movement.</p>
-            </a>
+              <h3>Visual Instinct</h3>
+              <p>Mood, color and atmosphere.</p>
+            </article>
 
-            <a class="hex-card" href="wild-demos.html">
-              <img src="assets/media/kristall-reinigung.png" alt="" />
+            <article class="hex-card fragment-two" data-drift-card>
+              <img src="assets/media/calculator.png" alt="" />
               <span>02</span>
-              <h3>Business Web</h3>
-              <p>Clear structure with atmosphere.</p>
-            </a>
+              <h3>Frontend Craft</h3>
+              <p>HTML, CSS/SASS and JavaScript.</p>
+            </article>
 
-            <a class="hex-card" href="wild-demos.html">
-              <img src="assets/media/amarte.png" alt="" />
+            <article class="hex-card fragment-three" data-drift-card>
+              <img src="assets/media/kristall-reinigung.png" alt="" />
               <span>03</span>
-              <h3>Creative Studio</h3>
-              <p>Emotional visual storytelling.</p>
-            </a>
+              <h3>Responsive Logic</h3>
+              <p>Desktop, tablet and mobile.</p>
+            </article>
 
-            <a class="hex-card" href="wild-demos.html">
-              <img src="assets/media/hanna-sport.png" alt="" />
+            <article class="hex-card fragment-four" data-drift-card>
+              <img src="assets/media/amarte.png" alt="" />
               <span>04</span>
-              <h3>Campaigns</h3>
-              <p>Energy, focus and impact.</p>
-            </a>
+              <h3>Creative Direction</h3>
+              <p>Composition, rhythm and emotion.</p>
+            </article>
 
-            <a class="hex-card" href="wild-journal.html">
-              <img src="assets/media/wild.png" alt="" />
+            <article class="hex-card fragment-five" data-drift-card>
+              <img src="assets/media/hanna-sport.png" alt="" />
               <span>05</span>
-              <h3>Visual Philosophy</h3>
-              <p>The meaning behind the world.</p>
-            </a>
+              <h3>Interaction</h3>
+              <p>Menus, filters, motion and details.</p>
+            </article>
+
+            <article class="hex-card fragment-six" data-drift-card>
+              <img src="assets/media/tree-service.png" alt="" />
+              <span>06</span>
+              <h3>Problem Solving</h3>
+              <p>Test, fix, improve and continue.</p>
+            </article>
+
+            <article class="hex-card fragment-seven" data-drift-card>
+              <img src="assets/media/wild.png" alt="" />
+              <span>07</span>
+              <h3>AI Workflow</h3>
+              <p>ChatGPT, Codex and Gemini.</p>
+            </article>
+          </div>
+
+          <div class="drag-tooltip" data-drag-tooltip>
+            Move this fragment
           </div>
         </section>
 
@@ -211,65 +257,164 @@
             <h2 id="featured-title">Selected demos</h2>
           </div>
 
-          <div class="work-strip">
-            <article class="work-card">
-              <img src="assets/media/calculator.png" alt="Calculator demo preview" />
-              <div>
-                <span>UI concept</span>
-                <h3>Calculator</h3>
+          <div class="wild-project-wall">
+            <article class="wild-project-panel" data-wild-card>
+              <span class="panel-shadow" aria-hidden="true"></span>
+              <span class="panel-side" aria-hidden="true"></span>
+              <span class="panel-glow" aria-hidden="true"></span>
+
+              <div class="panel-face">
+                <div class="panel-top">
+                  <span>01</span>
+                  <p>Interactive UI</p>
+                </div>
+
+                <div class="panel-title">
+                  <h3>Calculator</h3>
+                  <p>
+                    JavaScript UI project with theme switching, responsive
+                    layout and interactive frontend logic.
+                  </p>
+                </div>
+
+                <a href="wild-demos.html" aria-label="Open Calculator demo">
+                  View demo
+                  <span>&rarr;</span>
+                </a>
               </div>
-              <a href="wild-demos.html" aria-label="Open Calculator demo">→</a>
             </article>
 
-            <article class="work-card">
-              <img src="assets/media/kristall-reinigung.png" alt="Kristall Reinigung preview" />
-              <div>
-                <span>Business website</span>
-                <h3>Kristall</h3>
+            <article class="wild-project-panel" data-wild-card>
+              <span class="panel-shadow" aria-hidden="true"></span>
+              <span class="panel-side" aria-hidden="true"></span>
+              <span class="panel-glow" aria-hidden="true"></span>
+
+              <div class="panel-face">
+                <div class="panel-top">
+                  <span>02</span>
+                  <p>Business Website</p>
+                </div>
+
+                <div class="panel-title">
+                  <h3>Kristall</h3>
+                  <p>
+                    Responsive business website with clear structure, mobile
+                    optimization and trust-focused presentation.
+                  </p>
+                </div>
+
+                <a href="wild-demos.html" aria-label="Open Kristall demo">
+                  View demo
+                  <span>&rarr;</span>
+                </a>
               </div>
-              <a href="wild-demos.html" aria-label="Open Kristall demo">→</a>
             </article>
 
-            <article class="work-card">
-              <img src="assets/media/amarte.png" alt="Amarte studio preview" />
-              <div>
-                <span>Creative studio</span>
-                <h3>Amarte</h3>
+            <article class="wild-project-panel" data-wild-card>
+              <span class="panel-shadow" aria-hidden="true"></span>
+              <span class="panel-side" aria-hidden="true"></span>
+              <span class="panel-glow" aria-hidden="true"></span>
+
+              <div class="panel-face">
+                <div class="panel-top">
+                  <span>03</span>
+                  <p>Creative Studio</p>
+                </div>
+
+                <div class="panel-title">
+                  <h3>Amarte</h3>
+                  <p>
+                    Emotional studio website with visual storytelling, gallery
+                    structure and branded responsive layout.
+                  </p>
+                </div>
+
+                <a href="wild-demos.html" aria-label="Open Amarte demo">
+                  View demo
+                  <span>&rarr;</span>
+                </a>
               </div>
-              <a href="wild-demos.html" aria-label="Open Amarte demo">→</a>
             </article>
 
-            <article class="work-card">
-              <img src="assets/media/hanna-sport.png" alt="Hanna Sport preview" />
-              <div>
-                <span>Landing page</span>
-                <h3>Hanna Sport</h3>
+            <article class="wild-project-panel" data-wild-card>
+              <span class="panel-shadow" aria-hidden="true"></span>
+              <span class="panel-side" aria-hidden="true"></span>
+              <span class="panel-glow" aria-hidden="true"></span>
+
+              <div class="panel-face">
+                <div class="panel-top">
+                  <span>04</span>
+                  <p>Landing Page</p>
+                </div>
+
+                <div class="panel-title">
+                  <h3>Hanna Sport</h3>
+                  <p>
+                    Campaign landing page with strong visual rhythm, clear
+                    call-to-action and responsive frontend structure.
+                  </p>
+                </div>
+
+                <a href="wild-demos.html" aria-label="Open Hanna Sport demo">
+                  View demo
+                  <span>&rarr;</span>
+                </a>
               </div>
-              <a href="wild-demos.html" aria-label="Open Hanna Sport demo">→</a>
             </article>
           </div>
         </section>
 
-        <section class="wild-about" id="about">
-          <p class="eyebrow">About this world</p>
+        <div class="engineering-modal" data-engineering-modal aria-hidden="true">
+          <div class="engineering-backdrop" data-engineering-close></div>
+
+          <article class="engineering-dialog" role="dialog" aria-modal="true">
+            <button class="engineering-close" type="button" data-engineering-close>
+              &times;
+            </button>
+
+            <p class="eyebrow">Engineering layer</p>
+
+            <h2>
+              How this Wild world works behind the visual layer.
+            </h2>
+
+            <p>
+              This interface is not only a static visual composition. It is built
+              as a frontend system where layout, state, interaction and animation
+              work together.
+            </p>
+
+            <ul class="engineering-modal-list">
+              <li>UI is state-driven, not static layout</li>
+              <li>Theme switching uses JavaScript state and CSS variables</li>
+              <li>Components react to class-based DOM logic</li>
+              <li>Animations are handled via CSS transitions</li>
+              <li>Interactions are event-based: click, hover and scroll</li>
+              <li>Layout adapts via responsive breakpoints</li>
+              <li>Sections are built as modular UI blocks</li>
+            </ul>
+          </article>
+        </div>
+      </main>
+
+      <footer class="wild-footer" id="contact">
+        <div>
+          <p class="eyebrow">Contact</p>
 
           <h2>
-            Wild is the side of my work that is not afraid of contrast.
+            Let's build something
+            <em>bold, clear and alive.</em>
           </h2>
+        </div>
 
-          <p>
-            It represents my instinctive, fearless approach to design: bold
-            composition, deep atmosphere, emotional tension and details that
-            refuse to be invisible.
-          </p>
-
-          <p>
-            For me, a website should not only be clean and functional. It should
-            have a pulse. It should carry personality, rhythm and a visual
-            signature.
-          </p>
-        </section>
-      </main>
+        <nav class="wild-footer-links" aria-label="Footer links">
+          <a href="wild-index.html">Home</a>
+          <a href="wild-demos.html">Work</a>
+          <a href="wild-journal.html">Journal</a>
+          <a href="wild-contact.html">Contact</a>
+          <a href="mailto:regina.craftlay@gmail.com">Email me</a>
+        </nav>
+      </footer>
     </div>
 
     <script src="scripts/wild-index.js"></script>
