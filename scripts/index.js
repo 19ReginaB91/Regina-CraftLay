@@ -46,149 +46,93 @@ document.addEventListener("keydown", (event) => {
 
 /* THEME SWITCHER */
 
+/* THEME SWITCHER */
+
 const page = document.querySelector(".page");
 const vibeSwitchers = document.querySelectorAll("[data-vibe-switcher]");
 
 const themes = {
   violet: {
     label: "Violet",
-    title: "Violet world",
-    text: "Rebuilding the dreamy interface"
+    url: "index.html"
   },
   bold: {
     label: "Wild",
-    title: "Wild world",
-    text: "Building emerald noir atmosphere"
+    url: "wild-index.html",
+    preview: true
   },
   nude: {
     label: "Nude",
-    title: "Nude world",
-    text: "Soft editorial world is opening"
+    url: "nude-coming-soon.html"
   }
 };
 
 let isThemeChanging = false;
 
-function getThemeUrl(themeName) {
-  const pageName = window.location.pathname.split("/").pop() || "index.html";
+function createWildPreview() {
+  let preview = document.querySelector("[data-wild-preview]");
 
-  const pageMap = {
-    "index.html": {
-      violet: "index.html",
-      bold: "wild-coming-soon.html",
-      nude: "nude-coming-soon.html"
-    },
-    "demos.html": {
-      violet: "demos.html",
-      bold: "wild-coming-soon.html",
-      nude: "nude-coming-soon.html"
-    },
-    "journal.html": {
-      violet: "journal.html",
-      bold: "wild-coming-soon.html",
-      nude: "nude-coming-soon.html"
-    },
-    "contact.html": {
-      violet: "contact.html",
-      bold: "wild-coming-soon.html",
-      nude: "nude-coming-soon.html"
-    },
-    "wild-coming-soon.html": {
-      violet: "index.html",
-      bold: "wild-coming-soon.html",
-      nude: "nude-coming-soon.html"
-    },
-    "nude-coming-soon.html": {
-      violet: "index.html",
-      bold: "wild-coming-soon.html",
-      nude: "nude-coming-soon.html"
-    }
-  };
+  if (preview) return preview;
 
-  return pageMap[pageName]?.[themeName] || pageMap["index.html"][themeName];
-}
+  preview = document.createElement("div");
+  preview.className = "wild-preview";
+  preview.dataset.wildPreview = "";
 
-function createWorldRebuild() {
-  let rebuild = document.querySelector("[data-world-rebuild]");
+  preview.innerHTML = `
+    <div class="wild-preview__glow" aria-hidden="true"></div>
 
-  if (rebuild) return rebuild;
+    <div class="wild-preview__panel" role="status" aria-live="polite">
+      <p class="wild-preview__kicker">Wild Preview</p>
 
-  rebuild = document.createElement("div");
-  rebuild.className = "world-rebuild";
-  rebuild.dataset.worldRebuild = "";
-
-  const pieces = Array.from({ length: 22 }, () => {
-    const left = Math.random() * 100;
-    const delay = Math.random() * 0.9;
-    const height = Math.random() * 120 + 70;
-
-    return `<span style="left:${left}%;height:${height}px;animation-delay:${delay}s"></span>`;
-  }).join("");
-
-  rebuild.innerHTML = `
-    <div class="world-rebuild__pieces" aria-hidden="true">
-      ${pieces}
-    </div>
-
-    <div class="world-rebuild__panel" role="status" aria-live="polite">
-      <p class="world-rebuild__kicker">World rebuild</p>
-      <h2 class="world-rebuild__title" data-world-rebuild-title>
-        Building <em>world</em>
+      <h2>
+        This world is already alive,
+        <em>but still evolving.</em>
       </h2>
-      <div class="world-rebuild__line">
-        <span></span>
-      </div>
-      <p class="world-rebuild__text" data-world-rebuild-text>
-        Reconstructing interface
+
+      <p>
+        Step inside and feel the direction before the final version arrives.
       </p>
     </div>
   `;
 
-  document.body.appendChild(rebuild);
+  document.body.appendChild(preview);
 
-  return rebuild;
+  return preview;
 }
 
-function startWorldRebuild(themeName) {
-  if (isThemeChanging) return;
+function startThemeTransition(themeName) {
+  if (isThemeChanging || !themes[themeName]) return;
 
   const theme = themes[themeName];
-  const targetUrl = getThemeUrl(themeName);
-
-  if (!theme || !targetUrl) return;
-
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
-  if (targetUrl === currentPage) return;
+  if (theme.url === currentPage) return;
 
   isThemeChanging = true;
-  closeMenu();
 
-  const rebuild = createWorldRebuild();
-  const title = rebuild.querySelector("[data-world-rebuild-title]");
-  const text = rebuild.querySelector("[data-world-rebuild-text]");
+  burgerMenu?.classList.remove("is-open");
+  menuToggle?.classList.remove("is-active");
+  header?.classList.remove("is-open");
+  document.body.classList.remove("menu-open");
+  menuToggle?.setAttribute("aria-expanded", "false");
 
-  rebuild.classList.remove("to-violet", "to-bold", "to-nude", "is-active");
-  rebuild.classList.add(`to-${themeName}`);
+  if (theme.preview) {
+    const preview = createWildPreview();
 
-  if (title) {
-    const words = theme.title.split(" ");
-    title.innerHTML = `${words[0]} <em>${words.slice(1).join(" ")}</em>`;
+    document.body.classList.add("wild-preview-active");
+
+    requestAnimationFrame(() => {
+      preview.classList.add("is-active");
+    });
+
+    setTimeout(() => {
+      window.location.href = theme.url;
+    }, 3600);
+
+    return;
   }
 
-  if (text) {
-    text.textContent = theme.text;
-  }
-
-  document.body.classList.add("world-rebuild-active");
-
-  requestAnimationFrame(() => {
-    rebuild.classList.add("is-active");
-  });
-
-  setTimeout(() => {
-    window.location.href = targetUrl;
-  }, 3400);
+  window.location.href = theme.url;
 }
 
 function renderThemeButtons(activeTheme) {
@@ -208,7 +152,7 @@ function renderThemeButtons(activeTheme) {
       button.innerHTML = `<span>${theme.label}</span>`;
 
       button.addEventListener("click", () => {
-        startWorldRebuild(themeName);
+        startThemeTransition(themeName);
       });
 
       vibeSwitcher.appendChild(button);

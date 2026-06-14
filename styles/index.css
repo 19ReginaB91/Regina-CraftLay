@@ -2090,3 +2090,104 @@ img {
     padding-bottom: 46px;
   }
 }
+/* WILD PREVIEW TRANSITION */
+
+.wild-preview {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 72% 24%, rgba(9, 240, 170, 0.24), transparent 28rem),
+    radial-gradient(circle at 28% 74%, rgba(155, 54, 255, 0.2), transparent 28rem),
+    linear-gradient(135deg, #030504, #07100d 45%, #050509);
+  transition: opacity 0.45s ease;
+}
+
+.wild-preview.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.wild-preview__glow {
+  position: absolute;
+  inset: -20%;
+  background:
+    linear-gradient(115deg, transparent 35%, rgba(201, 150, 58, 0.18), transparent 54%),
+    radial-gradient(circle at 60% 42%, rgba(9, 240, 170, 0.18), transparent 22rem);
+  animation: wildPreviewGlow 3.2s ease-in-out infinite;
+}
+
+.wild-preview__panel {
+  position: relative;
+  width: min(620px, 100%);
+  padding: clamp(34px, 6vw, 58px);
+  border: 1px solid rgba(201, 150, 58, 0.3);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 85% 12%, rgba(155, 54, 255, 0.18), transparent 16rem),
+    rgba(5, 8, 7, 0.78);
+  box-shadow: 0 34px 110px rgba(0, 0, 0, 0.52);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  transform: translateY(22px) scale(0.96);
+  transition: transform 0.55s ease;
+}
+
+.wild-preview.is-active .wild-preview__panel {
+  transform: translateY(0) scale(1);
+}
+
+.wild-preview__kicker {
+  margin: 0 0 18px;
+  color: #09f0aa;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.wild-preview__panel h2 {
+  margin: 0;
+  color: #fff8ef;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(42px, 7vw, 76px);
+  font-weight: 500;
+  line-height: 0.92;
+}
+
+.wild-preview__panel h2 em {
+  display: block;
+  color: #c9963a;
+  font-style: italic;
+}
+
+.wild-preview__panel p:last-child {
+  max-width: 460px;
+  margin: 24px 0 0;
+  color: rgba(255, 248, 239, 0.7);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+body.wild-preview-active {
+  overflow: hidden;
+}
+
+@keyframes wildPreviewGlow {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: translateX(-24px);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(34px);
+  }
+}
