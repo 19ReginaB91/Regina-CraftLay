@@ -4,146 +4,272 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Nude | Regina CraftLay</title>
+    <title>Nude World | Regina CraftLay</title>
 
     <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="assets/brand/regina-craftlay-logo.svg" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500&family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 
-    <style>
-      :root {
-        --text: #2d211c;
-        --muted: #7b6a61;
-        --cream: #fff7ef;
-        --nude: #d8bcae;
-        --rose: #c98f84;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        padding: 28px;
-        color: var(--text);
-        background:
-          radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.8), transparent 20rem),
-          radial-gradient(circle at 82% 78%, rgba(201, 143, 132, 0.18), transparent 22rem),
-          linear-gradient(135deg, #fffaf5, #ead8ce);
-        font-family: "Inter", sans-serif;
-      }
-
-      .soon {
-        width: min(780px, 100%);
-        padding: clamp(34px, 7vw, 78px);
-        border: 1px solid rgba(255, 255, 255, 0.7);
-        border-radius: 34px;
-        background: rgba(255, 255, 255, 0.38);
-        backdrop-filter: blur(24px);
-        box-shadow: 0 34px 90px rgba(90, 60, 45, 0.12);
-        text-align: center;
-      }
-
-      .brand {
-        margin: 0 0 42px;
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: 0.28em;
-        text-transform: uppercase;
-      }
-
-      .brand span {
-        display: block;
-        margin-top: 6px;
-        color: var(--muted);
-        font-size: 9px;
-        letter-spacing: 0.42em;
-      }
-
-      h1 {
-        margin: 0;
-        font-family: "Cormorant Garamond", serif;
-        font-size: clamp(58px, 10vw, 112px);
-        font-weight: 400;
-        line-height: 0.9;
-      }
-
-      h1 em {
-        color: var(--rose);
-        font-style: italic;
-      }
-
-      p {
-        width: min(520px, 100%);
-        margin: 28px auto 0;
-        color: var(--muted);
-        font-size: 16px;
-        line-height: 1.8;
-      }
-
-      .actions {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 14px;
-        margin-top: 38px;
-      }
-
-      a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 48px;
-        padding: 0 22px;
-        border-radius: 999px;
-        color: inherit;
-        text-decoration: none;
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-      }
-
-      .primary {
-        background: #2d211c;
-        color: #fffaf5;
-      }
-
-      .secondary {
-        border: 1px solid rgba(45, 33, 28, 0.16);
-      }
-    </style>
+    <link rel="stylesheet" href="styles/nude-index.css" />
   </head>
 
   <body>
-    <main class="soon">
-      <p class="brand">
-        REGINA
-        <span>CRAFTLAY</span>
-      </p>
+    <div class="nude-page" id="top" data-theme="nude">
+      <div class="nude-noise" aria-hidden="true"></div>
+      <div class="nude-light nude-light-one" aria-hidden="true"></div>
+      <div class="nude-light nude-light-two" aria-hidden="true"></div>
 
-      <h1>
-        Nude world<br />
-        is <em>coming soon.</em>
-      </h1>
+      <header class="nude-header" data-header>
+        <a class="nude-brand" href="nude-index.html" aria-label="Regina CraftLay home">
+          <span class="nude-brand__star">✦</span>
+          <span>
+            Regina
+            <small>CraftLay</small>
+          </span>
+        </a>
 
-      <p>
-        This soft editorial version of my portfolio is still in development.
-        The full experience will open soon.
-      </p>
+        <nav class="nude-nav" aria-label="Primary navigation">
+          <a href="nude-index.html" class="active">Home</a>
+          <a href="nude-demos.html">Work</a>
+          <a href="nude-journal.html">Journal</a>
+          <a href="nude-contact.html">Contact</a>
+        </nav>
 
-      <div class="actions">
-        <a class="primary" href="index.html">Back to Violet</a>
-        <a class="secondary" href="wild-index.html">Explore Wild</a>
-      </div>
-    </main>
+        <div class="nude-actions">
+          <div class="nude-worlds" aria-label="Choose another visual world">
+            <a href="index.html">Violet</a>
+            <a href="wild-index.html">Wild</a>
+          </div>
+
+          <a class="nude-cta" href="nude-contact.html">
+            Let's work together
+            <span>→</span>
+          </a>
+
+          <button
+            class="nude-menu-toggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            data-menu-toggle
+          >
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+        <nav class="nude-mobile-menu" aria-label="Mobile navigation" data-burger-menu>
+          <a href="nude-index.html" class="active">Home</a>
+          <a href="nude-demos.html">Work</a>
+          <a href="nude-journal.html">Journal</a>
+          <a href="nude-contact.html">Contact</a>
+          <a href="index.html">Violet world</a>
+          <a href="wild-index.html">Wild world</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="nude-hero" aria-labelledby="hero-title">
+          <div class="nude-hero__rail" aria-hidden="true">
+            <span>01</span>
+            <i></i>
+            <b>Soft editorial</b>
+          </div>
+
+          <div class="nude-hero__copy">
+            <p class="nude-eyebrow">Frontend developer & digital creator</p>
+
+            <h1 id="hero-title">
+              Soft interfaces,
+              <em>built with clarity</em>
+              and feeling.
+            </h1>
+
+            <p class="nude-hero__text">
+              I create responsive web experiences where clean structure,
+              gentle interaction and visual atmosphere work together.
+            </p>
+
+            <div class="nude-hero__buttons">
+              <a class="nude-primary" href="nude-demos.html">
+                Explore my work
+                <span>→</span>
+              </a>
+
+              <a class="nude-secondary" href="#about">
+                About my process
+              </a>
+            </div>
+          </div>
+
+          <div class="nude-hero__visual" aria-hidden="true">
+            <img class="nude-hero__bg" src="assets/media/nude.png" alt="" />
+
+            <div class="glass-sheet glass-sheet-one"></div>
+            <div class="glass-sheet glass-sheet-two"></div>
+            <div class="glass-sheet glass-sheet-three"></div>
+
+            <div class="nude-code-card">
+              <span>&lt;/&gt;</span>
+              <p>
+                const idea = clarity;<br />
+                const detail = emotion;<br />
+                return softExperience;
+              </p>
+            </div>
+
+            <div class="nude-orb nude-orb-one"></div>
+            <div class="nude-orb nude-orb-two"></div>
+            <div class="nude-orb nude-orb-three"></div>
+          </div>
+        </section>
+
+        <section class="nude-intro" aria-label="What I do">
+          <article class="nude-intro-card">
+            <span>01</span>
+            <h2>Frontend Development</h2>
+            <p>Semantic HTML, responsive layouts and clean CSS/SASS structure.</p>
+          </article>
+
+          <article class="nude-intro-card">
+            <span>02</span>
+            <h2>Interactive Experiences</h2>
+            <p>JavaScript behavior, menus, modals, filters, state changes and transitions.</p>
+          </article>
+
+          <article class="nude-intro-card">
+            <span>03</span>
+            <h2>Visual Direction</h2>
+            <p>Soft branding, rhythm, spacing, atmosphere and polished interface details.</p>
+          </article>
+
+          <article class="nude-intro-card">
+            <span>04</span>
+            <h2>Responsive Thinking</h2>
+            <p>Design that keeps its character across desktop, tablet and mobile.</p>
+          </article>
+        </section>
+
+        <section class="nude-about" id="about" aria-labelledby="about-title">
+          <div class="nude-about__media">
+            <img src="assets/media/nude-portrait.jpeg" alt="Regina portrait" />
+            <div class="nude-about__glass"></div>
+          </div>
+
+          <div class="nude-about__copy">
+            <p class="nude-eyebrow">About my work</p>
+
+            <h2 id="about-title">
+              Calm design,
+              <em>practical frontend</em>
+              and careful details.
+            </h2>
+
+            <p>
+              Nude is my softer world: warm, clear and intentional. It shows
+              how I build interfaces that feel elegant without losing usability,
+              structure or technical purpose.
+            </p>
+
+            <button class="nude-read-more" type="button" data-about-toggle>
+              Open frontend layer
+              <span>+</span>
+            </button>
+
+            <div class="nude-engineering" data-about-layer>
+              <h3>Frontend layer</h3>
+
+              <ul>
+                <li>Semantic HTML structure</li>
+                <li>CSS/SASS layout system</li>
+                <li>Responsive design for mobile and desktop</li>
+                <li>JavaScript interactions and UI logic</li>
+                <li>Animated transitions and interface states</li>
+                <li>Visual design translated into working code</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="nude-work" id="work" aria-labelledby="work-title">
+          <div class="nude-section-head">
+            <p class="nude-eyebrow">Selected work</p>
+
+            <h2 id="work-title">
+              Clear pages,
+              soft motion,
+              <em>living interfaces.</em>
+            </h2>
+          </div>
+
+          <div class="nude-work-grid">
+            <article class="nude-work-card">
+              <span>01</span>
+              <h3>Regina CraftLay</h3>
+              <p>Creative frontend portfolio with multiple visual worlds and theme logic.</p>
+              <a href="index.html">View project <b>→</b></a>
+            </article>
+
+            <article class="nude-work-card">
+              <span>02</span>
+              <h3>Kristall Reinigung</h3>
+              <p>Business website with clear service structure and responsive presentation.</p>
+              <a href="https://19reginab91.github.io/Kristall-Reinigung/" target="_blank">
+                View project <b>→</b>
+              </a>
+            </article>
+
+            <article class="nude-work-card">
+              <span>03</span>
+              <h3>Amarte Studio</h3>
+              <p>Emotional creative website with handmade atmosphere and visual storytelling.</p>
+              <a href="https://19reginab91.github.io/Amarte_Design_Studio/" target="_blank">
+                View project <b>→</b>
+              </a>
+            </article>
+          </div>
+        </section>
+
+        <section class="nude-statement" aria-label="Creative statement">
+          <p>
+            I believe soft design can still be strong. A quiet interface can
+            guide, impress and stay memorable when every detail has a reason.
+          </p>
+        </section>
+      </main>
+
+      <footer class="nude-footer" id="contact">
+        <div>
+          <p class="nude-eyebrow">Contact</p>
+
+          <h2>
+            Let's create something
+            <em>clear, soft and alive.</em>
+          </h2>
+        </div>
+
+        <nav class="nude-footer__links" aria-label="Footer navigation">
+          <a href="nude-index.html">Home</a>
+          <a href="nude-demos.html">Work</a>
+          <a href="nude-journal.html">Journal</a>
+          <a href="mailto:regina.craftlay@gmail.com">Email me</a>
+        </nav>
+
+        <div class="nude-footer__bottom">
+          <span>© 2026 Regina CraftLay</span>
+          <span>Based in Germany</span>
+          <a href="#top">Back to top ↑</a>
+        </div>
+      </footer>
+    </div>
+
+    <script src="scripts/nude-index.js"></script>
   </body>
 </html>
