@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regina CraftLay | Creative Frontend Developer</title>
+
+    <link rel="icon" href="assets/media/violet-favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/media/violet-favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles/violet-index.css" />
+    <link id="theme-link" rel="stylesheet" href="styles/style-violet.css" />
+  </head>
+
+  <body>
+    <div id="theme-overlay" class="theme-overlay"></div>
+
+    <div class="page" data-theme="violet">
+      <header class="site-header" data-header>
+        <a class="brand" href="#top" aria-label="Regina CraftLay home">
+          REGINA <span>CRAFTLAY</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="violet-index.html">Home</a>
+          <a href="violet-demos.html">Demos</a>
+          <a href="violet-journal.html">Journal</a>
+          <a href="violet-contact.html">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <div
+            class="vibe-switcher desktop-vibe-switcher"
+            aria-label="Choose another visual world"
+            data-vibe-switcher
+          ></div>
+
+          <a class="pill-link" href="violet-contact.html">
+            <span class="star">&#10022;</span>
+            Let's work together
+          </a>
+
+          <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            data-menu-toggle
+          >
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+        <nav class="burger-menu" aria-label="Creative menu" data-burger-menu>
+          <a href="violet-index.html">Home</a>
+          <a href="violet-demos.html">Demos</a>
+          <a href="violet-journal.html">Journal</a>
+          <a href="violet-contact.html">Contact</a>
+
+          <div class="mobile-vibe-block">
+            <p>Choose theme</p>
+            <div
+              class="vibe-switcher mobile-vibe-switcher"
+              aria-label="Choose another visual world"
+              data-vibe-switcher
+            ></div>
+          </div>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="hero section-grid" aria-labelledby="hero-title">
+          <aside class="section-rail" aria-hidden="true">
+            <i></i>
+            <b></b>
+          </aside>
+
+          <div class="hero-copy">
+            <p class="eyebrow">Frontend developer</p>
+
+            <h1 id="hero-title">
+              I create
+              <em>digital</em>
+              experiences
+              that feel
+              <em class="rose">alive</em>
+            </h1>
+
+            <p class="hero-text">
+              I combine design, code and creative direction to build meaningful digital products.
+            </p>
+
+            <a class="hero-button" href="violet-demos.html">
+              <span class="star">&#10022;</span>
+              View my demos
+            </a>
+          </div>
+
+          <div class="hero-scene" aria-hidden="true">
+            <img class="hero-space" src="assets/media/hero-background.png" alt="" />
+            <div class="code-charge-glow"></div>
+            <img class="hero-hand" src="assets/media/hero-hand2.png" alt="" />
+            <canvas id="heroCanvas" class="hero-canvas"></canvas>
+            <span class="portal-touch"></span>
+            <p class="connected">We are all<br />connected</p>
+          </div>
+        </section>
+
+        
+
+        <section class="about-panel" id="about" aria-label="About, expertise and journal">
+          <img class="portrait-crystals" src="assets/media/crystals.png" alt="" />
+
+          <article class="about-copy">
+            <p class="code-tag">&lt;about&gt;</p>
+            <p class="panel-kicker">About Me</p>
+
+            <h2>
+              I'm a developer
+              with a <em>creative</em> mind
+              and an eye
+              for <em>details.</em>
+            </h2>
+
+            <p>
+              I enjoy the process where design and code come together to create something meaningful.
+            </p>
+
+            <a class="line-link" href="violet-contact.html">More about me <span>&#8594;</span></a>
+            <p class="code-tag code-tag-end">&lt;/about&gt;</p>
+          </article>
+
+          <figure class="portrait-card">
+            <img class="portrait-nebula" src="assets/media/nebula.png" alt="" />
+            <div class="portrait-frame"></div>
+            <img class="portrait-person" src="assets/media/regina-cut.png" alt="Regina portrait" />
+          </figure>
+
+          <article class="skills" id="skills">
+            <p class="code-tag">&lt;expertise&gt;</p>
+            <p class="panel-kicker">Creative & Technical Spectrum</p>
+
+            <div class="skill-group">
+              <span>Concept & Vision</span>
+              <p>Author's Web Design / Deep Creative Strategy / Figma Proficiency</p>
+            </div>
+
+            <div class="skill-group">
+              <span>Code & Texture</span>
+              <p>HTML5 / CSS3 / SASS / JavaScript (ES6+) / React</p>
+            </div>
+
+            <div class="skill-group">
+              <span>Environment & Workflow</span>
+              <p>VS Code / Git / GitHub</p>
+            </div>
+
+            <div class="skill-group">
+              <span>Next-Gen Engineering</span>
+              <p>AI-Assisted Development (ChatGPT / Gemini / Codex)</p>
+            </div>
+
+            <a class="download-link" href="violet-contact.html">Let's create together <span>&#8594;</span></a>
+            <p class="code-tag code-tag-end">&lt;/expertise&gt;</p>
+          </article>
+
+          <article class="journal" id="journal">
+            <div class="journal-inner">
+              <p class="code-tag">&lt;journal&gt;</p>
+              <p class="panel-kicker">Journal</p>
+
+              <h2>
+                Thoughts,
+                inspiration and
+                creative <em>process.</em>
+              </h2>
+
+              <a class="line-link" href="violet-journal.html">
+                Explore the Journal
+                <span>&#8594;</span>
+              </a>
+
+              <img class="journal-crystals" src="assets/media/journal-crystals.png" alt="" />
+              <p class="code-tag code-tag-end">&lt;/journal&gt;</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="work" id="demos" aria-labelledby="demos-title">
+          <div class="section-label">
+            <i></i>
+            <p class="section-kicker">Portfolio pieces</p>
+
+            <h2 id="demos-title">
+              Creative<br />
+              Demos
+            </h2>
+
+            <a href="violet-demos.html">
+              Explore all demos
+              <b>+</b>
+            </a>
+          </div>
+
+          <div class="work-stage">
+            <div class="project-strip" data-project-strip>
+              <article class="project-card">
+                <img src="assets/media/calculator.png" alt="Calculator project preview" />
+                <div class="project-card__info">
+                  <h3>Calculator</h3>
+                  <p>Web design / development</p>
+                </div>
+                <a href="violet-demos.html" aria-label="Open Calculator project">&#8594;</a>
+              </article>
+
+              <article class="project-card">
+                <img src="assets/media/kristall-reinigung.png" alt="Kristall Reinigung project preview" />
+                <div class="project-card__info">
+                  <h3>Kristall</h3>
+                  <p>Business landing page</p>
+                </div>
+                <a href="violet-demos.html" aria-label="Open Kristall project">&#8594;</a>
+              </article>
+
+              <article class="project-card">
+                <img src="assets/media/amarte.png" alt="Amarte Design Studio project preview" />
+                <div class="project-card__info">
+                  <h3>Amarte</h3>
+                  <p>Creative portfolio</p>
+                </div>
+                <a href="violet-demos.html" aria-label="Open Amarte project">&#8594;</a>
+              </article>
+
+              <article class="project-card">
+                <img src="assets/media/hanna-sport.png" alt="Hanna Sport project preview" />
+                <div class="project-card__info">
+                  <h3>Hanna Sport</h3>
+                  <p>Campaign / animation</p>
+                </div>
+                <a href="violet-demos.html" aria-label="Open Hanna Sport project">&#8594;</a>
+              </article>
+
+              <article class="project-card">
+                <img src="assets/media/tree-service.png" alt="Tree Service project preview" />
+                <div class="project-card__info">
+                  <h3>Tree Service</h3>
+                  <p>Landing page / UI</p>
+                </div>
+                <a href="violet-demos.html" aria-label="Open Tree Service project">&#8594;</a>
+              </article>
+            </div>
+
+            <div class="slider-dots" aria-label="Project navigation">
+              <button class="active" type="button" data-dot="0" aria-label="Go to project 1"></button>
+              <button type="button" data-dot="1" aria-label="Go to project 2"></button>
+              <button type="button" data-dot="2" aria-label="Go to project 3"></button>
+              <button type="button" data-dot="3" aria-label="Go to project 4"></button>
+              <button type="button" data-dot="4" aria-label="Go to project 5"></button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer" id="contact">
+        <img class="footer-bg" src="assets/media/footer-bg.jpeg" alt="" />
+        <canvas id="footerCanvas" class="footer-canvas" aria-hidden="true"></canvas>
+        <div class="footer-overlay"></div>
+
+        <div class="footer-code">
+          <p>
+            let imagination = true;<br />
+            while(creating) {<br />
+            &nbsp;&nbsp;dream();<br />
+            &nbsp;&nbsp;code();<br />
+            &nbsp;&nbsp;makeItAlive();<br />
+            }
+          </p>
+        </div>
+
+        <div class="footer-cta">
+          <h2>
+            Imagination has
+            no limits.
+            <em>Let's create.</em>
+          </h2>
+
+          <a href="violet-contact.html">Let's talk <span>+</span></a>
+        </div>
+
+        <ul class="social-links" aria-label="Social links">
+          <li><a href="#contact">Instagram</a></li>
+          <li><a href="#contact">LinkedIn</a></li>
+          <li><a href="https://github.com/19ReginaB91" target="_blank">GitHub</a></li>
+          <li><a href="mailto:regina.craftlay@gmail.com">Email me</a></li>
+        </ul>
+
+        <div class="footer-bottom">
+          <span>&copy; 2026 Regina CraftLay</span>
+          <span>Based in Germany</span>
+          <a href="#top">Back to top <b>&#8593;</b></a>
+        </div>
+      </footer>
+    </div>
+
+    <script src="scripts/violet-index.js"></script>
+  </body>
+</html>

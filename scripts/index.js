@@ -1,410 +1,369 @@
-const header = document.querySelector("[data-header]");
-const menuToggle = document.querySelector("[data-menu-toggle]");
-const burgerMenu = document.querySelector("[data-burger-menu]");
+document.documentElement.classList.add("js");
 
-window.addEventListener("scroll", () => {
-  header?.classList.toggle("is-scrolled", window.scrollY > 20);
-});
+const menuButton = document.querySelector(".menu-button");
+const mobileNavLinks = document.querySelectorAll(".mobile-nav a");
+const yearElement = document.querySelector("#year");
+const languageButtons = document.querySelectorAll("[data-lang]");
+const translatableItems = document.querySelectorAll("[data-i18n]");
+const revealItems = document.querySelectorAll(".reveal");
 
-/* MENU */
+const translations = {
+  en: {
+    navOffer: "Offer",
+    navPrices: "Prices",
+    navProjects: "Projects",
+    navWorlds: "Worlds",
+    navContact: "Contact",
+    headerCta: "Start a project",
 
-function closeMenu() {
-  burgerMenu?.classList.remove("is-open");
-  menuToggle?.classList.remove("is-active");
-  header?.classList.remove("is-open");
-  document.body.classList.remove("menu-open");
-  menuToggle?.setAttribute("aria-expanded", "false");
-}
+    heroEyebrow: "Creative Frontend Atelier",
+    heroTitle: "Digital worlds,",
+    heroTitleAccent: "tailored by hand.",
+    heroText:
+      "I design and code websites with structure, mood and edge — clear enough for business, emotional enough to be remembered.",
+    heroButtonPrices: "See prices",
+    heroButtonWorlds: "Walk through my worlds",
+    heroCaptionOne: "Designed with feeling",
+    heroCaptionTwo: "Coded by hand",
+    heroSideText: "Structure / Mood / Frontend / Visual Direction",
 
-function openMenu() {
-  burgerMenu?.classList.add("is-open");
-  menuToggle?.classList.add("is-active");
-  header?.classList.add("is-open");
-  document.body.classList.add("menu-open");
-  menuToggle?.setAttribute("aria-expanded", "true");
-}
+    statementNumber: "01",
+    statementTitle: "I don’t build pages.",
+    statementTitleAccent: "I build atmospheres.",
+    statementText:
+      "Every project needs its own visual language — sometimes calm and minimal, sometimes deep and dramatic, sometimes clean and trustworthy. My work starts with mood, continues with structure and ends in clean code.",
 
-menuToggle?.addEventListener("click", () => {
-  const isOpen = burgerMenu?.classList.contains("is-open");
+    offerEyebrow: "What I create",
+    offerTitle: "Design direction,",
+    offerTitleAccent: "structure and code.",
+    offerOneTitle: "Landing Pages",
+    offerOneText:
+      "Strong one-page websites for offers, campaigns and first business presence.",
+    offerTwoTitle: "Business Websites",
+    offerTwoText:
+      "Multi-page websites for local businesses, services and personal brands.",
+    offerThreeTitle: "Visual Concepts",
+    offerThreeText:
+      "Mood, colors, layout direction and the world your project should live in.",
+    offerFourTitle: "Frontend Build",
+    offerFourText:
+      "Responsive HTML, CSS and JavaScript — clean, structured and handcrafted.",
 
-  if (isOpen) {
-    closeMenu();
-  } else {
-    openMenu();
-  }
-});
+    pricesEyebrow: "Starting prices",
+    pricesTitle: "Clear packages,",
+    pricesTitleAccent: "custom depth.",
+    pricesText:
+      "Every project is different. These prices are starting points — the final price depends on pages, content, design depth and special features.",
+    priceOneName: "Landing Page",
+    priceOneValue: "from 900 €",
+    priceOneText: "One-page website / responsive layout / contact section",
+    priceTwoName: "Business Website",
+    priceTwoValue: "from 1.500 €",
+    priceTwoText: "Several pages / services / mobile version / legal pages",
+    priceThreeName: "Premium Website",
+    priceThreeValue: "from 2.500 €",
+    priceThreeText:
+      "Custom visual world / stronger concept / animations / more depth",
 
-burgerMenu?.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", closeMenu);
-});
+    projectsEyebrow: "Selected works",
+    projectsTitle: "Websites with",
+    projectsTitleAccent: "their own character.",
+    projectOneType: "Premium business website",
+    projectOneTitle: "Rund um den Baum",
+    projectOneText:
+      "A multi-page tree service website with natural depth, clear service structure, legal pages, contact flow and responsive layout.",
+    projectTwoType: "Local service website",
+    projectTwoTitle: "Kristall Reinigung",
+    projectTwoText:
+      "A clean business website for a cleaning company with service structure, accordion content and trust-focused customer flow.",
+    projectThreeType: "Creative studio website",
+    projectThreeTitle: "Amarte Design Studio",
+    projectThreeText:
+      "A creative multi-page website with gallery filters, visual storytelling and strong editorial atmosphere.",
+    projectFourType: "Campaign landing page",
+    projectFourTitle: "Hannah Sport",
+    projectFourText:
+      "A campaign landing page with product cards, promotional sections and conversion-focused structure.",
+    projectLink: "Visit website",
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    closeMenu();
-  }
-});
+    worldsEyebrow: "Design worlds",
+    worldsTitle: "Walk through",
+    worldsTitleAccent: "my worlds.",
+    worldsText:
+      "First, see what we can build. Then, walk through the moods — from clean signal to wild editorial edge.",
+    worldsNote:
+      "These worlds are still growing and will be updated regularly — like a living portfolio.",
 
-/* THEME SWITCHER */
+    worldPrimaryTitle: "Clean Signal",
+    worldPrimaryText:
+      "The clear starting point — bright, structured and direct, with sharp lime and a quiet blue undertone.",
+    worldCurrent: "You are here",
 
-/* THEME SWITCHER */
+    worldOneTitle: "Wild Noir",
+    worldOneText:
+      "Deep contrast, editorial drama, black-and-white strength and a hidden textile edge.",
+    worldTwoTitle: "Violet Mood",
+    worldTwoText:
+      "Luminous accents, digital softness and a little bit of visual magic.",
+    worldThreeTitle: "Soft Nude",
+    worldThreeText:
+      "Warm, calm and refined — for projects that need softness, trust and elegance.",
+    worldVisit: "Enter world",
 
-const page = document.querySelector(".page");
-const vibeSwitchers = document.querySelectorAll("[data-vibe-switcher]");
+    contactEyebrow: "Start a project",
+    contactTitle: "Have an idea?",
+    contactTitleAccent: "Let’s give it a world.",
+    contactText:
+      "Tell me what you want to create — a landing page, a business website, a portfolio or a complete visual direction.",
+    contactButton: "Write me",
 
-const themes = {
-  violet: {
-    label: "Violet",
-    url: "index.html"
+    footerBack: "Back to top",
+    footerEmail: "Email",
+    footerGithub: "GitHub",
+    footerImpressum: "Impressum",
+    footerDatenschutz: "Privacy Policy",
+    footerCookies: "Cookie settings"
   },
-  bold: {
-    label: "Wild",
-    url: "wild-index.html",
-    preview: true
-  },
-  nude: {
-    label: "Nude",
-    url: "nude-coming-soon.html"
+
+  de: {
+    navOffer: "Angebot",
+    navPrices: "Preise",
+    navProjects: "Projekte",
+    navWorlds: "Welten",
+    navContact: "Kontakt",
+    headerCta: "Projekt starten",
+
+    heroEyebrow: "Kreatives Frontend-Atelier",
+    heroTitle: "Digitale Welten,",
+    heroTitleAccent: "von Hand gestaltet.",
+    heroText:
+      "Ich gestalte und entwickle Webseiten mit Struktur, Stimmung und Charakter — klar genug fürs Business und emotional genug, um in Erinnerung zu bleiben.",
+    heroButtonPrices: "Preise ansehen",
+    heroButtonWorlds: "Durch meine Welten gehen",
+    heroCaptionOne: "Mit Gefühl gestaltet",
+    heroCaptionTwo: "Von Hand programmiert",
+    heroSideText: "Struktur / Stimmung / Frontend / Visuelle Richtung",
+
+    statementNumber: "01",
+    statementTitle: "Ich baue keine Seiten.",
+    statementTitleAccent: "Ich baue Atmosphären.",
+    statementText:
+      "Jedes Projekt braucht seine eigene visuelle Sprache — manchmal ruhig und minimalistisch, manchmal tief und dramatisch, manchmal klar und vertrauensvoll. Meine Arbeit beginnt mit Stimmung, wächst durch Struktur und endet in sauberem Code.",
+
+    offerEyebrow: "Was ich erstelle",
+    offerTitle: "Designrichtung,",
+    offerTitleAccent: "Struktur und Code.",
+    offerOneTitle: "Landing Pages",
+    offerOneText:
+      "Starke Onepager für Angebote, Kampagnen oder den ersten professionellen Auftritt.",
+    offerTwoTitle: "Business-Webseiten",
+    offerTwoText:
+      "Mehrseitige Webseiten für lokale Unternehmen, Dienstleister und persönliche Marken.",
+    offerThreeTitle: "Visuelle Konzepte",
+    offerThreeText:
+      "Stimmung, Farben, Layout-Richtung und die Welt, in der Ihr Projekt leben soll.",
+    offerFourTitle: "Frontend-Umsetzung",
+    offerFourText:
+      "Responsive HTML-, CSS- und JavaScript-Umsetzung — klar, strukturiert und handgemacht.",
+
+    pricesEyebrow: "Startpreise",
+    pricesTitle: "Klare Pakete,",
+    pricesTitleAccent: "individuelle Tiefe.",
+    pricesText:
+      "Jedes Projekt ist anders. Diese Preise sind Startpunkte — der endgültige Preis hängt von Seitenumfang, Inhalten, Designtiefe und besonderen Funktionen ab.",
+    priceOneName: "Landing Page",
+    priceOneValue: "ab 900 €",
+    priceOneText: "Onepager / responsive Layout / Kontaktbereich",
+    priceTwoName: "Business-Webseite",
+    priceTwoValue: "ab 1.500 €",
+    priceTwoText: "Mehrere Seiten / Leistungen / mobile Version / Rechtliches",
+    priceThreeName: "Premium-Webseite",
+    priceThreeValue: "ab 2.500 €",
+    priceThreeText:
+      "Eigene visuelle Welt / stärkeres Konzept / Animationen / mehr Tiefe",
+
+    projectsEyebrow: "Ausgewählte Arbeiten",
+    projectsTitle: "Webseiten mit",
+    projectsTitleAccent: "eigenem Charakter.",
+    projectOneType: "Premium-Webseite für Dienstleister",
+    projectOneTitle: "Rund um den Baum",
+    projectOneText:
+      "Eine mehrseitige Webseite für einen Baumpflegebetrieb mit natürlicher Tiefe, klarer Leistungsstruktur, rechtlichen Seiten, Kontaktführung und responsivem Layout.",
+    projectTwoType: "Webseite für lokales Unternehmen",
+    projectTwoTitle: "Kristall Reinigung",
+    projectTwoText:
+      "Eine klare Business-Webseite für eine Reinigungsfirma mit Leistungsstruktur, Akkordeon-Inhalten und vertrauensvollem Kundenweg.",
+    projectThreeType: "Webseite für ein Kreativstudio",
+    projectThreeTitle: "Amarte Design Studio",
+    projectThreeText:
+      "Eine kreative mehrseitige Webseite mit Galerie-Filtern, visuellem Storytelling und starker editorialer Atmosphäre.",
+    projectFourType: "Kampagnen-Landingpage",
+    projectFourTitle: "Hannah Sport",
+    projectFourText:
+      "Eine Kampagnen-Landingpage mit Produktkarten, Aktionsbereichen und klarer Conversion-Struktur.",
+    projectLink: "Webseite ansehen",
+
+    worldsEyebrow: "Designwelten",
+    worldsTitle: "Spazieren Sie durch",
+    worldsTitleAccent: "meine Welten.",
+    worldsText:
+      "Zuerst sehen Sie, was wir bauen können. Danach beginnt der Spaziergang durch die Stimmungen — von Clean Signal bis zu wildem Editorial Edge.",
+    worldsNote:
+      "Diese Welten sind noch im Aufbau und werden regelmäßig erweitert — wie ein lebendiges Portfolio.",
+
+    worldPrimaryTitle: "Clean Signal",
+    worldPrimaryText:
+      "Der klare Ausgangspunkt — hell, strukturiert und direkt, mit scharfem Lime und einem ruhigen blauen Unterton.",
+    worldCurrent: "Sie sind hier",
+
+    worldOneTitle: "Wild Noir",
+    worldOneText:
+      "Starke Kontraste, editorialer Ausdruck, Schwarz-Weiß-Kraft und eine versteckte textile Ebene.",
+    worldTwoTitle: "Violet Mood",
+    worldTwoText:
+      "Leuchtende Akzente, digitale Weichheit und ein kleiner Hauch visueller Magie.",
+    worldThreeTitle: "Soft Nude",
+    worldThreeText:
+      "Warm, ruhig und fein — für Projekte, die Weichheit, Vertrauen und Eleganz brauchen.",
+    worldVisit: "Welt betreten",
+
+    contactEyebrow: "Projekt starten",
+    contactTitle: "Sie haben eine Idee?",
+    contactTitleAccent: "Wir geben ihr eine Welt.",
+    contactText:
+      "Erzählen Sie mir, was entstehen soll — eine Landing Page, eine Business-Webseite, ein Portfolio oder eine vollständige visuelle Richtung.",
+    contactButton: "Schreiben Sie mir",
+
+    footerBack: "Nach oben",
+    footerEmail: "E-Mail",
+    footerGithub: "GitHub",
+    footerImpressum: "Impressum",
+    footerDatenschutz: "Datenschutz",
+    footerCookies: "Cookie-Einstellungen"
   }
 };
 
-let isThemeChanging = false;
+function initYear() {
+  if (!yearElement) return;
 
-function createWildPreview() {
-  let preview = document.querySelector("[data-wild-preview]");
-
-  if (preview) return preview;
-
-  preview = document.createElement("div");
-  preview.className = "wild-preview";
-  preview.dataset.wildPreview = "";
-
-  preview.innerHTML = `
-    <div class="wild-preview__glow" aria-hidden="true"></div>
-
-    <div class="wild-preview__panel" role="status" aria-live="polite">
-      <p class="wild-preview__kicker">Wild Preview</p>
-
-      <h2>
-        This world is already alive,
-        <em>but still evolving.</em>
-      </h2>
-
-      <p>
-        Step inside and feel the direction before the final version arrives.
-      </p>
-    </div>
-  `;
-
-  document.body.appendChild(preview);
-
-  return preview;
+  yearElement.textContent = new Date().getFullYear();
 }
 
-function startThemeTransition(themeName) {
-  if (isThemeChanging || !themes[themeName]) return;
-
-  const theme = themes[themeName];
-  const currentPage = window.location.pathname.split("/").pop() || "index.html";
-
-  if (theme.url === currentPage) return;
-
-  isThemeChanging = true;
-
-  burgerMenu?.classList.remove("is-open");
-  menuToggle?.classList.remove("is-active");
-  header?.classList.remove("is-open");
+function closeMobileMenu() {
   document.body.classList.remove("menu-open");
-  menuToggle?.setAttribute("aria-expanded", "false");
 
-  if (theme.preview) {
-    const preview = createWildPreview();
+  if (!menuButton) return;
 
-    document.body.classList.add("wild-preview-active");
+  menuButton.setAttribute("aria-expanded", "false");
+  menuButton.setAttribute("aria-label", "Open menu");
+}
 
-    requestAnimationFrame(() => {
-      preview.classList.add("is-active");
+function initMobileMenu() {
+  if (!menuButton) return;
+
+  menuButton.addEventListener("click", () => {
+    const isOpen = document.body.classList.toggle("menu-open");
+
+    menuButton.setAttribute("aria-expanded", String(isOpen));
+    menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+  });
+
+  mobileNavLinks.forEach((link) => {
+    link.addEventListener("click", closeMobileMenu);
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMobileMenu();
+    }
+  });
+}
+
+function setLanguage(language) {
+  const selectedLanguage = translations[language] ? language : "en";
+  const dictionary = translations[selectedLanguage];
+
+  translatableItems.forEach((item) => {
+    const key = item.dataset.i18n;
+
+    if (!key || !dictionary[key]) return;
+
+    item.textContent = dictionary[key];
+  });
+
+  languageButtons.forEach((button) => {
+    const isActive = button.dataset.lang === selectedLanguage;
+
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+
+  document.documentElement.lang = selectedLanguage;
+  localStorage.setItem("regina-craftlay-language", selectedLanguage);
+}
+
+function initLanguageSwitcher() {
+  if (!languageButtons.length || !translatableItems.length) return;
+
+  const savedLanguage = localStorage.getItem("regina-craftlay-language");
+  const browserLanguage = navigator.language.toLowerCase().startsWith("de") ? "de" : "en";
+  const initialLanguage = savedLanguage || browserLanguage;
+
+  setLanguage(initialLanguage);
+
+  languageButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      setLanguage(button.dataset.lang);
     });
+  });
+}
 
-    setTimeout(() => {
-      window.location.href = theme.url;
-    }, 3600);
+function initReveal() {
+  if (!revealItems.length) return;
+
+  if (!("IntersectionObserver" in window)) {
+    revealItems.forEach((item) => {
+      item.classList.add("visible");
+    });
 
     return;
   }
 
-  window.location.href = theme.url;
-}
+  const observer = new IntersectionObserver(
+    (entries, currentObserver) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
 
-function renderThemeButtons(activeTheme) {
-  if (!vibeSwitchers.length) return;
-
-  vibeSwitchers.forEach((vibeSwitcher) => {
-    vibeSwitcher.innerHTML = "";
-
-    Object.entries(themes).forEach(([themeName, theme]) => {
-      if (themeName === activeTheme) return;
-
-      const button = document.createElement("button");
-      button.className = `vibe-btn vibe-${themeName}`;
-      button.type = "button";
-      button.dataset.themeBtn = themeName;
-      button.setAttribute("aria-label", `${theme.label} world`);
-      button.innerHTML = `<span>${theme.label}</span>`;
-
-      button.addEventListener("click", () => {
-        startThemeTransition(themeName);
+        entry.target.classList.add("visible");
+        currentObserver.unobserve(entry.target);
       });
-
-      vibeSwitcher.appendChild(button);
-    });
-  });
-}
-
-renderThemeButtons(page?.dataset.theme || "violet");
-
-/* DEMOS DOT SLIDER */
-
-const projectStrip = document.querySelector("[data-project-strip]");
-const dots = document.querySelectorAll("[data-dot]");
-
-function getProjectStep() {
-  if (!projectStrip) return 0;
-
-  const card = projectStrip.querySelector(".project-card");
-  const gap = 28;
-
-  return card ? card.offsetWidth + gap : 360;
-}
-
-function goToProject(index) {
-  if (!projectStrip) return;
-
-  const amount = getProjectStep();
-
-  projectStrip.scrollTo({
-    left: amount * index,
-    behavior: "smooth"
-  });
-
-  dots.forEach((dot) => dot.classList.remove("active"));
-  dots[index]?.classList.add("active");
-}
-
-dots.forEach((dot) => {
-  dot.addEventListener("click", () => {
-    goToProject(Number(dot.dataset.dot));
-  });
-});
-
-projectStrip?.addEventListener("scroll", () => {
-  const amount = getProjectStep();
-  if (!amount) return;
-
-  const index = Math.round(projectStrip.scrollLeft / amount);
-
-  dots.forEach((dot) => dot.classList.remove("active"));
-  dots[index]?.classList.add("active");
-});
-
-/* HERO CANVAS */
-
-const heroCanvas = document.getElementById("heroCanvas");
-const heroCtx = heroCanvas?.getContext("2d");
-
-let heroW = 0;
-let heroH = 0;
-let heroDpr = 1;
-
-function resizeHeroCanvas() {
-  if (!heroCanvas || !heroCtx) return;
-
-  heroDpr = Math.min(window.devicePixelRatio || 1, 2);
-  heroW = heroCanvas.clientWidth;
-  heroH = heroCanvas.clientHeight;
-
-  heroCanvas.width = heroW * heroDpr;
-  heroCanvas.height = heroH * heroDpr;
-
-  heroCtx.setTransform(heroDpr, 0, 0, heroDpr, 0, 0);
-}
-
-const heroStars = Array.from({ length: 48 }, () => ({
-  x: Math.random(),
-  y: Math.random(),
-  r: Math.random() * 1.05 + 0.25,
-  phase: Math.random() * Math.PI * 2,
-  speed: Math.random() * 0.45 + 0.16
-}));
-
-function glowPoint(ctx, x, y, radius, color, alpha) {
-  const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
-
-  gradient.addColorStop(0, `rgba(${color}, ${alpha})`);
-  gradient.addColorStop(0.35, `rgba(${color}, ${alpha * 0.35})`);
-  gradient.addColorStop(1, `rgba(${color}, 0)`);
-
-  ctx.fillStyle = gradient;
-  ctx.beginPath();
-  ctx.arc(x, y, radius, 0, Math.PI * 2);
-  ctx.fill();
-}
-
-function animateHero(time) {
-  if (!heroCanvas || !heroCtx) return;
-
-  heroCtx.clearRect(0, 0, heroW, heroH);
-
-  heroStars.forEach((star) => {
-    const twinkle =
-      0.18 +
-      0.42 *
-        Math.pow(
-          (Math.sin(time * 0.001 * star.speed + star.phase) + 1) / 2,
-          2
-        );
-
-    glowPoint(
-      heroCtx,
-      star.x * heroW,
-      star.y * heroH,
-      star.r * 4,
-      "255,230,255",
-      twinkle * 0.22
-    );
-  });
-
-  const portalX = heroW * 0.558;
-  const portalY = heroH * 0.495;
-  const pulse = 0.5 + 0.5 * Math.sin(time * 0.001);
-
-  glowPoint(
-    heroCtx,
-    portalX,
-    portalY,
-    78 + pulse * 32,
-    "155,230,255",
-    0.08 + pulse * 0.07
+    },
+    {
+      threshold: 0.14,
+      rootMargin: "0px 0px -70px 0px"
+    }
   );
 
-  glowPoint(
-    heroCtx,
-    portalX,
-    portalY,
-    50 + pulse * 22,
-    "232,140,255",
-    0.06 + pulse * 0.06
-  );
-
-  requestAnimationFrame(animateHero);
-}
-
-/* FOOTER CANVAS */
-
-const footerCanvas = document.getElementById("footerCanvas");
-const footerCtx = footerCanvas?.getContext("2d");
-
-let footerW = 0;
-let footerH = 0;
-let footerDpr = 1;
-
-function resizeFooterCanvas() {
-  if (!footerCanvas || !footerCtx) return;
-
-  footerDpr = Math.min(window.devicePixelRatio || 1, 2);
-  footerW = footerCanvas.clientWidth;
-  footerH = footerCanvas.clientHeight;
-
-  footerCanvas.width = footerW * footerDpr;
-  footerCanvas.height = footerH * footerDpr;
-
-  footerCtx.setTransform(footerDpr, 0, 0, footerDpr, 0, 0);
-}
-
-const footerParticles = Array.from({ length: 75 }, () => ({
-  x: Math.random(),
-  y: Math.random(),
-  r: Math.random() * 1.8 + 0.45,
-  phase: Math.random() * Math.PI * 2,
-  speed: Math.random() * 0.35 + 0.08,
-  drift: Math.random() * 22 + 8
-}));
-
-function animateFooter(time) {
-  if (!footerCanvas || !footerCtx) return;
-
-  footerCtx.clearRect(0, 0, footerW, footerH);
-
-  footerParticles.forEach((p) => {
-    const x = p.x * footerW + Math.sin(time * 0.00018 + p.phase) * p.drift;
-    const y = p.y * footerH + Math.cos(time * 0.00016 + p.phase) * (p.drift * 0.7);
-
-    const alpha =
-      0.12 +
-      0.36 *
-        ((Math.sin(time * 0.001 * p.speed + p.phase) + 1) / 2);
-
-    glowPoint(footerCtx, x, y, p.r * 7, "190,220,255", alpha);
+  revealItems.forEach((item) => {
+    observer.observe(item);
   });
-
-  requestAnimationFrame(animateFooter);
 }
 
-/* INIT */
+function initHeaderShadow() {
+  const header = document.querySelector(".site-header");
 
-window.addEventListener("resize", () => {
-  resizeHeroCanvas();
-  resizeFooterCanvas();
-});
+  if (!header) return;
 
-resizeHeroCanvas();
-resizeFooterCanvas();
-
-requestAnimationFrame(animateHero);
-requestAnimationFrame(animateFooter);
-
-/* SCROLL REVEAL */
-
-const revealItems = document.querySelectorAll(`
-  .hero-copy,
-  .hero-scene,
-  .project-card,
-  .about-copy,
-  .portrait-card,
-  .skills,
-  .journal,
-  .footer-code,
-  .footer-cta,
-  .social-links
-`);
-
-const scrollRevealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-      }
-    });
-  },
-  {
-    threshold: 0.12
-  }
-);
-
-revealItems.forEach((item) => {
-  item.classList.add("reveal");
-
-  if (item.classList.contains("hero-copy")) {
-    item.classList.add("reveal-left");
-  } else if (
-    item.classList.contains("hero-scene") ||
-    item.classList.contains("journal")
-  ) {
-    item.classList.add("reveal-right");
-  } else if (item.classList.contains("portrait-card")) {
-    item.classList.add("reveal-scale");
-  } else {
-    item.classList.add("reveal-up");
+  function updateHeader() {
+    header.classList.toggle("is-scrolled", window.scrollY > 20);
   }
 
-  scrollRevealObserver.observe(item);
-});
+  updateHeader();
+  window.addEventListener("scroll", updateHeader, { passive: true });
+}
+
+initYear();
+initMobileMenu();
+initLanguageSwitcher();
+initReveal();
+initHeaderShadow();

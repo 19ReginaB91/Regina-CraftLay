@@ -1,316 +1,350 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Regina CraftLay | Creative Frontend Developer</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Regina CraftLay | Creative Frontend Atelier</title>
+  <meta
+    name="description"
+    content="Creative frontend atelier for websites with structure, mood and edge. Designed with feeling, coded by hand."
+  >
 
-    <link rel="icon" href="assets/media/violet-favicon.png" type="image/png" />
-    <link rel="apple-touch-icon" href="assets/media/violet-favicon.png" />
+  <link rel="stylesheet" href="styles/index.css">
+</head>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<body>
+  <header class="site-header" id="top">
+    <a class="brand" href="index.html" aria-label="Regina CraftLay home">
+      <span>Regina</span>
+      <span>CraftLay</span>
+    </a>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500&family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#offer" data-i18n="navOffer">Offer</a>
+      <a href="#prices" data-i18n="navPrices">Prices</a>
+      <a href="#projects" data-i18n="navProjects">Projects</a>
+      <a href="#worlds" data-i18n="navWorlds">Worlds</a>
+      <a href="#contact" data-i18n="navContact">Contact</a>
+    </nav>
 
-    <link rel="stylesheet" href="styles/index.css" />
-    <link id="theme-link" rel="stylesheet" href="styles/style-violet.css" />
-  </head>
-
-  <body>
-    <div id="theme-overlay" class="theme-overlay"></div>
-
-    <div class="page" data-theme="violet">
-      <header class="site-header" data-header>
-        <a class="brand" href="#top" aria-label="Regina CraftLay home">
-          REGINA <span>CRAFTLAY</span>
-        </a>
-
-        <nav class="main-nav" aria-label="Primary navigation">
-          <a href="index.html">Home</a>
-          <a href="demos.html">Demos</a>
-          <a href="journal.html">Journal</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-
-        <div class="header-actions">
-          <div
-            class="vibe-switcher desktop-vibe-switcher"
-            aria-label="Choose another visual world"
-            data-vibe-switcher
-          ></div>
-
-          <a class="pill-link" href="contact.html">
-            <span class="star">&#10022;</span>
-            Let's work together
-          </a>
-
-          <button
-            class="menu-toggle"
-            type="button"
-            aria-label="Open menu"
-            aria-expanded="false"
-            data-menu-toggle
-          >
-            <span></span>
-            <span></span>
-          </button>
-        </div>
-
-        <nav class="burger-menu" aria-label="Creative menu" data-burger-menu>
-          <a href="index.html">Home</a>
-          <a href="demos.html">Demos</a>
-          <a href="journal.html">Journal</a>
-          <a href="contact.html">Contact</a>
-
-          <div class="mobile-vibe-block">
-            <p>Choose theme</p>
-            <div
-              class="vibe-switcher mobile-vibe-switcher"
-              aria-label="Choose another visual world"
-              data-vibe-switcher
-            ></div>
-          </div>
-        </nav>
-      </header>
-
-      <main id="top">
-        <section class="hero section-grid" aria-labelledby="hero-title">
-          <aside class="section-rail" aria-hidden="true">
-            <i></i>
-            <b></b>
-          </aside>
-
-          <div class="hero-copy">
-            <p class="eyebrow">Frontend developer</p>
-
-            <h1 id="hero-title">
-              I create
-              <em>digital</em>
-              experiences
-              that feel
-              <em class="rose">alive</em>
-            </h1>
-
-            <p class="hero-text">
-              I combine design, code and creative direction to build meaningful digital products.
-            </p>
-
-            <a class="hero-button" href="demos.html">
-              <span class="star">&#10022;</span>
-              View my demos
-            </a>
-          </div>
-
-          <div class="hero-scene" aria-hidden="true">
-            <img class="hero-space" src="assets/media/hero-background.png" alt="" />
-            <div class="code-charge-glow"></div>
-            <img class="hero-hand" src="assets/media/hero-hand2.png" alt="" />
-            <canvas id="heroCanvas" class="hero-canvas"></canvas>
-            <span class="portal-touch"></span>
-            <p class="connected">We are all<br />connected</p>
-          </div>
-        </section>
-
-        
-
-        <section class="about-panel" id="about" aria-label="About, expertise and journal">
-          <img class="portrait-crystals" src="assets/media/crystals.png" alt="" />
-
-          <article class="about-copy">
-            <p class="code-tag">&lt;about&gt;</p>
-            <p class="panel-kicker">About Me</p>
-
-            <h2>
-              I'm a developer
-              with a <em>creative</em> mind
-              and an eye
-              for <em>details.</em>
-            </h2>
-
-            <p>
-              I enjoy the process where design and code come together to create something meaningful.
-            </p>
-
-            <a class="line-link" href="contact.html">More about me <span>&#8594;</span></a>
-            <p class="code-tag code-tag-end">&lt;/about&gt;</p>
-          </article>
-
-          <figure class="portrait-card">
-            <img class="portrait-nebula" src="assets/media/nebula.png" alt="" />
-            <div class="portrait-frame"></div>
-            <img class="portrait-person" src="assets/media/regina-cut.png" alt="Regina portrait" />
-          </figure>
-
-          <article class="skills" id="skills">
-            <p class="code-tag">&lt;expertise&gt;</p>
-            <p class="panel-kicker">Creative & Technical Spectrum</p>
-
-            <div class="skill-group">
-              <span>Concept & Vision</span>
-              <p>Author's Web Design / Deep Creative Strategy / Figma Proficiency</p>
-            </div>
-
-            <div class="skill-group">
-              <span>Code & Texture</span>
-              <p>HTML5 / CSS3 / SASS / JavaScript (ES6+) / React</p>
-            </div>
-
-            <div class="skill-group">
-              <span>Environment & Workflow</span>
-              <p>VS Code / Git / GitHub</p>
-            </div>
-
-            <div class="skill-group">
-              <span>Next-Gen Engineering</span>
-              <p>AI-Assisted Development (ChatGPT / Gemini / Codex)</p>
-            </div>
-
-            <a class="download-link" href="contact.html">Let's create together <span>&#8594;</span></a>
-            <p class="code-tag code-tag-end">&lt;/expertise&gt;</p>
-          </article>
-
-          <article class="journal" id="journal">
-            <div class="journal-inner">
-              <p class="code-tag">&lt;journal&gt;</p>
-              <p class="panel-kicker">Journal</p>
-
-              <h2>
-                Thoughts,
-                inspiration and
-                creative <em>process.</em>
-              </h2>
-
-              <a class="line-link" href="journal.html">
-                Explore the Journal
-                <span>&#8594;</span>
-              </a>
-
-              <img class="journal-crystals" src="assets/media/journal-crystals.png" alt="" />
-              <p class="code-tag code-tag-end">&lt;/journal&gt;</p>
-            </div>
-          </article>
-        </section>
-
-        <section class="work" id="demos" aria-labelledby="demos-title">
-          <div class="section-label">
-            <i></i>
-            <p class="section-kicker">Portfolio pieces</p>
-
-            <h2 id="demos-title">
-              Creative<br />
-              Demos
-            </h2>
-
-            <a href="demos.html">
-              Explore all demos
-              <b>+</b>
-            </a>
-          </div>
-
-          <div class="work-stage">
-            <div class="project-strip" data-project-strip>
-              <article class="project-card">
-                <img src="assets/media/calculator.png" alt="Calculator project preview" />
-                <div class="project-card__info">
-                  <h3>Calculator</h3>
-                  <p>Web design / development</p>
-                </div>
-                <a href="demos.html" aria-label="Open Calculator project">&#8594;</a>
-              </article>
-
-              <article class="project-card">
-                <img src="assets/media/kristall-reinigung.png" alt="Kristall Reinigung project preview" />
-                <div class="project-card__info">
-                  <h3>Kristall</h3>
-                  <p>Business landing page</p>
-                </div>
-                <a href="demos.html" aria-label="Open Kristall project">&#8594;</a>
-              </article>
-
-              <article class="project-card">
-                <img src="assets/media/amarte.png" alt="Amarte Design Studio project preview" />
-                <div class="project-card__info">
-                  <h3>Amarte</h3>
-                  <p>Creative portfolio</p>
-                </div>
-                <a href="demos.html" aria-label="Open Amarte project">&#8594;</a>
-              </article>
-
-              <article class="project-card">
-                <img src="assets/media/hanna-sport.png" alt="Hanna Sport project preview" />
-                <div class="project-card__info">
-                  <h3>Hanna Sport</h3>
-                  <p>Campaign / animation</p>
-                </div>
-                <a href="demos.html" aria-label="Open Hanna Sport project">&#8594;</a>
-              </article>
-
-              <article class="project-card">
-                <img src="assets/media/tree-service.png" alt="Tree Service project preview" />
-                <div class="project-card__info">
-                  <h3>Tree Service</h3>
-                  <p>Landing page / UI</p>
-                </div>
-                <a href="demos.html" aria-label="Open Tree Service project">&#8594;</a>
-              </article>
-            </div>
-
-            <div class="slider-dots" aria-label="Project navigation">
-              <button class="active" type="button" data-dot="0" aria-label="Go to project 1"></button>
-              <button type="button" data-dot="1" aria-label="Go to project 2"></button>
-              <button type="button" data-dot="2" aria-label="Go to project 3"></button>
-              <button type="button" data-dot="3" aria-label="Go to project 4"></button>
-              <button type="button" data-dot="4" aria-label="Go to project 5"></button>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer class="site-footer" id="contact">
-        <img class="footer-bg" src="assets/media/footer-bg.jpeg" alt="" />
-        <canvas id="footerCanvas" class="footer-canvas" aria-hidden="true"></canvas>
-        <div class="footer-overlay"></div>
-
-        <div class="footer-code">
-          <p>
-            let imagination = true;<br />
-            while(creating) {<br />
-            &nbsp;&nbsp;dream();<br />
-            &nbsp;&nbsp;code();<br />
-            &nbsp;&nbsp;makeItAlive();<br />
-            }
-          </p>
-        </div>
-
-        <div class="footer-cta">
-          <h2>
-            Imagination has
-            no limits.
-            <em>Let's create.</em>
-          </h2>
-
-          <a href="contact.html">Let's talk <span>+</span></a>
-        </div>
-
-        <ul class="social-links" aria-label="Social links">
-          <li><a href="#contact">Instagram</a></li>
-          <li><a href="#contact">LinkedIn</a></li>
-          <li><a href="https://github.com/19ReginaB91" target="_blank">GitHub</a></li>
-          <li><a href="mailto:regina.craftlay@gmail.com">Email me</a></li>
-        </ul>
-
-        <div class="footer-bottom">
-          <span>&copy; 2026 Regina CraftLay</span>
-          <span>Based in Germany</span>
-          <a href="#top">Back to top <b>&#8593;</b></a>
-        </div>
-      </footer>
+    <div class="language-switcher" aria-label="Language switcher">
+      <button type="button" class="is-active" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="de" aria-pressed="false">DE</button>
     </div>
 
-    <script src="scripts/index.js"></script>
-  </body>
+    <a class="header-link" href="mailto:regina.craftlay@gmail.com" data-i18n="headerCta">
+      Start a project
+    </a>
+
+    <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <a href="#offer" data-i18n="navOffer">Offer</a>
+    <a href="#prices" data-i18n="navPrices">Prices</a>
+    <a href="#projects" data-i18n="navProjects">Projects</a>
+    <a href="#worlds" data-i18n="navWorlds">Worlds</a>
+    <a href="#contact" data-i18n="navContact">Contact</a>
+  </nav>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-snake" aria-hidden="true"></div>
+
+      <div class="hero-copy reveal">
+        <p class="eyebrow" data-i18n="heroEyebrow">Creative Frontend Atelier</p>
+
+        <h1 id="hero-title">
+          <span class="solid-title hero-title-line" data-i18n="heroTitle">Digital worlds,</span>
+          <span data-i18n="heroTitleAccent">tailored by hand.</span>
+        </h1>
+
+        <p data-i18n="heroText">
+          I design and code websites with structure, mood and edge — clear enough for business, emotional enough to be remembered.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-dark" href="#prices" data-i18n="heroButtonPrices">See prices</a>
+          <a class="btn btn-light" href="#worlds" data-i18n="heroButtonWorlds">Walk through my worlds</a>
+        </div>
+      </div>
+
+      <div class="hero-portrait reveal">
+        <div class="portrait-frame">
+          <img src="assets/media/regina-portrait-main.jpeg" alt="Regina, creative frontend developer">
+        </div>
+
+        <div class="portrait-caption">
+          <span data-i18n="heroCaptionOne">Designed with feeling</span>
+          <span data-i18n="heroCaptionTwo">Coded by hand</span>
+        </div>
+      </div>
+
+      <p class="hero-side-text" aria-hidden="true" data-i18n="heroSideText">
+        Structure / Mood / Frontend / Visual Direction
+      </p>
+    </section>
+
+    <section class="statement section reveal">
+      <p class="statement-number" data-i18n="statementNumber">01</p>
+
+      <div>
+        <h2>
+          <span class="solid-title" data-i18n="statementTitle">I don’t build pages.</span>
+          <span data-i18n="statementTitleAccent">I build atmospheres.</span>
+        </h2>
+
+        <p data-i18n="statementText">
+          Every project needs its own visual language — sometimes calm and minimal, sometimes deep and dramatic, sometimes clean and trustworthy. My work starts with mood, continues with structure and ends in clean code.
+        </p>
+      </div>
+    </section>
+
+    <section class="offer section" id="offer" aria-labelledby="offer-title">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="offerEyebrow">What I create</p>
+
+        <h2 id="offer-title">
+          <span class="solid-title" data-i18n="offerTitle">Design direction,</span>
+          <span data-i18n="offerTitleAccent">structure and code.</span>
+        </h2>
+      </div>
+
+      <div class="offer-table reveal">
+        <article>
+          <span>01</span>
+          <h3 data-i18n="offerOneTitle">Landing Pages</h3>
+          <p data-i18n="offerOneText">Strong one-page websites for offers, campaigns and first business presence.</p>
+        </article>
+
+        <article>
+          <span>02</span>
+          <h3 data-i18n="offerTwoTitle">Business Websites</h3>
+          <p data-i18n="offerTwoText">Multi-page websites for local businesses, services and personal brands.</p>
+        </article>
+
+        <article>
+          <span>03</span>
+          <h3 data-i18n="offerThreeTitle">Visual Concepts</h3>
+          <p data-i18n="offerThreeText">Mood, colors, layout direction and the world your project should live in.</p>
+        </article>
+
+        <article>
+          <span>04</span>
+          <h3 data-i18n="offerFourTitle">Frontend Build</h3>
+          <p data-i18n="offerFourText">Responsive HTML, CSS and JavaScript — clean, structured and handcrafted.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="prices section" id="prices" aria-labelledby="prices-title">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="pricesEyebrow">Starting prices</p>
+
+        <h2 id="prices-title">
+          <span class="solid-title" data-i18n="pricesTitle">Clear packages,</span>
+          <span data-i18n="pricesTitleAccent">custom depth.</span>
+        </h2>
+
+        <p data-i18n="pricesText">
+          Every project is different. These prices are starting points — the final price depends on pages, content, design depth and special features.
+        </p>
+      </div>
+
+      <div class="price-list reveal">
+        <article>
+          <p data-i18n="priceOneName">Landing Page</p>
+          <strong data-i18n="priceOneValue">from 900 €</strong>
+          <span data-i18n="priceOneText">One-page website / responsive layout / contact section</span>
+        </article>
+
+        <article>
+          <p data-i18n="priceTwoName">Business Website</p>
+          <strong data-i18n="priceTwoValue">from 1.500 €</strong>
+          <span data-i18n="priceTwoText">Several pages / services / mobile version / legal pages</span>
+        </article>
+
+        <article>
+          <p data-i18n="priceThreeName">Premium Website</p>
+          <strong data-i18n="priceThreeValue">from 2.500 €</strong>
+          <span data-i18n="priceThreeText">Custom visual world / stronger concept / animations / more depth</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="projects section" id="projects" aria-labelledby="projects-title">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="projectsEyebrow">Selected works</p>
+
+        <h2 id="projects-title">
+          <span class="solid-title" data-i18n="projectsTitle">Websites with</span>
+          <span data-i18n="projectsTitleAccent">their own character.</span>
+        </h2>
+      </div>
+
+      <div class="project-list">
+        <article class="project-row reveal">
+          <div class="project-index">01</div>
+
+          <div class="project-main">
+            <p data-i18n="projectOneType">Premium business website</p>
+            <h3 data-i18n="projectOneTitle">Rund um den Baum</h3>
+          </div>
+
+          <div class="project-text">
+            <p data-i18n="projectOneText">
+              A multi-page tree service website with natural depth, clear service structure, legal pages, contact flow and responsive layout.
+            </p>
+
+            <a href="https://19reginab91.github.io/RundUmDerBaum/start" target="_blank" rel="noopener" data-i18n="projectLink">Visit website</a>
+          </div>
+        </article>
+
+        <article class="project-row reveal">
+          <div class="project-index">02</div>
+
+          <div class="project-main">
+            <p data-i18n="projectTwoType">Local service website</p>
+            <h3 data-i18n="projectTwoTitle">Kristall Reinigung</h3>
+          </div>
+
+          <div class="project-text">
+            <p data-i18n="projectTwoText">
+              A clean business website for a cleaning company with service structure, accordion content and trust-focused customer flow.
+            </p>
+
+            <a href="https://19reginab91.github.io/Kristall-Reinigung/" target="_blank" rel="noopener" data-i18n="projectLink">Visit website</a>
+          </div>
+        </article>
+
+        <article class="project-row reveal">
+          <div class="project-index">03</div>
+
+          <div class="project-main">
+            <p data-i18n="projectThreeType">Creative studio website</p>
+            <h3 data-i18n="projectThreeTitle">Amarte Design Studio</h3>
+          </div>
+
+          <div class="project-text">
+            <p data-i18n="projectThreeText">
+              A creative multi-page website with gallery filters, visual storytelling and strong editorial atmosphere.
+            </p>
+
+            <a href="https://19reginab91.github.io/Amarte_Design_Studio/" target="_blank" rel="noopener" data-i18n="projectLink">Visit website</a>
+          </div>
+        </article>
+
+        <article class="project-row reveal">
+          <div class="project-index">04</div>
+
+          <div class="project-main">
+            <p data-i18n="projectFourType">Campaign landing page</p>
+            <h3 data-i18n="projectFourTitle">Hannah Sport</h3>
+          </div>
+
+          <div class="project-text">
+            <p data-i18n="projectFourText">
+              A campaign landing page with product cards, promotional sections and conversion-focused structure.
+            </p>
+
+            <a href="https://19reginab91.github.io/Hannah-sport-campaign-landing/" target="_blank" rel="noopener" data-i18n="projectLink">Visit website</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="worlds section" id="worlds" aria-labelledby="worlds-title">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="worldsEyebrow">Design worlds</p>
+
+        <h2 id="worlds-title">
+          <span class="solid-title" data-i18n="worldsTitle">Walk through</span>
+          <span data-i18n="worldsTitleAccent">my worlds.</span>
+        </h2>
+
+        <p data-i18n="worldsText">
+          First, see what we can build. Then, walk through the moods — from clean signal to wild editorial edge.
+        </p>
+
+        <p class="worlds-note" data-i18n="worldsNote">
+          These worlds are still growing and will be updated regularly — like a living portfolio.
+        </p>
+      </div>
+
+      <div class="world-grid">
+        <article class="world-card reveal world-card-primary">
+          <span>00</span>
+          <h3 data-i18n="worldPrimaryTitle">Clean Signal</h3>
+          <p data-i18n="worldPrimaryText">
+            The clear starting point — bright, structured and direct, with sharp lime and a quiet blue undertone.
+          </p>
+          <a class="world-link is-current" href="index.html" data-i18n="worldCurrent">You are here</a>
+        </article>
+
+        <article class="world-card reveal world-card-snake">
+          <span>01</span>
+          <h3 data-i18n="worldOneTitle">Wild Noir</h3>
+          <p data-i18n="worldOneText">
+            Deep contrast, editorial drama, black-and-white strength and a hidden textile edge.
+          </p>
+          <a class="world-link" href="wild-index.html" data-i18n="worldVisit">Enter world</a>
+        </article>
+
+        <article class="world-card reveal world-card-violet">
+          <span>02</span>
+          <h3 data-i18n="worldTwoTitle">Violet Mood</h3>
+          <p data-i18n="worldTwoText">
+            Luminous accents, digital softness and a little bit of visual magic.
+          </p>
+          <a class="world-link" href="violet-index.html" data-i18n="worldVisit">Enter world</a>
+        </article>
+
+        <article class="world-card reveal world-card-nude">
+          <span>03</span>
+          <h3 data-i18n="worldThreeTitle">Soft Nude</h3>
+          <p data-i18n="worldThreeText">
+            Warm, calm and refined — for projects that need softness, trust and elegance.
+          </p>
+          <a class="world-link" href="nude-index.html" data-i18n="worldVisit">Enter world</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact section" id="contact" aria-labelledby="contact-title">
+      <div class="contact-panel reveal">
+        <p class="eyebrow" data-i18n="contactEyebrow">Start a project</p>
+
+        <h2 id="contact-title">
+          <span class="solid-title" data-i18n="contactTitle">Have an idea?</span>
+          <span data-i18n="contactTitleAccent">Let’s give it a world.</span>
+        </h2>
+
+        <p data-i18n="contactText">
+          Tell me what you want to create — a landing page, a business website, a portfolio or a complete visual direction.
+        </p>
+
+        <a class="btn btn-dark" href="mailto:regina.craftlay@gmail.com" data-i18n="contactButton">Write me</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Regina CraftLay</p>
+
+    <div>
+      <a href="#top" data-i18n="footerBack">Back to top</a>
+      <a href="mailto:regina.craftlay@gmail.com" data-i18n="footerEmail">Email</a>
+      <a href="https://github.com/19ReginaB91" target="_blank" rel="noopener" data-i18n="footerGithub">GitHub</a>
+      <a href="impressum.html" data-i18n="footerImpressum">Impressum</a>
+      <a href="datenschutz.html" data-i18n="footerDatenschutz">Privacy Policy</a>
+      <a href="cookies.html" data-i18n="footerCookies">Cookie settings</a>
+    </div>
+  </footer>
+
+  <script src="scripts/index.js"></script>
+</body>
 </html>
