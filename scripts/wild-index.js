@@ -353,40 +353,4 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-/* SCROLL REVEAL */
-
-const revealItems = document.querySelectorAll(`
-  .hero-copy,
-  .theme-switcher,
-  .hero-note,
-  .wild-system-copy,
-  .wild-system-divider,
-  .hex-card,
-  .featured-work,
-  .work-card,
-  .wild-footer
-`);
-
-if ("IntersectionObserver" in window) {
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-        }
-      });
-    },
-    {
-      threshold: 0.12
-    }
-  );
-
-  revealItems.forEach((item) => {
-    item.classList.add("reveal");
-    revealObserver.observe(item);
-  });
-} else {
-  revealItems.forEach((item) => {
-    item.classList.add("reveal", "is-visible");
-  });
-}
+/* Scene reveals live in wild-directing.js (Amarte: one scene, one breath). */
