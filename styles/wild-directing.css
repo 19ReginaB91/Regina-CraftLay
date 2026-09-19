@@ -1,0 +1,38 @@
+/* Wild directing — Amarte scenes, not per-element stagger. */
+
+html.directing {
+  scroll-behavior: smooth;
+}
+
+html.directing:not(.directing-ready):not(.directing-reduced) .hero-copy {
+  opacity: 0;
+  transform: translate3d(0, 0.7rem, 0);
+}
+
+html.directing:not(.directing-reduced) [data-direct]:not(.is-in) {
+  opacity: 0;
+  transform: translate3d(0, 1.15rem, 0);
+  will-change: opacity, transform;
+}
+
+html.directing:not(.directing-reduced) [data-direct="hero"]:not(.is-in) {
+  transform: translate3d(0, 0.7rem, 0);
+}
+
+html.directing [data-direct].is-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.9s ease-out var(--direct-delay, 0ms),
+    transform 0.9s ease-out var(--direct-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.directing,
+  html.directing [data-direct] {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
